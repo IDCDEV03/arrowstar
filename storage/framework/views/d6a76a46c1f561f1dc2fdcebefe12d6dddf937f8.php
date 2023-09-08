@@ -1,34 +1,35 @@
-@extends('layouts.simple.master')
-@section('title', 'รายการโปรแกรมทัวร์')
 
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
-<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatable-extension.css')}}">
-@endsection
+<?php $__env->startSection('title', 'รายการโปรแกรมทัวร์'); ?>
 
-@section('style')
-@endsection
+<?php $__env->startSection('css'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
-@endsection
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-items')
-@endsection
+<?php $__env->startSection('breadcrumb-title'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('breadcrumb-items'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
 <div class="container-fluid">
    <div class="row">
       <div class="col-sm-12">
          <div class="card">
          
-            <h5 class="card-header">จังหวัด {{ $province_name }}</h5>
+            <h5 class="card-header">จังหวัด <?php echo e($province_name); ?></h5>
         
             <div class="card-body">
-                @if (session('success'))
+                <?php if(session('success')): ?>
                 <div class="alert alert-success">
-                    {{ session('success') }}
+                    <?php echo e(session('success')); ?>
+
                 </div>
-                 @endif
+                 <?php endif; ?>
 
                 <div class="dt-ext table-responsive">
                     <table class="display" id="dataTables01">
@@ -40,10 +41,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($list_travel as $item)
+                            <?php $__currentLoopData = $list_travel; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <td>
-                                    {{ $item->travel_name }}                          
+                                    <?php echo e($item->travel_name); ?>                          
                                 </td>
                                 <td>**</td>
                                 <td>
@@ -54,7 +55,7 @@
                                     </div>
                                 </td>                          
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -65,12 +66,12 @@
       </div>
    </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
-<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('assets/js/datatable/datatables/datatable.custom.js')}}"></script>
+<script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
 <script>
     $(function(){
         $("#dataTables01").dataTable(
@@ -89,4 +90,5 @@
             });
     });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\IDDRIVES\Documents\GitHub\arrowstar\resources\views/admin/list_travel.blade.php ENDPATH**/ ?>

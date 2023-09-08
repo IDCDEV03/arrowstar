@@ -17,9 +17,20 @@ class AdminController extends Controller
   public function list_travel($id)
   {
     $list_travel = DB::table('travel_lists')
-    ->where('province', '=' , $id)
+    ->join('province_list','travel_lists.province','=','province_list.id')
+    ->where('travel_lists.province', '=' , $id)
     ->get();
-    return view('admin.list_travel',compact('list_travel'));
+
+    $province_travel = DB::table('province_list')
+    ->select('province_list.name_th') 
+    ->where('province_list.id','=',$id)
+    ->first();
+
+    $data_name_province = [
+      'province_name' => $province_travel->name_th
+    ];
+
+    return view('admin.list_travel',$data_name_province,compact('list_travel'));
   }
 
   public function new_travel()
