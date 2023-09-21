@@ -35,6 +35,11 @@ Route::post('/admin/save_program', $controller_path . '\AdminController@save_pro
 
 Route::get('/admin/delete_program/{id}', $controller_path . '\AdminController@delete_program')->name('admin.delete_program');
 
+/** data */
+Route::get('/admin/data_travel/{id}', $controller_path . '\AdminController@data_travel')->name('admin.data_travel');
+
+Route::get('/admin/create_user', $controller_path . '\AdminController@create_user')->name('admin.create_user');
+
 ///////////----Admin Route End----////////////
 
 Route::get('/', function () {

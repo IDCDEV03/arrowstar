@@ -8,7 +8,7 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>เพิ่มสถานที่ท่องเที่ยว</h3>
+<h3>เพิ่มสถานที่</h3>
 @endsection
 
 @section('breadcrumb-items')
@@ -37,17 +37,30 @@
                           @foreach ($province_list as $row)  
                           <option value="{{$row->id}}"> {{$row->name_th}} </option>
                           @endforeach
-                        </select>
-                      
+                        </select>                      
                       </div>
                     </div>
                   </div>
 
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="type_travel">ประเภท</label>
+                        <select class="form-select input-air-primary" name="type_travel" id="type_travel">
+                          <option selected disabled>เลือกประเภท..</option>
+                          @foreach ($type_list as $item)  
+                          <option value="{{$item->number_type}}"> {{$item->type_travel}} </option>
+                          @endforeach
+                        </select> 
+                      </div>
+                    </div>
+                  </div>
             
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label class="form-label" for="travel1">ชื่อสถานที่ท่องเที่ยว</label>
+                        <label class="form-label" for="travel1">ชื่อสถานที่</label>
                         <input class="form-control input-air-primary" name="travel_name" id="travel1" type="text">
                       </div>
                     </div>
@@ -65,7 +78,7 @@
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label class="form-label" for="travel4">รายละเอียดสถานที่ท่องเที่ยว</label>
+                        <label class="form-label" for="travel4">รายละเอียดสถานที่</label>
                         <textarea name="travel_detail" id="summernote"></textarea>
                       </div>
                     </div>

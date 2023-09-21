@@ -22,67 +22,100 @@
                     <div class="alert alert-success" role="alert">
                         <b>{{ session('success') }}</b>
                     </div>
-                @endif
-                    
-                        @foreach ($new_tours as $row)
-                        @php 
-                            $id = $row->package_id;
-                        @endphp
-
+                   @endif
+                   <div class="card-header">
+                    ชื่อแพ็คเกจ : {{ $package_name }}
+                  </div>          
+                  @php
+                      $i = '1';
+                  @endphp             
                             <div class="card-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label pt-0">จังหวัด</label>
-                                            <div class="col-sm-9">
-                                                <input type="hidden" name="province_id" 
-                                                value="{{ $row->id }}">
-                                           
-                                                <div class="form-control-static">
-                                                    {{ $row->name_th }} 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 row">
-                                            <label class="col-sm-3 col-form-label pt-0">ชื่อแพ็คเกจ</label>
-                                            <div class="col-sm-9">
-                                                <div class="form-control-static">
-                                                    {{ $row->package_name }}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label"
-                                                    for="colFormLabelSm26">ระบุสถานที่ท่องเที่ยว</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                              <form class="f1" method="post">
+                              <div class="f1-steps">
+                                <div class="f1-progress">
+                                  <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3"></div>
                                 </div>
-                                <form class="form theme-form" action="{{ route('admin.save_tourist') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" value="{{ $row->package_id }}" name="pk_id">
-                                <table class="table" id="table" name="table">
-                                    <tbody>
+                                <div class="f1-step active">
+                                  <div class="f1-step-icon">
+                                    <i class="fa fa-image"></i>
+                                  </div>
+                                  <p>เลือกสถานที่ท่องเที่ยว</p>
+                                </div>
+                                <div class="f1-step">
+                                  <div class="f1-step-icon">
+                                    <i class="fa fa-coffee"></i>
+                                  </div>
+                                  <p>เลือกร้านอาหาร</p>
+                                </div>
+                                <div class="f1-step">
+                                  <div class="f1-step-icon">
+                                    <i class="fa fa-edit"></i>
+                                  </div>
+                                  <p>ระบุรายละเอียดเพิ่มเติม</p>
+                                </div>
+                              </div>
+
+                              <fieldset>
+                              <h5 class="card-title">เลือกสถานที่ท่องเที่ยว</h5>
+                                <table class="table table-hover">
+                                    <thead>
                                         <tr>
-                                            <td width='10%'><input type="hidden" 
-                                                name="add[0][package_id]" class="form-control" 
-                                                value="{{ $row->package_id }}" readonly></td>
-                                            <td><input type="text" 
-                                                name="add[0][program_place]" class="form-control"></td>
-                                            <td>
-                                                <button type="button" name="add_btn" id="add_btn"
-                                                    class="btn btn-sm btn-primary"><i class="fa fa-plus"></i></button>
-                                            </td>
+                                          <th scope="col">#</th>
+                                          <th>เลือก</th>
+                                          <th scope="col">ชื่อสถานที่</th>
+                                          <th scope="col">รายละเอียด</th>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <hr>
-                                <button type="submit" class="btn btn-success">บันทึก</button>
-                        @endforeach
-                    </div>
-                </form>
+                                      </thead>
+                                      <tbody>
+                                        @foreach ($new_tours as $item)
+                                        <tr>
+                                          <th scope="row">
+                                            @php
+                                             echo $i++;   
+                                            @endphp
+                                          </th>
+                                          <td>
+                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                                        </td>
+                                          <td>{{$item->travel_name}}</td>
+                                          <td>#</td>
+                                          
+                                        </tr>
+                                        @endforeach
+                                      </tbody>
+
+                                  </table>     
+
+                                 
+<hr>
+<div class="f1-buttons">
+  <button class="btn btn-primary btn-next" type="button">Next</button>
+</div>
+
+                              </fieldset>
+
+
+                              <fieldset>
+                                <div class="mb-2">
+                                  <label class="sr-only" for="f1-email">Email</label>
+                                  <input class="f1-email form-control" id="f1-email" type="text" name="f1-email" placeholder="Email..." required="">
+                                </div>
+                                <div class="mb-2">
+                                  <label class="sr-only" for="f1-password">Password</label>
+                                  <input class="f1-password form-control" id="f1-password" type="password" name="f1-password" placeholder="Password..." required="">
+                                </div>
+                                <div class="mb-2">
+                                  <label class="sr-only" for="f1-repeat-password">Repeat password</label>
+                                  <input class="f1-repeat-password form-control" id="f1-repeat-password" type="password" name="f1-repeat-password" placeholder="Repeat password..." required="">
+                                </div>
+                                <div class="f1-buttons">
+                                  <button class="btn btn-primary btn-previous" type="button">Previous</button>
+                                  <button class="btn btn-primary btn-next" type="button">Next</button>
+                                </div>
+                              </fieldset>
+
+                              </form>
+</div>
             </div>
         </div>
     </div>
@@ -90,17 +123,6 @@
 @endsection
 
 @section('script')
-
-    <script type="text/javascript">
-        var i = 0;
-        $('#add_btn').click(function() {
-            ++i;
-            $('#table').append(
-                '<tr><td width="10%"><input type="hidden" name="add['+i+'][package_id]" class="form-control" value="@php echo $id @endphp" readonly></td><td><input type="text" name="add['+i+'][program_place]" class="form-control" /></td><td><button type="button" name="remove" id="remove" class="btn btn-sm btn-danger"><i class="fa fa-minus"></i></button></td></tr>');
-        });
-
-        $(document).on('click', '#remove', function() {
-            $(this).closest('tr').remove();
-        });
-    </script>
+<script src="{{asset('assets/js/form-wizard/form-wizard-three.js')}}"></script>
+<script src="{{asset('assets/js/form-wizard/jquery.backstretch.min.js')}}"></script>
 @endsection

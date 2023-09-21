@@ -8,7 +8,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-title'); ?>
-<h3>เพิ่มสถานที่ท่องเที่ยว</h3>
+<h3>เพิ่มสถานที่</h3>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-items'); ?>
@@ -37,17 +37,30 @@
                           <?php $__currentLoopData = $province_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
                           <option value="<?php echo e($row->id); ?>"> <?php echo e($row->name_th); ?> </option>
                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </select>
-                      
+                        </select>                      
                       </div>
                     </div>
                   </div>
 
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="type_travel">ประเภท</label>
+                        <select class="form-select input-air-primary" name="type_travel" id="type_travel">
+                          <option selected disabled>เลือกประเภท..</option>
+                          <?php $__currentLoopData = $type_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
+                          <option value="<?php echo e($item->number_type); ?>"> <?php echo e($item->type_travel); ?> </option>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select> 
+                      </div>
+                    </div>
+                  </div>
             
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label class="form-label" for="travel1">ชื่อสถานที่ท่องเที่ยว</label>
+                        <label class="form-label" for="travel1">ชื่อสถานที่</label>
                         <input class="form-control input-air-primary" name="travel_name" id="travel1" type="text">
                       </div>
                     </div>
@@ -65,7 +78,7 @@
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label class="form-label" for="travel4">รายละเอียดสถานที่ท่องเที่ยว</label>
+                        <label class="form-label" for="travel4">รายละเอียดสถานที่</label>
                         <textarea name="travel_detail" id="summernote"></textarea>
                       </div>
                     </div>

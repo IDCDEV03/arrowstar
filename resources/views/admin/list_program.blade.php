@@ -20,19 +20,25 @@
    <div class="row">
       <div class="col-sm-12">
          <div class="card">
-           
+
             <div class="card-body">
                 @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
                  @endif
+
+                 <h5 class="card-title">
+                    จังหวัด : {{ $province_name }}
+                 </h5>
+<hr>
                 <div class="dt-ext table-responsive">
                     <table class="display" id="dataTables01">
                         <thead>
                             <tr>
                                 <th>โปรแกรมทัวร์</th>
                                 <th>จังหวัด</th>  
+                                <th></th>
                                 <th></th>                    
                             </tr>
                         </thead>
@@ -44,6 +50,11 @@
                                 </a>
                                 </td>
                                 <td> {{ $item->name_th }} </td>
+                                <td>
+                                    <a class="btn btn-success btn-xs" >
+                                    <i data-feather="download"></i>
+                                </a>
+                                </td> 
                                 <td>
                                     <a class="btn btn-danger btn-xs" 
                                     href="{{route('admin.delete_program',['id'=>$item->package_id])}}" >

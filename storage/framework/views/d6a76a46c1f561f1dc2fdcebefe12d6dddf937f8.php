@@ -35,8 +35,9 @@
                     <table class="display" id="dataTables01">
                         <thead>
                             <tr>
-                                <th>สถานที่ท่องเที่ยว</th>
-                                <th>อัพเดทล่าสุด</th>  
+                                <th>สถานที่</th> 
+                                <th>ประเภท</th>
+                                <th>อัพเดทล่าสุด</th>
                                 <th></th>                    
                             </tr>
                         </thead>
@@ -46,10 +47,12 @@
                                 <td>
                                     <?php echo e($item->travel_name); ?>                          
                                 </td>
-                                <td>**</td>
+                                <td> <?php echo e($item->type_travel); ?> </td>
+                                <td><?php echo e(Carbon\Carbon::parse($item->travel_created_at)->format('d/m/Y H:i')); ?></td>
+                                
                                 <td>
                                     <div class="btn-group btn-group-pill" role="group" aria-label="Basic example">
-                                        <a class="btn btn btn-outline-light txt-dark " type="button"> <i class="fa fa-info-circle"></i></a>
+                                        <a href="<?php echo e(route('admin.data_travel', ['id' => $item->travel_id])); ?>" class="btn btn btn-outline-light txt-dark " type="button"> <i class="fa fa-info-circle"></i></a>
                                         <a class="btn btn btn-outline-light txt-dark " type="button"><i class="fa fa-trash-o"></i></a>
                                 
                                     </div>
