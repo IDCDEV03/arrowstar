@@ -13,5 +13,8 @@ class package_new extends Model
         'province_id',
         'package_id',
         'package_name',
+        'program_spacial_req',
+        'program_remark',
+        'program_tips',
     ];
 }

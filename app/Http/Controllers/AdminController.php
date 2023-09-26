@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\new_package_tour;
-use App\Models\new_package;
+use App\Models\program_travel_lists;
 use App\Models\travel_img;
 use Carbon\Carbon;
 
@@ -70,7 +70,8 @@ class AdminController extends Controller
   {
     $list_program = DB::table('package_news')
     ->join('province_list', 'province_list.id' , '=' , 'package_news.province_id')
-    ->where('package_news.province_id','=',$id)
+    ->where('package_news.province_id','=',$id)    
+    ->orderBy('package_news.created_at','desc')
     ->get();
 
 
@@ -91,6 +92,15 @@ class AdminController extends Controller
     $new_tours = DB::table('travel_lists')
    ->join('package_news','package_news.province_id','=','travel_lists.province')
    ->where('package_news.package_id','=',$id)
+   ->where('travel_lists.travel_type','=','1')
+   ->orderBy('travel_lists.travel_created_at', 'desc')
+   ->groupBy('travel_lists.travel_id')
+   ->get();
+
+   $food_lists = DB::table('travel_lists')
+   ->join('package_news','package_news.province_id','=','travel_lists.province')
+   ->where('package_news.package_id','=',$id)
+   ->where('travel_lists.travel_type','=','2')
    ->orderBy('travel_lists.travel_created_at', 'desc')
    ->groupBy('travel_lists.travel_id')
    ->get();
@@ -104,7 +114,7 @@ class AdminController extends Controller
     'package_name' => $pk_news->package_name
    ];
 
-    return view('admin.new_package_add',$pk_news_data,compact('new_tours'));    
+    return view('admin.new_package_add',$pk_news_data,compact('new_tours','food_lists'));    
   }
 
   public function preview_package($id)
@@ -115,24 +125,16 @@ class AdminController extends Controller
     ->where('package_news.package_id', '=', $id)
     ->get();
 
-    $package_place = DB::table('new_package_tours')
-    ->where('package_id', '=' , $id) 
+    $package_place = DB::table('program_travel_lists')
+    ->join('travel_lists','program_travel_lists.program_travel_id','=','travel_lists.travel_id')
+    ->join('travel_type','travel_lists.travel_type','=','travel_type.number_type')
+    ->where('program_travel_lists.program_package_id', '=' , $id) 
     ->get();
 
     return view('admin.preview_package',compact('package_pre','package_place'));    
   }
   
-  public function save_tourist(Request $request)
-  {
-    $pk_id = $request->pk_id;
-
-    foreach($request->add as $key => $value) {
-      new_package_tour::create($value);              
-    }
-
-    return redirect()->route('admin.preview_package',['id' => $pk_id])->with('success', "สร้างโปรแกรมใหม่เรียบร้อยแล้ว");
-  }
-
+ 
   public function save_program(Request $request)
   {
     $pk_id = Str::random(10);
@@ -141,9 +143,28 @@ class AdminController extends Controller
       'province_id' => $request->province_id,
       'package_id' => $pk_id,
       'package_name' => $request->package_name,
+      'package_day' => $request->package_day,
+      'package_night' => $request->package_night,
       'created_at' => Carbon::now()
     ]);
     return redirect()->route('admin.new_package_add',['id' => $pk_id])->with('success', "สร้างโปรแกรมใหม่เรียบร้อยแล้ว");
+  }
+
+  public function insert_program_travel (Request $request)
+  {
+    $pk_id = $request->package_id;
+    $travel_list = $request->input('travel_id');
+
+    foreach ($travel_list as $item) {
+      program_travel_lists::insert([
+        'program_province_id' => $request->province_id,
+        'program_package_id' => $pk_id,
+        'program_travel_id' => $item,
+        'program_day_count' => $request->package_day,
+        'created_at' => Carbon::now()
+      ]);
+     }
+     return redirect()->route('admin.preview_package',['id' => $pk_id])->with('success', "สร้างโปรแกรมเรียบร้อยแล้ว");
   }
  
   public function delete_program($id)

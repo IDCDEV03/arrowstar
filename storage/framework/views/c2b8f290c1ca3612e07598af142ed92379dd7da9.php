@@ -1,32 +1,32 @@
-@extends('layouts.simple.master')
-@section('title', 'รายการโปรแกรมทัวร์')
 
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">
-@endsection
+<?php $__env->startSection('title', 'รายการโปรแกรมทัวร์'); ?>
 
-@section('style')
-@endsection
+<?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumb-title'); ?>
     <h3>เพิ่มโปรแกรมทัวร์ใหม่</h3>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    @if (session('success'))
+                    <?php if(session('success')): ?>
                     <div class="alert alert-success" role="alert">
-                        <b>{{ session('success') }}</b>
+                        <b><?php echo e(session('success')); ?></b>
                     </div>
-                @endif
+                <?php endif; ?>
                     <form class="form theme-form" 
-                    action="{{ route('admin.save_program') }}" method="POST">
-                        @csrf
-                        @foreach ($province_th as $row)
+                    action="<?php echo e(route('admin.save_program')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <?php $__currentLoopData = $province_th; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
@@ -34,10 +34,11 @@
                                             <label class="col-sm-3 col-form-label">จังหวัด</label>
                                             <div class="col-sm-9">
                                                 <input type="hidden" name="province_id" 
-                                                value="{{ $row->id }}">
+                                                value="<?php echo e($row->id); ?>">
                                            
                                                 <div class="form-control-static">
-                                                    {{ $row->name_th }}
+                                                    <?php echo e($row->name_th); ?>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -67,15 +68,17 @@
                              
                                 <hr>
                                 <button type="submit" class="btn btn-success">บันทึก</button>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
                 </form>
             </div>
         </div>
     </div>
  </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/new_package.blade.php ENDPATH**/ ?>

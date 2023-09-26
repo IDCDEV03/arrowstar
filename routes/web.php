@@ -29,6 +29,8 @@ Route::post('/admin/save_tourist', $controller_path . '\AdminController@save_tou
 
 Route::post('/admin/insert_travel', $controller_path . '\AdminController@insert_travel')->name('admin.insert_travel');
 
+Route::post('/admin/insert_program_travel', $controller_path . '\AdminController@insert_program_travel')->name('admin.insert_program_travel');
+
 Route::post('/admin/save_program', $controller_path . '\AdminController@save_program')->name('admin.save_program');
 
 /** delete data */

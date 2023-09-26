@@ -1,30 +1,30 @@
-@extends('layouts.simple.master')
-@section('title', 'รายการโปรแกรมทัวร์')
 
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">
-@endsection
+<?php $__env->startSection('title', 'รายการโปรแกรมทัวร์'); ?>
 
-@section('style')
-@endsection
+<?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumb-title'); ?>
     <h3>โปรแกรมทัวร์</h3>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    @if (session('success'))
+                    <?php if(session('success')): ?>
                     <div class="alert alert-success" role="alert">
-                        <b>{{ session('success') }}</b>
+                        <b><?php echo e(session('success')); ?></b>
                     </div>
-                    @endif
+                    <?php endif; ?>
                 
-                    @foreach ($package_pre as $row)
+                    <?php $__currentLoopData = $package_pre; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
@@ -32,7 +32,8 @@
                                     <label class="col-sm-3 col-form-label">จังหวัด</label>
                                     <div class="col-sm-9">
                                         <div class="form-control-static">
-                                            {{ $row->name_th }}
+                                            <?php echo e($row->name_th); ?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -40,17 +41,18 @@
                                     <label class="col-sm-3 col-form-label">ชื่อแพ็คเกจ</label>
                                     <div class="col-sm-9">
                                         <div class="form-control-static">
-                                                {{$row->package_name}}
+                                                <?php echo e($row->package_name); ?>
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <hr>
-                        @endforeach
-@php
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+<?php
     $i = 1;
-@endphp
+?>
                         <div class="table-responsive">
                             <table class="table">
                               <thead>
@@ -61,16 +63,16 @@
                                 </tr>
                               </thead>
                               <tbody> 
-                                @foreach ($package_place as $data)
+                                <?php $__currentLoopData = $package_place; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <tr>
                                   <th scope="row">
-                                    @php
+                                    <?php
                                       echo $i++;
-                                  @endphp</th>
-                                  <td>{{$data->travel_name}}</td>
-                                  <td> {{$data->type_travel}} </td>
+                                  ?></th>
+                                  <td><?php echo e($data->travel_name); ?></td>
+                                  <td> <?php echo e($data->type_travel); ?> </td>
                                 </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                           
                               </tbody>
                             </table>
@@ -83,8 +85,10 @@
         </div>
     </div>
  </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/preview_package.blade.php ENDPATH**/ ?>
