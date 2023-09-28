@@ -42,7 +42,7 @@ Route::post('/admin/insert_image_extra', $controller_path . '\AdminController@in
 
 /** delete data */
 
-Route::get('/admin/delete_program/{id}', $controller_path . '\AdminController@delete_program')->name('admin.delete_program');
+Route::get('/admin/delete_program/{id}', $controller_path . '\DeleteFileController@delete_program')->name('admin.delete_program');
 
 Route::get('/admin/delete_travel/{id}/{province}', $controller_path . '\DeleteFileController@delete_travel_place')->name('admin.delete_travel_place');
 

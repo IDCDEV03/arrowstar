@@ -194,14 +194,7 @@ class AdminController extends Controller
 
   }
  
-  public function delete_program($id)
-  {
-    DB::table('package_news')
-    ->leftjoin('new_package_tours','package_news.package_id','=','new_package_tours.package_id')
-    ->where('package_news.package_id', '=', $id)
-    ->delete();
-    return redirect()->back()->with('success', "ลบเรียบร้อยแล้ว");
-  }  
+
 
   public function insert_travel(Request $request)
   {

@@ -26,6 +26,10 @@
                 <div class="alert alert-success">
                     {{ session('success') }}
                 </div>
+                @elseif (session('delete'))
+                <div class="alert alert-danger">
+                    {{ session('delete') }}
+                </div>
                  @endif
 
                  <h5 class="card-title">
@@ -57,7 +61,7 @@
                                 </td> 
                                 <td>
                                     <a class="btn btn-danger btn-xs" 
-                                    href="{{route('admin.delete_program',['id'=>$item->package_id])}}" >
+                                    href="{{route('admin.delete_program',['id'=>$item->package_id])}}" onclick="return confirm('ต้องการลบ ใช่หรือไม่?');">
                                         <i data-feather="trash-2"></i>
                                     </a>
                                 </td>                          

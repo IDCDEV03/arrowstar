@@ -27,6 +27,11 @@
                     <?php echo e(session('success')); ?>
 
                 </div>
+                <?php elseif(session('delete')): ?>
+                <div class="alert alert-danger">
+                    <?php echo e(session('delete')); ?>
+
+                </div>
                  <?php endif; ?>
 
                  <h5 class="card-title">
@@ -60,7 +65,7 @@
                                 </td> 
                                 <td>
                                     <a class="btn btn-danger btn-xs" 
-                                    href="<?php echo e(route('admin.delete_program',['id'=>$item->package_id])); ?>" >
+                                    href="<?php echo e(route('admin.delete_program',['id'=>$item->package_id])); ?>" onclick="return confirm('ต้องการลบ ใช่หรือไม่?');">
                                         <i data-feather="trash-2"></i>
                                     </a>
                                 </td>                          

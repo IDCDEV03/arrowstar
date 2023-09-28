@@ -29,16 +29,25 @@ class DeleteFileController extends Controller
         return redirect()->back()->with('success', "ลบเรียบร้อยแล้ว");    
     }
 
-    public function delete_travel_place (Request $request)
+    public function delete_travel_place(Request $request)
     {
         $id = $request->id;
         $province = $request->province;
 
        $place_delete = DB::table('travel_lists')
-        ->join('program_travel_lists','travel_lists.travel_id','=','program_travel_lists.program_travel_id')
+        ->leftjoin('program_travel_lists','travel_lists.travel_id','=','program_travel_lists.program_travel_id')
         ->where('travel_lists.travel_id','=',$id)
         ->delete();
 
-        return redirect()->route('admin.list_travel',['id' => $province])->with('error', "ลบสถานที่เรียบร้อยแล้ว");
+        return redirect()->route('admin.list_travel',['id' => $province])->with('error', "ลบสถานที่เรียบร้อยแล้ว");        
     }
+    
+    public function delete_program($id)
+  {
+    DB::table('package_news')
+    ->leftjoin('program_travel_lists','package_news.package_id','=','program_travel_lists.program_package_id')
+    ->where('package_news.package_id', '=', $id)
+    ->delete();
+    return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
+  }  
 }
