@@ -105,6 +105,11 @@ class AdminController extends Controller
    ->groupBy('travel_lists.travel_id')
    ->get();
 
+   $program_day = DB::table('package_news')
+   ->leftjoin('program_travel_lists','package_news.package_id','=','program_travel_lists.program_package_id')
+   ->where('program_travel_lists.program_package_id','=',$id)
+   ->count();
+
    $pk_news = DB::table('package_news')
    ->select('package_news.package_name') 
    ->where('package_news.package_id','=',$id)
@@ -114,7 +119,7 @@ class AdminController extends Controller
     'package_name' => $pk_news->package_name
    ];
 
-    return view('admin.new_package_add',$pk_news_data,compact('new_tours','food_lists'));    
+    return view('admin.new_package_add',$pk_news_data,compact('new_tours','food_lists','program_day'));    
   }
 
   public function preview_package($id)
@@ -152,19 +157,41 @@ class AdminController extends Controller
 
   public function insert_program_travel (Request $request)
   {
+   
+    $action = $request->input('action');
     $pk_id = $request->package_id;
-    $travel_list = $request->input('travel_id');
+   
+    if ($action == 'action1') {
 
+      $travel_list = $request->input('travel_id');
+      
+      foreach ($travel_list as $item) {
+        program_travel_lists::insert([
+          'program_province_id' => $request->province_id,
+          'program_package_id' => $pk_id,
+          'program_travel_id' => $item,
+          'program_day_count' => $request->program_day,
+          'created_at' => Carbon::now()
+        ]);
+       }
+       return redirect()->route('admin.preview_package',['id' => $pk_id]);  
+
+    } elseif ($action == 'action2') {      
+       
+    $travel_list = $request->input('travel_id');
     foreach ($travel_list as $item) {
       program_travel_lists::insert([
         'program_province_id' => $request->province_id,
         'program_package_id' => $pk_id,
         'program_travel_id' => $item,
-        'program_day_count' => $request->package_day,
+        'program_day_count' => $request->program_day,
         'created_at' => Carbon::now()
       ]);
      }
-     return redirect()->route('admin.preview_package',['id' => $pk_id])->with('success', "สร้างโปรแกรมเรียบร้อยแล้ว");
+     return redirect()->route('admin.new_package_add',['id' => $pk_id])->with('success', "สร้างกำหนดการเรียบร้อยแล้ว");  
+
+    }   
+
   }
  
   public function delete_program($id)
@@ -181,16 +208,27 @@ class AdminController extends Controller
     $travel_id = $request->travel_id;
     $travel_img = $request->file('travel_img');
 
+    $request->validate(
+      [             
+        'travel_img.*' => 'mimes:jpg,jpeg,png|max:2048',
+        'travel_img' =>  'max:3'      
+      ],
+      [              
+        'travel_img.max' => "ไม่สามารถอัพโหลดได้เกิน 3 ภาพ"
+      ]
+    );
+
        //อัพโหลดและบันทึกข้อมูล
       if ($request->hasFile('travel_img')) {
-        $upload_location = 'travel_img';
+        $upload_location = 'travel_img/';
         foreach ($request->travel_img as $key => $images) {
           $imageName = time() . rand(1, 99) . '.' . $images->extension();
+          $full_path = $upload_location . $imageName;
           $images->move($upload_location, $imageName);
   
           travel_img::insert([
             'travel_id' => $travel_id,
-            'travel_img' => $imageName,
+            'travel_img' => $full_path,
             'created_at' => Carbon::now()
           ]);
         }
@@ -201,11 +239,33 @@ class AdminController extends Controller
         'province' => $request->province1,
         'travel_name' => $request->travel_name,
         'travel_detail' => $request->travel_detail,
+        'travel_remark' => $request->travel_remark,
         'travel_type' => $request->type_travel,
         'travel_created_at' => Carbon::now()
     ]);
 
     return redirect()->route('list_province')->with('success', "บันทึกข้อมูลเรียบร้อยแล้ว");
+  }
+
+  public function insert_image_extra(Request $request)
+  {
+    $tid = $request->travel_id;
+    $travel_img = $request->file('travel_img');
+    $name_gen = hexdec(uniqid());
+    $travel_img_ext = strtolower($travel_img->getClientOriginalExtension());
+    $travel_img_name = $name_gen . '.' . $travel_img_ext;
+    $upload_location = 'travel_img/';
+    $full_path = $upload_location . $travel_img_name;
+
+    $travel_img->move($upload_location, $travel_img_name);
+
+    DB::table('travel_imgs')->insert([
+      'travel_id' => $request->travel_id,
+      'travel_img' => $full_path,
+      'created_at' => Carbon::now()
+    ]);
+    return redirect()->route('admin.data_travel',['id' => $tid])->with('success', "บันทึกข้อมูลเรียบร้อยแล้ว");
+
   }
 
   public function data_travel ($id)
@@ -219,13 +279,32 @@ class AdminController extends Controller
     ->where('travel_imgs.travel_id','=',$id)
     ->get();
 
-    return view('admin.travel_detail',['id' => $id],compact('data_travel','travel_img')); 
+    $count_img = DB::table('travel_imgs')
+    ->where('travel_imgs.travel_id','=',$id)
+    ->count();
+
+    return view('admin.travel_detail',['id' => $id],compact('data_travel','travel_img','count_img')); 
   }
 
 
   public function create_user()
   {   
     return view('admin.create_user');    
+  }
+
+  public function insert_tips(Request $request)
+  {
+    $package_id = $request->package_id;
+
+    DB::table('package_news')
+    ->where('package_id','=',$package_id)
+    ->update([
+      'program_spacial_req' => $request->program_req,
+      'program_remark' => $request->program_remark,
+      'program_tips' => $request->program_tips,
+      'updated_at' => Carbon::now(),
+    ]);
+    return redirect()->route('admin.preview_package',['id' => $package_id]);
   }
 
 }

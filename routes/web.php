@@ -24,6 +24,11 @@ Route::get('/admin/list_program/{id}', $controller_path . '\AdminController@list
 
 Route::get('/admin/new_travel', $controller_path . '\AdminController@new_travel')->name('admin.new_travel');
 
+/**insert tips */
+Route::get('/admin/new_tips/{id}', $controller_path . '\AdminDataController@new_tips')->name('admin.create_tips');
+
+Route::post('/admin/insert_tips', $controller_path . '\AdminController@insert_tips')->name('admin.insert_tips');
+
 /** insert data */
 Route::post('/admin/save_tourist', $controller_path . '\AdminController@save_tourist')->name('admin.save_tourist');
 
@@ -33,14 +38,25 @@ Route::post('/admin/insert_program_travel', $controller_path . '\AdminController
 
 Route::post('/admin/save_program', $controller_path . '\AdminController@save_program')->name('admin.save_program');
 
+Route::post('/admin/insert_image_extra', $controller_path . '\AdminController@insert_image_extra')->name('admin.insert_image_extra');
+
 /** delete data */
 
 Route::get('/admin/delete_program/{id}', $controller_path . '\AdminController@delete_program')->name('admin.delete_program');
+
+Route::get('/admin/delete_travel/{id}/{province}', $controller_path . '\DeleteFileController@delete_travel_place')->name('admin.delete_travel_place');
+
+Route::get('/admin/delete_img/{id}', $controller_path . '\DeleteFileController@delete_travel_img')->name('admin.delete_travel_img');
 
 /** data */
 Route::get('/admin/data_travel/{id}', $controller_path . '\AdminController@data_travel')->name('admin.data_travel');
 
 Route::get('/admin/create_user', $controller_path . '\AdminController@create_user')->name('admin.create_user');
+
+/** Print Preview */
+Route::get('/print-preview', function () {
+    return view('admin.print_preview');
+});
 
 ///////////----Admin Route End----////////////
 

@@ -29,6 +29,11 @@
                                 <?php echo e(session('success')); ?>
 
                             </div>
+                        <?php elseif(session('error')): ?>
+                        <div class="alert alert-danger">
+                            <?php echo e(session('error')); ?>
+
+                        </div>
                         <?php endif; ?>
 
                         <div class="dt-ext table-responsive">
@@ -57,10 +62,10 @@
                                                 <div class="btn-group btn-group-pill" role="group"
                                                     aria-label="Basic example">
                                                     <a href="<?php echo e(route('admin.data_travel', ['id' => $item->travel_id])); ?>"
-                                                        class="btn btn btn-outline-light txt-dark " type="button"> <i
-                                                            class="fa fa-info-circle"></i></a>
-                                                    <a class="btn btn btn-outline-light txt-dark " type="button"><i
-                                                            class="fa fa-trash-o"></i></a>
+                                                    class="btn btn btn-outline-light txt-dark " type="button">
+                                                    <i class="fa fa-info-circle"></i></a>
+                                                    <a href="<?php echo e(route('admin.delete_travel_place',['id' => $item->travel_id,'province' => $item->province])); ?>" class="btn btn btn-outline-light txt-dark " type="button" onclick="return confirm('ต้องการลบ ใช่หรือไม่?');">
+                                                    <i class="fa fa-trash-o"></i></a>
 
                                                 </div>
                                             </td>

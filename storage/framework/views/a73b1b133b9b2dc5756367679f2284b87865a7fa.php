@@ -18,6 +18,21 @@
 <div class="container-fluid">
    <div class="row">
       <div class="col-sm-12">
+
+        <?php $__errorArgs = ['travel_img'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger">
+          <?php echo e($message); ?>
+
+        </div>     
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
          <div class="card">    
           <form class="form theme-form" 
           action="<?php echo e(route('admin.insert_travel')); ?>" method="POST" enctype="multipart/form-data">
@@ -70,7 +85,9 @@
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel3">เลือกรูปภาพ</label>
-                        <input class="form-control" type="file" name="travel_img[]" multiple accept="image/*">
+                         <span class="txt-info">(อัพโหลดได้สูงสุด 3 ภาพ)</span>
+                        <input class="form-control" type="file" name="travel_img[]" multiple accept="image/*">                        
+                      
                       </div>
                     </div>
                   </div>
@@ -80,6 +97,15 @@
                       <div class="mb-3">
                         <label class="form-label" for="travel4">รายละเอียดสถานที่</label>
                         <textarea name="travel_detail" id="summernote"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="travel_remark">Tips ข้อควรระวัง</label>
+                        <textarea name="travel_remark" id="summernote2"></textarea>
                       </div>
                     </div>
                   </div>
@@ -125,5 +151,18 @@
         ]
       });
   </script>
+  <script>
+    $('#summernote2').summernote({
+           tabsize: 2,
+           height: 120,
+           toolbar: [
+             ['style', ['style']],
+             ['font', ['bold', 'underline', 'clear']],
+             ['color', ['color']],
+             ['para', ['ul', 'ol', 'paragraph']],
+             ['table', ['table']],
+           ]
+         });
+     </script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/new_travel.blade.php ENDPATH**/ ?>

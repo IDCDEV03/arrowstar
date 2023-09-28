@@ -18,10 +18,15 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <?php if(session('success')): ?>
-                    <div class="alert alert-success" role="alert">
-                        <b><?php echo e(session('success')); ?></b>
-                    </div>
+                
+                   <?php if(session('success')): ?>
+                   <div class="alert alert-success" role="alert">
+                       <b><?php echo e(session('success')); ?></b>
+                   </div>                       
+                   <?php elseif(session('error')): ?>
+                   <div class="alert alert-danger" role="alert">
+                    <b><?php echo e(session('error')); ?></b>
+                   </div>   
                    <?php endif; ?>
                    <div class="card-header">
                     ชื่อแพ็คเกจ : <?php echo e($package_name); ?>
@@ -53,26 +58,21 @@
                               </div>
 
                               <fieldset>
-                              <h5 class="card-title">เลือกสถานที่ท่องเที่ยว</h5>
-
+                              
+<?php
+$day_program = $program_day+1;
+?>
                               <div class="row">
-                                <div class="col">
-                                  <div class="mb-3">
-                                    <label class="form-label" for="package_day">วันที่</label>
-                                    <select class="form-select form-control-sm digits" name="package_day" id="package_day">
-                                      <option disabled selected>-เลือก</option>
-                                      <option value="1"> 1 </option>
-                                      <option value="2"> 2 </option>
-                                      <option value="3"> 3 </option>
-                                      <option value="4"> 4 </option>
-                                      <option value="5"> 5 </option>
-                                      <option value="6"> 6 </option>
-                                      <option value="7"> 7 </option>                                    </select>
+                                <div class="col-md-4">
+                                  <div class="mb-3">      
+                                    <label class="form-label txt-secondary" for="program_day">วันที่ในกำหนดการ</label>                           
+                                    <input type="text" class="form-control input-air-primary  form-control-sm" name="program_day" id="program_day" value="<?php echo e($day_program); ?>" readonly>                                    
                                   </div>
                                 </div>
                               </div>
 
                               <hr>
+                              <h5 class="card-title">เลือกสถานที่ท่องเที่ยว</h5>
                                 <table class="table table-hover display" id="basic-1">
                                     <thead>
                                         <tr>
@@ -87,9 +87,12 @@
                                         <tr>
                                           <th scope="row">
                                             <input type="hidden" name="province_id" value="<?php echo e($item->province_id); ?>">
+                                            <input type="hidden" name="program_day_all" value="<?php echo e($item->package_day); ?>">
                                             <?php
-                                             echo $i++;   
+                                             echo $i++;  
+                                             $package_all_day = $item->package_day; 
                                             ?>
+                                          
                                           </th>                                         
                                           <td><?php echo e($item->travel_name); ?></td>
                                           <td>
@@ -144,17 +147,16 @@
                                   <hr>
 
                                 <div class="f1-buttons">
-                                  <button class="btn btn-primary btn-previous" type="button">ย้อนกลับ</button>
-                                  <a class="btn btn-success">บันทึก</a>
-                                  <button class="btn btn-secondary btn-submit" type="submit">เสร็จสิ้น</button>
+                                  <button class="btn btn-primary btn-previous" type="button">ย้อนกลับ</button>                                
+                                      <?php if($package_all_day == $day_program): ?> 
+                                      <button name="action" class="btn btn-success btn-submit" type="submit" value="action1">เสร็จสิ้น</button>
+                                      <?php elseif($package_all_day > $day_program): ?>
+                                      <button name="action" class="btn btn-secondary btn-submit" type="submit" value="action2">เพิ่มกำหนดการ</button>
+                                      <?php endif; ?>                        
                                 </div>
-
                               </fieldset>
-
-                              
-
-                              </form>
-</div>
+                            </form>
+                </div>
             </div>
         </div>
     </div>

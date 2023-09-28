@@ -22,7 +22,7 @@
                     <div class="alert alert-success" role="alert">
                         <b>{{ session('success') }}</b>
                     </div>
-                @endif
+                    @endif
                     <form class="form theme-form" 
                     action="{{ route('admin.save_program') }}" method="POST">
                         @csrf
@@ -59,9 +59,7 @@
                                                 <input class="form-control" id="package_night" type="number" name="package_night" required>
                                                 <small class="form-text text-muted">ระบุเป็นตัวเลข</small>
                                               </div>
-                                          </div>
-
-                                        
+                                          </div>                                       
                                     </div>
                                 </div>
                              
