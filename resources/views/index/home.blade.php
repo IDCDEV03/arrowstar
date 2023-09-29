@@ -183,7 +183,7 @@
 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="{{asset('plugin_index/img/55353350-1.jpg')}}" alt="">                    
+                        <img class="img-fluid" src="{{asset('plugin_index/img/55353350-2.jpg')}}" alt="">                    
                     </div>
                 </div>
 

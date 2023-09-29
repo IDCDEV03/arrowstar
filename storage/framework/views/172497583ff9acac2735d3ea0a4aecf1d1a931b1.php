@@ -37,7 +37,6 @@
                             <tr>
                                 <th>ชื่อจังหวัด</th>
                                 <th>ภาค</th>
-                                <th>จำนวนโปรแกรม</th>
                                 <th>สถานะ</th>
                                 <th>ตั้งค่า</th>
                             </tr>
@@ -47,7 +46,6 @@
                             <tr>
                                 <td><a href="<?php echo e(route('admin.list_travel',['id' => $item->id])); ?>"><?php echo e($item->name_th); ?></a></td>
                                 <td><?php echo e($item->name); ?></td>
-                                <td>**</td>
                                 <td><span class="badge badge-success">Active</span></td>                                
                                 <td>
                                     <a href="<?php echo e(route('admin.new_package', ['id' => $item->id])); ?>" class="btn btn-secondary btn-xs">
@@ -56,9 +54,7 @@
                                     <a href="<?php echo e(route('admin.list_program', ['id' => $item->id])); ?>" class="btn btn-primary btn-xs">
                                         <i class="fa fa-navicon"></i>
                                     </a>
-                                <a href="#" class="btn btn-dark btn-xs">
-                                <i class="fa fa-pencil"></i>
-                                </a>
+                               
                                 </td>
                             </tr>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

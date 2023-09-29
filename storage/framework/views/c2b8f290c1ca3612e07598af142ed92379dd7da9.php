@@ -22,7 +22,7 @@
                     <div class="alert alert-success" role="alert">
                         <b><?php echo e(session('success')); ?></b>
                     </div>
-                <?php endif; ?>
+                    <?php endif; ?>
                     <form class="form theme-form" 
                     action="<?php echo e(route('admin.save_program')); ?>" method="POST">
                         <?php echo csrf_field(); ?>
@@ -60,9 +60,7 @@
                                                 <input class="form-control" id="package_night" type="number" name="package_night" required>
                                                 <small class="form-text text-muted">ระบุเป็นตัวเลข</small>
                                               </div>
-                                          </div>
-
-                                        
+                                          </div>                                       
                                     </div>
                                 </div>
                              

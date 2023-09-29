@@ -19,5 +19,17 @@ class AdminDataController extends Controller
 
       return view('admin.create_tips',['id' => $id],compact('travel_tip'));    
     }
+
+    public function print_program(Request $request)
+    {
+      $program_id = $request->id;
+      $print_data = DB::table('program_travel_lists')
+      ->join('package_news','program_travel_lists.program_package_id','=','package_news.package_id')
+      ->join('travel_list','program_travel_lists.program_travel_id','=','travel_list.travel_id')
+      ->where('program_travel_lists.program_package_id','=',$program_id)
+      ->get();
+
+      return redirect()->route('admin.print_preview', ['id' => $program_id],compact('print_data'));
+    }
   
 }
