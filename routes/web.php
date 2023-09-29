@@ -60,7 +60,7 @@ Route::post('/admin/update_travel', $controller_path . '\AdminController@update_
 
 
 /** Print Preview */
-Route::get('/admin/print_preview', $controller_path . '\AdminDataController@create_user')->name('admin.print_preview');
+Route::get('/admin/print_preview/{id}', $controller_path . '\AdminDataController@print_program')->name('admin.print_preview');
 
 
 ///////////----Admin Route End----////////////
