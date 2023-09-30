@@ -88,7 +88,7 @@
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel4">รายละเอียดสถานที่</label>
-                        <textarea name="travel_detail" class="form-control"></textarea>
+                        <textarea name="travel_detail" class="form-control" rows="5"></textarea>
                       </div>
                     </div>
                   </div>
@@ -97,7 +97,7 @@
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel_remark">Tips ข้อควรระวัง</label>
-                        <textarea name="travel_remark" class="form-control"></textarea>
+                        <textarea name="travel_remark" class="form-control" rows="5"></textarea>
                       </div>
                     </div>
                   </div>
