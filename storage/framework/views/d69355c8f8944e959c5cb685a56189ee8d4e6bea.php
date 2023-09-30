@@ -46,14 +46,39 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label">ความต้องการพิเศษ</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <?php echo e($row->program_spacial_req); ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label">หมายเหตุ</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <?php echo e($row->program_remark); ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label">Tips ข้อควรระวัง</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <?php echo e($row->program_tips); ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="card-footer">
-                        <a class="btn btn-info m-r-5" href="#">ดาวน์โหลด</a>
-                        <a href="<?php echo e(url('/print-preview')); ?>" class="btn btn-success" target="_blank">Print Preview</a>
+                        <a href="<?php echo e(route('admin.print_preview',['id' => request()->id])); ?>" class="btn btn-success" target="_blank">Print Preview</a>
                     </div>
-
                 </div>
             </div>
             <?php

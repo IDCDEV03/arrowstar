@@ -106,10 +106,13 @@ class AdminController extends Controller
       ->groupBy('travel_lists.travel_id')
       ->get();
 
-    $program_day = DB::table('package_news')
-      ->leftjoin('program_travel_lists', 'package_news.package_id', '=', 'program_travel_lists.program_package_id')
+    $program_day = DB::table('program_travel_lists')      
+      ->select('program_travel_lists.program_day_count','program_travel_lists.program_package_id')
       ->where('program_travel_lists.program_package_id', '=', $id)
-      ->count();
+      ->groupBy('program_travel_lists.program_day_count')
+      ->orderBy('program_travel_lists.id','DESC')
+      ->limit('1')      
+      ->sum('program_day_count');
 
     $pk_news = DB::table('package_news')
       ->select('package_news.package_name')
@@ -261,7 +264,7 @@ class AdminController extends Controller
   {
     $data_travel = DB::table('travel_lists')
       ->join('province_list', 'travel_lists.province', '=', 'province_list.id')
-      ->join('travel_type','travel_lists.travel_type','=','travel_type.number_type')
+      ->join('travel_type', 'travel_lists.travel_type', '=', 'travel_type.number_type')
       ->where('travel_lists.travel_id', '=', $id)
       ->get();
 
@@ -280,11 +283,11 @@ class AdminController extends Controller
   {
     $data_travel = DB::table('travel_lists')
       ->join('province_list', 'travel_lists.province', '=', 'province_list.id')
-      ->join('travel_type','travel_lists.travel_type','=','travel_type.number_type')    
+      ->join('travel_type', 'travel_lists.travel_type', '=', 'travel_type.number_type')
       ->where('travel_lists.travel_id', '=', $id)
       ->get();
 
-      $province_list = DB::table('province_list')
+    $province_list = DB::table('province_list')
       ->join('geographies_list', 'province_list.geography_id', '=', 'geographies_list.id')
       ->select('province_list.*', 'geographies_list.name')
       ->orderBy('province_list.name_th', 'ASC')
@@ -293,17 +296,17 @@ class AdminController extends Controller
     $type_list = DB::table('travel_type')
       ->get();
 
-      return view('admin.edit_travel', ['id' => $id], compact('data_travel','province_list','type_list'));
-    }
+    return view('admin.edit_travel', ['id' => $id], compact('data_travel', 'province_list', 'type_list'));
+  }
 
-    public function update_travel (Request $request)
-    {
-      $travel_id = $request->travel_id;
-      $province_id = $request->province1;
+  public function update_travel(Request $request)
+  {
+    $travel_id = $request->travel_id;
+    $province_id = $request->province1;
 
-      if($province_id == '0'){
-        DB::table('travel_lists')
-        ->where('travel_id','=',$travel_id)
+    if ($province_id == '0') {
+      DB::table('travel_lists')
+        ->where('travel_id', '=', $travel_id)
         ->update([
           'travel_id' => $travel_id,
           'travel_name' => $request->travel_name,
@@ -311,10 +314,9 @@ class AdminController extends Controller
           'travel_remark' => $request->travel_remark,
           'travel_updated_at' => Carbon::now()
         ]);
-      }else
-      {
-        DB::table('travel_lists')
-        ->where('travel_id','=',$travel_id)
+    } else {
+      DB::table('travel_lists')
+        ->where('travel_id', '=', $travel_id)
         ->update([
           'travel_id' => $travel_id,
           'province' => $province_id,
@@ -323,10 +325,10 @@ class AdminController extends Controller
           'travel_remark' => $request->travel_remark,
           'travel_updated_at' => Carbon::now()
         ]);
-      }
-      return redirect()->route('admin.data_travel', ['id' => $travel_id])->with('success', "แก้ไขข้อมูลเรียบร้อยแล้ว");
     }
-  
+    return redirect()->route('admin.data_travel', ['id' => $travel_id])->with('success', "แก้ไขข้อมูลเรียบร้อยแล้ว");
+  }
+
 
   public function create_user()
   {

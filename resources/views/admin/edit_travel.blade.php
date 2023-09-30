@@ -61,7 +61,7 @@
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel4">รายละเอียดสถานที่</label>
-                        <textarea name="travel_detail" id="summernote">{{$list->travel_detail}}</textarea>
+                        <textarea name="travel_detail" class="form-control" rows="5">{{$list->travel_detail}}</textarea>
                       </div>
                     </div>
                   </div>
@@ -70,7 +70,7 @@
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel_remark">Tips ข้อควรระวัง</label>
-                        <textarea name="travel_remark" id="summernote2">{{$list->travel_remark}}</textarea>
+                        <textarea name="travel_remark" class="form-control" rows="5">{{$list->travel_remark}}</textarea>
                       </div>
                     </div>
                   </div>
