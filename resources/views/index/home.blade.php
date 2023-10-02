@@ -201,22 +201,22 @@
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-5 mb-lg-0">
                     <div class="mb-4">                       
-                        <h1 class="text-white">ฝากข้อมูลติดต่อ</h1>
+                        <h1 class="text-white">ติดต่อสอบถาม</h1>
                     </div>
-                    <p class="text-white">แอร์โร่สตาร์ ทราเวล จัดทัวร์ในประเทศ ต่างประเทศ ศึกษาดูงาน สัมมนา จัดกรุ๊ปเหมา
+                    <p class="text-white">แอร์โร่วสตาร์ ทราเวล จัดทัวร์ในประเทศ ต่างประเทศ ศึกษาดูงาน สัมมนา จัดกรุ๊ปเหมา
                     </p> 
                     <p class="text-white">
                     211/10 หมู่ที่ 4 ตำบลหนองขอนกว้าง อำเภอเมืองอุดีธานี จังหวัดอุดรธานี 41000</p>
                     <ul class="list-inline text-white m-0">
                         <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>ใบอนุญาตประกอบการธุรกิจนำเที่ยวเลขที่ 51/00815</li>
                         <li class="py-2"><i class="fa fa-envelope text-primary mr-3"></i> arrowstartravel114@gmail.com</li>
-                        <li class="py-2"><i class="fa fa-phone text-primary mr-3"></i>062-1481969 </li>
+                        <li class="py-2"><i class="fa fa-phone text-primary mr-3"></i>062-1481969</li>
                     </ul>
                 </div>
                 <div class="col-lg-5">
                     <div class="card border-0">
                         <div class="card-header bg-primary text-center p-4">
-                            <h1 class="text-white m-0">ติดต่อสอบถาม</h1>
+                            <h1 class="text-white m-0">ฝากข้อมูลติดต่อ</h1>
                         </div>
                         <div class="card-body rounded-bottom bg-white p-5">
                             <form>
