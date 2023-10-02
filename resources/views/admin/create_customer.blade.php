@@ -49,6 +49,15 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
+                                        <label class="form-label" for="travel1">จังหวัด</label>
+                                        <input class="form-control input-air-primary" name="#" type="text">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
                                         <label class="form-label" for="travel1">เบอร์โทรติดต่อ</label>
                                         <input class="form-control input-air-primary" name="#" type="text">
                                     </div>
