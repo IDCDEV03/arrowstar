@@ -72,5 +72,10 @@ class AdminDataController extends Controller
 
       return view('admin.new_package_oversea',compact('country_list'));
     }
+
+    public function create_customer()
+    {
+           return view('admin.create_customer');
+    }
   
 }

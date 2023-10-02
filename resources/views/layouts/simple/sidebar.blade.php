@@ -40,6 +40,12 @@
 							<span class="lan-3">ตั้งค่าหน้าเว็บ</span>
 						</a>	
 
+
+						<a class="sidebar-link sidebar-title" href="{{ route('admin.create_customer')}}">
+							<i data-feather="user-plus"></i>
+							<span class="lan-3">เพิ่มข้อมูลลูกค้า</span>
+						</a>
+
 						<a class="sidebar-link sidebar-title" href="{{ route('admin.create_user')}}">
 							<i data-feather="user-plus"></i>
 							<span class="lan-3">เพิ่ม User พนักงาน</span>

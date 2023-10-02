@@ -12,6 +12,8 @@ Route::get('/travel', $controller_path . '\HomeController@travel_index')->name('
 
 Route::get('/admin/list_travel/{id}', $controller_path . '\AdminController@list_travel')->name('admin.list_travel');
 
+Route::get('/admin/create_customer', $controller_path . '\AdminDataController@create_customer')->name('admin.create_customer');
+
 Route::get('/admin/list_province', $controller_path . '\AdminController@list_province')->name('list_province');
 
 Route::get('/admin/new_package/{id}', $controller_path . '\AdminController@new_package')->name('admin.new_package');
