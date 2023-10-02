@@ -6,7 +6,7 @@
                 <div class="d-inline-flex align-items-center">
                     <p><i class="fa fa-envelope mr-2"></i>arrowstartravel114@gmail.com</p>
                     <p class="text-body px-3">|</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>(+66)816155916</p>
+                    <p><i class="fa fa-phone-alt mr-2"></i>(+66)621481969</p>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
@@ -38,7 +38,7 @@
         <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
             <a href="" class="navbar-brand">
                 <img src="{{ asset('plugin_index/img/logo1.png') }}" alt="" width="80px">
-                <span class="text-dark">ARROWSTAR</span> <span class="text-primary">TRAVEL</span>
+                <span class="text-dark">ARROW</span><span class="text-primary">STAR</span>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -48,9 +48,9 @@
                     <a href="#" class="nav-item nav-link"><i class="fa fa-home" aria-hidden="true"></i></a>
                     <a href="#" class="nav-item nav-link">ทัวร์ต่างประเทศ</a>
                     <a href="#" class="nav-item nav-link active">ทัวร์ในประเทศ</a>
-                    <a href="package.html" class="nav-item nav-link"><span class="text-primary">แพ็คเกจ-บริการ</a>
+                    <a href="#" class="nav-item nav-link"><span class="text-primary">แพ็คเกจ-บริการ</a>
                     </div>
-                    <a href="#" class="nav-item nav-link">ติดต่อสอบถาม</a>
+                    <a href="#" class="nav-item nav-link">ฝากข้อมูลติดต่อ</a>
                 </div>
             </div>
         </nav>
