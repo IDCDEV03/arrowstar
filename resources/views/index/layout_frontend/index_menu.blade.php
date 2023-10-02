@@ -49,7 +49,9 @@
                     <a href="#" class="nav-item nav-link">ทัวร์ต่างประเทศ</a>
                     <a href="#" class="nav-item nav-link active">ทัวร์ในประเทศ</a>
                     <a href="#" class="nav-item nav-link"><span class="text-primary">แพ็คเกจ-บริการ</a>
-                    </div>
+                
+                    <a href="#" class="nav-item nav-link"><span class="text-primary">รถบัส/รถตู้</a>
+                
                     <a href="#" class="nav-item nav-link">ฝากข้อมูลติดต่อ</a>
                 </div>
             </div>
