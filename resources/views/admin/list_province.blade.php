@@ -23,15 +23,16 @@
       <div class="col-sm-12">
          <div class="card">
             <div class="card-header">
-               <h5>รายการโปรแกรมทัวร์</h5>           
-            </div>
+               <h5>รายการโปรแกรมทัวร์</h5>   
+               <hr> 
+               <a class="btn btn-primary" href="{{route('admin.all_program_oversea')}}">โปรแกรมทัวร์ต่างประเทศ</a>               
+               <a class="btn btn-secondary" href="{{route('admin.all_program')}}">โปรแกรมทัวร์ในประเทศ</a>
             <div class="card-body">
                 @if (session('success'))
                 <div class="alert alert-success" role="alert">
                     <b>{{ session('success') }}</b>
                 </div>
                  @endif
-
                 <div class="dt-ext table-responsive">
                     <table class="display" id="table-province">
                         <thead>
@@ -68,6 +69,7 @@
          </div>
       </div>
    </div>
+</div>
 </div>
 @endsection
 

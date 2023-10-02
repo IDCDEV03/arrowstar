@@ -12,10 +12,8 @@
 <!-- Plugins JS start-->
 <script id="menu" src="<?php echo e(asset('assets/js/sidebar-menu.js')); ?>"></script>
 <?php echo $__env->yieldContent('script'); ?>
+<script src="<?php echo e(asset('assets/js/tooltip-init.js')); ?>"></script>
 
-<?php if(Route::current()->getName() != 'popover'): ?> 
-	<script src="<?php echo e(asset('assets/js/tooltip-init.js')); ?>"></script>
-<?php endif; ?>
 
 <!-- Plugins JS Ends-->
 <!-- Theme js-->

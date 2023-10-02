@@ -8,7 +8,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-title'); ?>
-<h3>เพิ่มสถานที่</h3>
+<h3>เพิ่มสถานที่ (ต่างประเทศ)</h3>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('breadcrumb-items'); ?>
@@ -34,29 +34,36 @@ endif;
 unset($__errorArgs, $__bag); ?>
 
          <div class="card">    
-          <form class="form theme-form" 
-          action="<?php echo e(route('admin.insert_travel')); ?>" method="POST" enctype="multipart/form-data">
+          <form class="form theme-form" action="#" method="POST" enctype="multipart/form-data">
               <?php echo csrf_field(); ?>
               <?php
                     $travel_id = date("ymd-hs");
               ?>
-                 <input type="hidden" name="travel_id" value="<?php echo e($travel_id); ?>">
+            <input type="hidden" name="travel_id" value="<?php echo e($travel_id); ?>">
             <div class="card-body">
               <form action="#">
                 <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label class="form-label" for="province1">จังหวัด</label>
-                        <select class="form-select input-air-primary" name="province1" id="province1">
-                          <option selected disabled>เลือกจังหวัด..</option>
-                          <?php $__currentLoopData = $province_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
-                          <option value="<?php echo e($row->id); ?>"> <?php echo e($row->name_th); ?> </option>
+                        <label class="form-label" for="name_country">ประเทศ</label>
+                        <select class="form-select input-air-primary" name="name_country" id="name_country">
+                          <option selected disabled>เลือกประเทศ..</option>
+                          <?php $__currentLoopData = $country_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
+                          <option value="<?php echo e($row->rec); ?>"> <?php echo e($row->ct_nameTHA); ?> </option>
                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>                      
                       </div>
                     </div>
-                  </div>
+                  </div> 
 
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="city_name">เมือง</label>
+                        <input class="form-control input-air-primary" name="city_name" id="city_name" type="text" required>
+                      </div>
+                    </div>
+                  </div>
 
                   <div class="row">
                     <div class="col">
@@ -75,7 +82,7 @@ unset($__errorArgs, $__bag); ?>
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label class="form-label" for="travel1">ชื่อสถานที่</label>
+                        <label class="form-label" for="travel_name">ชื่อสถานที่</label>
                         <input class="form-control input-air-primary" name="travel_name" id="travel1" type="text">
                       </div>
                     </div>
@@ -137,5 +144,7 @@ unset($__errorArgs, $__bag); ?>
 <script src="<?php echo e(asset('assets/js/tooltip-init.js')); ?>"></script>
  <!-- Theme js-->
 <script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/new_travel.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/new_travel_oversea.blade.php ENDPATH**/ ?>

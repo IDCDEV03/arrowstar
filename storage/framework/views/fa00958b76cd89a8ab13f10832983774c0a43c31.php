@@ -19,15 +19,21 @@
 							<h6 class="lan-1">Menu</h6>                     		
 						</div>
 					</li>
-					<li class="sidebar-list">
+
+				 <li class="sidebar-list">
 						<a class="sidebar-link sidebar-title" href="<?php echo e(route('list_province')); ?>">
 							<i data-feather="list"></i>
 							<span class="lan-3">รายการโปรแกรมทัวร์</span>
 						</a>	
 						<a class="sidebar-link sidebar-title" href="<?php echo e(route('admin.new_travel')); ?>">
 							<i data-feather="image"></i>
-							<span class="lan-3">เพิ่มสถานที่ท่องเที่ยว</span>
-						</a>			
+							<span class="lan-3">เพิ่มสถานที่ (ในประเทศ)</span>
+						</a>		
+						
+						<a class="sidebar-link sidebar-title" href="<?php echo e(route('admin.new_travel_oversea')); ?>">
+							<i data-feather="image"></i>
+							<span class="lan-3">เพิ่มสถานที่ (ต่างประเทศ)</span>
+						</a>	
 						
 						<a class="sidebar-link sidebar-title" href="#">
 							<i data-feather="settings"></i>

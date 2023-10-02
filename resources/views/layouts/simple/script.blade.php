@@ -12,10 +12,8 @@
 <!-- Plugins JS start-->
 <script id="menu" src="{{asset('assets/js/sidebar-menu.js')}}"></script>
 @yield('script')
+<script src="{{asset('assets/js/tooltip-init.js')}}"></script>
 
-@if(Route::current()->getName() != 'popover') 
-	<script src="{{asset('assets/js/tooltip-init.js')}}"></script>
-@endif
 
 <!-- Plugins JS Ends-->
 <!-- Theme js-->

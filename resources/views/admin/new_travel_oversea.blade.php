@@ -8,7 +8,7 @@
 @endsection
 
 @section('breadcrumb-title')
-<h3>เพิ่มสถานที่</h3>
+<h3>เพิ่มสถานที่ (ต่างประเทศ)</h3>
 @endsection
 
 @section('breadcrumb-items')
@@ -26,29 +26,36 @@
         @enderror
 
          <div class="card">    
-          <form class="form theme-form" 
-          action="{{ route('admin.insert_travel') }}" method="POST" enctype="multipart/form-data">
+          <form class="form theme-form" action="#" method="POST" enctype="multipart/form-data">
               @csrf
               @php
                     $travel_id = date("ymd-hs");
               @endphp
-                 <input type="hidden" name="travel_id" value="{{ $travel_id }}">
+            <input type="hidden" name="travel_id" value="{{ $travel_id }}">
             <div class="card-body">
               <form action="#">
                 <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label class="form-label" for="province1">จังหวัด</label>
-                        <select class="form-select input-air-primary" name="province1" id="province1">
-                          <option selected disabled>เลือกจังหวัด..</option>
-                          @foreach ($province_list as $row)  
-                          <option value="{{$row->id}}"> {{$row->name_th}} </option>
+                        <label class="form-label" for="name_country">ประเทศ</label>
+                        <select class="form-select input-air-primary" name="name_country" id="name_country">
+                          <option selected disabled>เลือกประเทศ..</option>
+                          @foreach ($country_list as $row)  
+                          <option value="{{$row->rec}}"> {{$row->ct_nameTHA}} </option>
                           @endforeach
                         </select>                      
                       </div>
                     </div>
-                  </div>
+                  </div> 
 
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="city_name">เมือง</label>
+                        <input class="form-control input-air-primary" name="city_name" id="city_name" type="text" required>
+                      </div>
+                    </div>
+                  </div>
 
                   <div class="row">
                     <div class="col">
@@ -67,7 +74,7 @@
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
-                        <label class="form-label" for="travel1">ชื่อสถานที่</label>
+                        <label class="form-label" for="travel_name">ชื่อสถานที่</label>
                         <input class="form-control input-air-primary" name="travel_name" id="travel1" type="text">
                       </div>
                     </div>
@@ -129,4 +136,6 @@
 <script src="{{asset('assets/js/tooltip-init.js')}}"></script>
  <!-- Theme js-->
 <script src="{{asset('assets/js/script.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+
 @endsection

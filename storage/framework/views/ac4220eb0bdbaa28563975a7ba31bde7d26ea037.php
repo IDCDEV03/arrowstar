@@ -59,7 +59,7 @@
                                 </td>
                                 <td> <?php echo e($item->name_th); ?> </td>
                                 <td>
-                                    <a class="btn btn-success btn-xs" >
+                                    <a class="btn btn-success btn-xs" href="<?php echo e(route('admin.print_preview',['id' => $item->package_id])); ?>" target="_blank">
                                     <i data-feather="download"></i>
                                 </a>
                                 </td> 

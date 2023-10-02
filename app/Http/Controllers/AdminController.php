@@ -34,6 +34,8 @@ class AdminController extends Controller
     return view('admin.list_travel', $data_name_province, compact('list_travel'));
   }
 
+ 
+
   public function new_travel()
   {
     $province_list = DB::table('province_list')
@@ -46,6 +48,18 @@ class AdminController extends Controller
       ->get();
 
     return view('admin.new_travel', compact('province_list', 'type_list'));
+  }
+
+  public function new_travel_oversea()
+  {
+    $country_list = DB::table('tbl_country')
+      ->orderBy('ct_nameTHA', 'ASC')
+      ->get();
+
+    $type_list = DB::table('travel_type')
+      ->get();
+
+    return view('admin.new_travel_oversea', compact('country_list', 'type_list'));
   }
 
   public function list_province()

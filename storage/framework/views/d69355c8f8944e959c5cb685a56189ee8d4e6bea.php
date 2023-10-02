@@ -56,9 +56,9 @@
                                         </div>
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-sm-3 col-form-label">หมายเหตุ</label>
+                                        <label class="col-sm-3 col-form-label txt-danger">หมายเหตุ</label>
                                         <div class="col-sm-9">
-                                            <div class="form-control-static">
+                                            <div class="form-control-static txt-danger">
                                                 <?php echo e($row->program_remark); ?>
 
                                             </div>
@@ -77,7 +77,7 @@
                             </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="card-footer">
-                        <a href="<?php echo e(route('admin.print_preview',['id' => request()->id])); ?>" class="btn btn-success" target="_blank">Print Preview</a>
+                        <a href="<?php echo e(route('admin.print_preview',['id' => request()->id])); ?>" class="btn btn-success" target="_blank">พิมพ์เอกสารโปรแกรม</a>
                     </div>
                 </div>
             </div>

@@ -47,5 +47,30 @@ class AdminDataController extends Controller
 
       return view('admin.print_preview',['id' => $program_id],compact('print_data','pk_news','img_data','single_data'));  
     }
+
+    public function all_program()
+    {
+      $list_program = DB::table('package_news')
+        ->join('province_list', 'province_list.id', '=', 'package_news.province_id') 
+        ->orderBy('package_news.created_at', 'desc')
+        ->get();
+  
+      return view('admin.all_program', compact('list_program'));
+    }
+  
+    public function all_program_oversea()
+    {
+           return view('admin.all_program_oversea');
+    }
+
+    public function new_package_oversea()
+    {
+      $country_list = DB::table('tbl_country')
+      ->select('tbl_country.rec','tbl_country.ct_nameTHA')
+      ->orderBy('tbl_country.ct_nameTHA','asc')
+      ->get();
+
+      return view('admin.new_package_oversea',compact('country_list'));
+    }
   
 }

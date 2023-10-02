@@ -12,9 +12,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script>         
-                window.print();          
-        </script>
+    <script>
+        window.print();
+    </script>
 
     <style>
         body {
@@ -28,7 +28,7 @@
             height: 100px;
         }
 
-        .header {
+       .header {
             position: fixed;
             top: 0;
         }
@@ -45,69 +45,74 @@
 
     <table class="table">
         <thead>
-            <div class="header-space">
-                <img class="mb-5" src="<?php echo e(asset('assets/images/logo1.png')); ?>" width="80px"> &nbsp;
-                <label style="font-size: 12pt">บริษัท แอร์โร่วสตาร์ จำกัด
-                    <br>
-                    211/10 หมู่4 ต.หนองขอนกว้าง อ.เมือง จ.อุดรธานี 41000
-                    <br>
-                    http://www.arrowstartravel114.com
-                    <br>
-                    Email: arrowstartravel114@gmail.com &nbsp; Tel. 081-6155916, 063-2452369
-                </label>
-            </div>
+            <tr>
+                <td colspan="2">
+                    <div class="header-space">
+                        <img class="mb-5" src="<?php echo e(asset('assets/images/logo1.png')); ?>" width="80px"> &nbsp;
+                        <label style="font-size: 11pt">บริษัท แอร์โร่วสตาร์ จำกัด
+                            <br>
+                            211/10 หมู่4 ต.หนองขอนกว้าง อ.เมือง จ.อุดรธานี 41000
+                            <br>
+                            http://www.arrowstartravel114.com
+                            <br>
+                            Email: arrowstartravel114@gmail.com &nbsp; Tel. 081-6155916, 063-2452369
+                        </label>
+                    </div>               
+            </td>
+        </tr>
         </thead>
         <tbody>
-            <tr>
-                <td colspan="2">
-                    <?php $__currentLoopData = $pk_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <span style="font-size: 20pt"><strong> <?php echo e($row->package_name); ?> </strong></span>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td colspan="2">
-                    <div class="row">
-                        <?php $__currentLoopData = $img_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <div class="col-sm-4">
-                                <img src="<?php echo e(asset($img->travel_img)); ?>" class="img-thumbnail">
-                            </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </div>
-                </td>
-            </tr>
-
-            <?php $__currentLoopData = $print_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="content">
                 <tr>
-                    <td colspan="2" class="table-primary"><strong> วันที่ <?php echo e($item->program_day_count); ?></strong>
+                    <td colspan="2">
+                        <?php $__currentLoopData = $pk_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <span style="font-size: 20pt"><strong> <?php echo e($row->package_name); ?> </strong></span>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </td>
                 </tr>
-                <tr>
-                </tr>
-                <tr>
-                    <td style="width:30%"><?php echo e($item->travel_name); ?></td>
-                    <td><span style="font-size: 12pt"><?php echo e($item->travel_detail); ?></span></td>
-                </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-            <?php $__currentLoopData = $single_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                    <td>
-                    ความต้องการพิเศษ
-                </td>
-                <td><?php echo e($item->program_spacial_req); ?></td>
-                
+                    <td colspan="2">
+                        <div class="row">
+                            <?php $__currentLoopData = $img_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $img): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="col-sm-4">
+                                    <img src="<?php echo e(asset($img->travel_img)); ?>" class="img-thumbnail">
+                                </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </div>
+                    </td>
                 </tr>
-                <tr>
-                    <td>
-                        Tips
-                     </td>
-                     <td><?php echo e($item->program_tips); ?></td>
-                </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                <?php $__currentLoopData = $print_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td colspan="2" class="table-primary"><strong> วันที่ <?php echo e($item->program_day_count); ?></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                        <td style="width:30%"><?php echo e($item->travel_name); ?></td>
+                        <td><span style="font-size: 12pt"><?php echo e($item->travel_detail); ?></span></td>
+                    </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                <?php $__currentLoopData = $single_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tr>
+                        <td>
+                            ความต้องการพิเศษ
+                        </td>
+                        <td><?php echo e($item->program_spacial_req); ?></td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            Tips
+                        </td>
+                        <td><?php echo e($item->program_tips); ?></td>
+                    </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>
         </tbody>
-
 
     </table>
 

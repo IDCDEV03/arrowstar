@@ -16,6 +16,8 @@ Route::get('/admin/list_province', $controller_path . '\AdminController@list_pro
 
 Route::get('/admin/new_package/{id}', $controller_path . '\AdminController@new_package')->name('admin.new_package');
 
+Route::get('/admin/new_package_oversea', $controller_path . '\AdminDataController@new_package_oversea')->name('admin.new_package_oversea');
+
 Route::get('/admin/new_package_add/{id}', $controller_path . '\AdminController@new_package_add')->name('admin.new_package_add');
 
 Route::get('/admin/preview_package/{id}', $controller_path . '\AdminController@preview_package')->name('admin.preview_package');
@@ -23,6 +25,8 @@ Route::get('/admin/preview_package/{id}', $controller_path . '\AdminController@p
 Route::get('/admin/list_program/{id}', $controller_path . '\AdminController@list_program')->name('admin.list_program');
 
 Route::get('/admin/new_travel', $controller_path . '\AdminController@new_travel')->name('admin.new_travel');
+
+Route::get('/admin/new_travel_oversea', $controller_path . '\AdminController@new_travel_oversea')->name('admin.new_travel_oversea');
 
 /**insert tips */
 Route::get('/admin/new_tips/{id}', $controller_path . '\AdminDataController@new_tips')->name('admin.create_tips');
@@ -52,6 +56,11 @@ Route::get('/admin/delete_img/{id}', $controller_path . '\DeleteFileController@d
 Route::get('/admin/data_travel/{id}', $controller_path . '\AdminController@data_travel')->name('admin.data_travel');
 
 Route::get('/admin/create_user', $controller_path . '\AdminController@create_user')->name('admin.create_user');
+
+Route::get('/admin/all_program', $controller_path . '\AdminDataController@all_program')->name('admin.all_program');
+
+Route::get('/admin/all_program_oversea', $controller_path . '\AdminDataController@all_program_oversea')->name('admin.all_program_oversea');
+
 
 /** Edit Data */
 Route::get('/admin/edit_travel/{id}', $controller_path . '\AdminController@edit_travel')->name('admin.edit_travel');
