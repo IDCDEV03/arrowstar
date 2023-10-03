@@ -31,7 +31,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">ประเทศ</label>
                                         <div class="col-sm-9">
-                                            <select class="js-example-basic-single col-sm-12">
+                                            <select class="js-example-basic-single col-sm-12" name="country_id">
                                                 <option selected disabled>เลือกประเทศ..</option>
                                                 <?php $__currentLoopData = $country_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <option value="<?php echo e($item->rec); ?>"><?php echo e($item->ct_nameTHA); ?></option>

@@ -34,12 +34,8 @@ endif;
 unset($__errorArgs, $__bag); ?>
 
          <div class="card">    
-          <form class="form theme-form" action="#" method="POST" enctype="multipart/form-data">
-              <?php echo csrf_field(); ?>
-              <?php
-                    $travel_id = date("ymd-hs");
-              ?>
-            <input type="hidden" name="travel_id" value="<?php echo e($travel_id); ?>">
+          <form class="form theme-form" action="<?php echo e(route('admin.insert_travel_oversea')); ?>" method="POST" enctype="multipart/form-data">
+              <?php echo csrf_field(); ?>           
             <div class="card-body">
               <form action="#">
                 <div class="row">

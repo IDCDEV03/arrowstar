@@ -16,6 +16,8 @@ Route::get('/admin/create_customer', $controller_path . '\AdminDataController@cr
 
 Route::get('/admin/list_province', $controller_path . '\AdminController@list_province')->name('list_province');
 
+Route::get('/admin/list_oversea', $controller_path . '\AdminDataController@list_oversea')->name('admin.list_oversea');
+
 Route::get('/admin/new_package/{id}', $controller_path . '\AdminController@new_package')->name('admin.new_package');
 
 Route::get('/admin/new_package_oversea', $controller_path . '\AdminDataController@new_package_oversea')->name('admin.new_package_oversea');
@@ -40,6 +42,10 @@ Route::post('/admin/save_tourist', $controller_path . '\AdminController@save_tou
 
 Route::post('/admin/insert_travel', $controller_path . '\AdminController@insert_travel')->name('admin.insert_travel');
 
+Route::post('/admin/insert_customer', $controller_path . '\AdminController@insert_customer')->name('admin.insert_customer');
+
+Route::post('/admin/insert_travel_oversea', $controller_path . '\AdminDataController@insert_travel_oversea')->name('admin.insert_travel_oversea');
+
 Route::post('/admin/insert_program_travel', $controller_path . '\AdminController@insert_program_travel')->name('admin.insert_program_travel');
 
 Route::post('/admin/save_program', $controller_path . '\AdminController@save_program')->name('admin.save_program');
@@ -57,12 +63,15 @@ Route::get('/admin/delete_img/{id}', $controller_path . '\DeleteFileController@d
 /** data */
 Route::get('/admin/data_travel/{id}', $controller_path . '\AdminController@data_travel')->name('admin.data_travel');
 
+Route::get('/admin/data_oversea/{id}', $controller_path . '\AdminDataController@data_oversea')->name('admin.data_oversea');
+
 Route::get('/admin/create_user', $controller_path . '\AdminController@create_user')->name('admin.create_user');
 
 Route::get('/admin/all_program', $controller_path . '\AdminDataController@all_program')->name('admin.all_program');
 
 Route::get('/admin/all_program_oversea', $controller_path . '\AdminDataController@all_program_oversea')->name('admin.all_program_oversea');
 
+Route::get('/admin/list_customer', $controller_path . '\AdminDataController@list_customer')->name('admin.list_customer');
 
 /** Edit Data */
 Route::get('/admin/edit_travel/{id}', $controller_path . '\AdminController@edit_travel')->name('admin.edit_travel');
@@ -72,6 +81,7 @@ Route::post('/admin/update_travel', $controller_path . '\AdminController@update_
 
 /** Print Preview */
 Route::get('/admin/print_preview/{id}', $controller_path . '\AdminDataController@print_program')->name('admin.print_preview');
+
 
 
 ///////////----Admin Route End----////////////

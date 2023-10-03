@@ -1,27 +1,27 @@
-@extends('layouts.simple.master')
 
-@section('css')
-@endsection
 
-@section('style')
-@endsection
+<?php $__env->startSection('css'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumb-title'); ?>
 <h3>สร้างข้อมูลลูกค้า</h3>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-items')
-@endsection
+<?php $__env->startSection('breadcrumb-items'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                  
                     <div class="card-body">  
-                        <form class="form theme-form" action="{{route('admin.insert_customer')}}" method="POST">
-                        @csrf                               
+                        <form class="form theme-form" action="<?php echo e(route('admin.insert_customer')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>                               
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
@@ -46,9 +46,9 @@
                                         <label class="form-label" for="travel1">จังหวัด</label>
                                         <select class="form-select input-air-primary" name="user_province" id="user_province">
                                             <option selected disabled>เลือกจังหวัด..</option>
-                                            @foreach ($province_th as $row)  
-                                            <option value="{{$row->name_th}}"> {{$row->name_th}} </option>
-                                            @endforeach
+                                            <?php $__currentLoopData = $province_th; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
+                                            <option value="<?php echo e($row->name_th); ?>"> <?php echo e($row->name_th); ?> </option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                           </select>    
                                     </div>
                                 </div>
@@ -110,7 +110,8 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
-@endsection
+<?php $__env->startSection('script'); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/create_customer.blade.php ENDPATH**/ ?>

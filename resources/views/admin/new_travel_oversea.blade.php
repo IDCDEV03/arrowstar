@@ -26,12 +26,8 @@
         @enderror
 
          <div class="card">    
-          <form class="form theme-form" action="#" method="POST" enctype="multipart/form-data">
-              @csrf
-              @php
-                    $travel_id = date("ymd-hs");
-              @endphp
-            <input type="hidden" name="travel_id" value="{{ $travel_id }}">
+          <form class="form theme-form" action="{{route('admin.insert_travel_oversea')}}" method="POST" enctype="multipart/form-data">
+              @csrf           
             <div class="card-body">
               <form action="#">
                 <div class="row">

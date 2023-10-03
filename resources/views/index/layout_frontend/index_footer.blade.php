@@ -2,8 +2,8 @@
     <div class="row pt-5">
         <div class="col-lg-3 col-md-6 mb-5">
             <a href="" class="navbar-brand">
-                <h3 class="text-primary"><span class="text-white">ArrowStar
-                    </span>Travel</h3>
+                <h3 class="text-primary"><span class="text-white">Arrow</span>Star
+                    </h3>
             </a>
             <p>ทัวร์ในประเทศและต่างประเทศ จัดอมรม สัมมนา ศึกษาดูงานในประเทศ/ต่างประเทศ จัดกรุ๊ปเหมา ยื่นซองประมูลงาน</p>
 

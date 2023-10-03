@@ -23,8 +23,14 @@
 				 <li class="sidebar-list">
 						<a class="sidebar-link sidebar-title" href="{{route('list_province')}}">
 							<i data-feather="list"></i>
-							<span class="lan-3">รายการโปรแกรมทัวร์</span>
+							<span class="lan-3">โปรแกรมทัวร์ (ในประเทศ)</span>
 						</a>	
+
+						<a class="sidebar-link sidebar-title" href="{{route('admin.list_oversea')}}">
+							<i data-feather="list"></i>
+							<span class="lan-3">โปรแกรมทัวร์ (ต่างประเทศ)</span>
+						</a>
+
 						<a class="sidebar-link sidebar-title" href="{{route('admin.new_travel')}}">
 							<i data-feather="image"></i>
 							<span class="lan-3">เพิ่มสถานที่ (ในประเทศ)</span>
@@ -46,10 +52,10 @@
 							<span class="lan-3">เพิ่มข้อมูลลูกค้า</span>
 						</a>
 
-						<a class="sidebar-link sidebar-title" href="{{ route('admin.create_user')}}">
-							<i data-feather="user-plus"></i>
-							<span class="lan-3">เพิ่ม User พนักงาน</span>
-						</a>	
+						<a class="sidebar-link sidebar-title" href="{{route('admin.list_customer')}}">
+							<i data-feather="list"></i>
+							<span class="lan-3">รายชื่อลูกค้า</span>
+						</a>
 
 						<a class="sidebar-link sidebar-title" href="#">
 							<i data-feather="log-out"></i>

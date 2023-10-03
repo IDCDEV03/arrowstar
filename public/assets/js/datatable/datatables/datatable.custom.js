@@ -210,6 +210,7 @@ $(document).ready(function() {
     $('#example-style-6').DataTable();
     $('#example-style-7').DataTable();
     $('#example-style-8').DataTable();
+ 
     // Data sources tables
     $('#data-source-1').DataTable();
     $('#data-source-2').DataTable({

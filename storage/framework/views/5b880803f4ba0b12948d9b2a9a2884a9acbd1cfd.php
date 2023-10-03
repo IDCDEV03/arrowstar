@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Arrowstar Travel Thailand <?php echo $__env->yieldContent('title'); ?></title>
+    <title>Arrowstar <?php echo $__env->yieldContent('title'); ?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Arrowstar Travel (Thailand)" name="keywords">
-    <meta content="ทัวร์ต่างประเทศ,ทัวร์ในประเทศ, แอโร่สตาร์" name="description">
+    <meta content="ทัวร์ต่างประเทศ,ทัวร์ในประเทศ, แอโร่วสตาร์" name="description">
 
     <!-- Favicon -->
     <link href="<?php echo e(asset('plugin_index/img/logo1.png')); ?>" rel="icon">

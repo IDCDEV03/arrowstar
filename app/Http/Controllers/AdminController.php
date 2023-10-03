@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\new_package_tour;
+use App\Models\CustomerData;
 use App\Models\program_travel_lists;
 use App\Models\travel_img;
 use Carbon\Carbon;
@@ -347,6 +347,16 @@ class AdminController extends Controller
   public function create_user()
   {
     return view('admin.create_user');
+  }
+
+  public function insert_customer(Request $request)
+  {
+    $created_at = Carbon::now();
+    $input = $request->all();
+    $input['created_at'] = $created_at;
+    CustomerData::create($input);
+
+    return redirect()->route('admin.list_customer')->with('success', "บันทึกข้อมูลเรียบร้อยแล้ว");
   }
 
   public function insert_tips(Request $request)

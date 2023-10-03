@@ -51,7 +51,7 @@
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">ชื่อแพ็คเกจ</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control" type="text" name="package_name">
+                                            <input class="form-control" type="text" name="package_name" required>
                                         </div>
                                     </div>
 
