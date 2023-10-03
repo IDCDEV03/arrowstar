@@ -47,7 +47,7 @@
 						</a>	
 
 
-						<a class="sidebar-link sidebar-title" href="{{ route('admin.create_customer')}}">
+						<a class="sidebar-link sidebar-title" href="{{route('admin.create_customer')}}">
 							<i data-feather="user-plus"></i>
 							<span class="lan-3">เพิ่มข้อมูลลูกค้า</span>
 						</a>
@@ -63,9 +63,7 @@
 						</a>	
 
 					</li>
-				
-			
-					
+						
 				</ul>
 			</div>
 			<div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
