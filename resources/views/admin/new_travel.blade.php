@@ -26,15 +26,9 @@
         @enderror
 
          <div class="card">    
-          <form class="form theme-form" 
-          action="{{ route('admin.insert_travel') }}" method="POST" enctype="multipart/form-data">
-              @csrf
-              @php
-                    $travel_id = date("ymd-hs");
-              @endphp
-                 <input type="hidden" name="travel_id" value="{{ $travel_id }}">
-            <div class="card-body">
-              <form action="#">
+            <div class="card-body">   
+              <form class="form theme-form" action="{{route('admin.insert_travel')}}" method="POST" enctype="multipart/form-data">
+                @csrf          
                 <div class="row">
                     <div class="col">
                       <div class="mb-3">
@@ -48,6 +42,17 @@
                       </div>
                     </div>
                   </div>
+
+                     
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="travel_city">เมือง</label>
+                        <input class="form-control input-air-primary" name="travel_city" id="travel_city" type="text">
+                      </div>
+                    </div>
+                  </div>
+
 
 
                   <div class="row">
@@ -73,13 +78,13 @@
                     </div>
                   </div>
 
+               
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel3">เลือกรูปภาพ</label>
                          <span class="txt-info">(อัพโหลดได้สูงสุด 3 ภาพ)</span>
-                        <input class="form-control" type="file" name="travel_img[]" multiple accept="image/*">                        
-                      
+                        <input class="form-control" type="file" name="travel_img[]" multiple accept="image/*">  
                       </div>
                     </div>
                   </div>

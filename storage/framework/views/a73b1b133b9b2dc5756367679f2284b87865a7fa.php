@@ -34,15 +34,9 @@ endif;
 unset($__errorArgs, $__bag); ?>
 
          <div class="card">    
-          <form class="form theme-form" 
-          action="<?php echo e(route('admin.insert_travel')); ?>" method="POST" enctype="multipart/form-data">
-              <?php echo csrf_field(); ?>
-              <?php
-                    $travel_id = date("ymd-hs");
-              ?>
-                 <input type="hidden" name="travel_id" value="<?php echo e($travel_id); ?>">
-            <div class="card-body">
-              <form action="#">
+            <div class="card-body">   
+              <form class="form theme-form" action="<?php echo e(route('admin.insert_travel')); ?>" method="POST" enctype="multipart/form-data">
+                <?php echo csrf_field(); ?>          
                 <div class="row">
                     <div class="col">
                       <div class="mb-3">
@@ -56,6 +50,17 @@ unset($__errorArgs, $__bag); ?>
                       </div>
                     </div>
                   </div>
+
+                     
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="travel_city">เมือง</label>
+                        <input class="form-control input-air-primary" name="travel_city" id="travel_city" type="text">
+                      </div>
+                    </div>
+                  </div>
+
 
 
                   <div class="row">
@@ -81,13 +86,13 @@ unset($__errorArgs, $__bag); ?>
                     </div>
                   </div>
 
+               
                   <div class="row">
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel3">เลือกรูปภาพ</label>
                          <span class="txt-info">(อัพโหลดได้สูงสุด 3 ภาพ)</span>
-                        <input class="form-control" type="file" name="travel_img[]" multiple accept="image/*">                        
-                      
+                        <input class="form-control" type="file" name="travel_img[]" multiple accept="image/*">  
                       </div>
                     </div>
                   </div>

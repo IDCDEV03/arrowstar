@@ -173,6 +173,24 @@ class AdminController extends Controller
     return redirect()->route('admin.new_package_add', ['id' => $pk_id])->with('success', "สร้างโปรแกรมใหม่เรียบร้อยแล้ว");
   }
 
+
+  public function save_package_oversea(Request $request)
+  {
+    $pos_id = Str::random(10);
+
+    DB::table('package_oversea')->insert([
+      'package_id' => $pos_id,
+      'country_id' => $request->country_id,  
+      'city_name' => $request->city_name,   
+      'package_name' => $request->package_name,
+      'package_day' => $request->package_day,
+      'package_night' => $request->package_night,
+      'created_at' => Carbon::now()
+    ]);
+    return redirect()->route('admin.new_package_add', ['id' => $pos_id])->with('success', "สร้างโปรแกรมใหม่เรียบร้อยแล้ว");
+  }
+
+
   public function insert_program_travel(Request $request)
   {
 
@@ -211,8 +229,7 @@ class AdminController extends Controller
 
   public function insert_travel(Request $request)
   {
-    $travel_id = $request->travel_id;
-    $travel_img = $request->file('travel_img');
+    $travel_id = Str::random(12);
 
     $request->validate(
       [
@@ -224,7 +241,6 @@ class AdminController extends Controller
       ]
     );
 
-    //อัพโหลดและบันทึกข้อมูล
     if ($request->hasFile('travel_img')) {
       $upload_location = 'travel_img/';
       foreach ($request->travel_img as $key => $images) {
@@ -232,17 +248,18 @@ class AdminController extends Controller
         $full_path = $upload_location . $imageName;
         $images->move($upload_location, $imageName);
 
-        travel_img::insert([
+        DB::table('travel_imgs')->insert([
           'travel_id' => $travel_id,
           'travel_img' => $full_path,
           'created_at' => Carbon::now()
         ]);
       }
     }
-
+ 
     DB::table('travel_lists')->insert([
       'travel_id' => $travel_id,
       'province' => $request->province1,
+      'travel_city' => $request->travel_city,
       'travel_name' => $request->travel_name,
       'travel_detail' => $request->travel_detail,
       'travel_remark' => $request->travel_remark,
@@ -251,6 +268,7 @@ class AdminController extends Controller
     ]);
 
     return redirect()->route('list_province')->with('success', "บันทึกข้อมูลเรียบร้อยแล้ว");
+ 
   }
 
 
@@ -323,6 +341,7 @@ class AdminController extends Controller
         ->where('travel_id', '=', $travel_id)
         ->update([
           'travel_id' => $travel_id,
+          'travel_city' => $request->travel_city,
           'travel_name' => $request->travel_name,
           'travel_detail' => $request->travel_detail,
           'travel_remark' => $request->travel_remark,
@@ -334,6 +353,7 @@ class AdminController extends Controller
         ->update([
           'travel_id' => $travel_id,
           'province' => $province_id,
+          'travel_city' => $request->travel_city,
           'travel_name' => $request->travel_name,
           'travel_detail' => $request->travel_detail,
           'travel_remark' => $request->travel_remark,

@@ -166,4 +166,59 @@ class AdminDataController extends Controller
     return view('admin.list_customer',compact('list_user'));
   }
 
+
+ public function save_program_oversea(Request $request)
+ {
+   $pos_id = $request->id;
+
+   DB::table('package_oversea')->insert([
+     'package_id' => $pos_id,
+     'country_id' => $request->country_id,
+     'name_city' => $request->city_name,
+     'package_name' => $request->package_name,
+     'package_day' => $request->package_day,
+     'package_night' => $request->package_night,
+     'created_at' => Carbon::now()
+   ]);
+   return redirect()->route('admin.new_package_add_os', ['id' => $pos_id])->with('success', "สร้างโปรแกรมใหม่เรียบร้อยแล้ว");
+ }
+
+ public function new_package_add_os($id)
+ {
+   $new_tours = DB::table('travel_lists_oversea')
+     ->join('package_oversea', 'package_oversea.country_id', '=', 'travel_lists_oversea.country_id')
+     ->join('tbl_country','travel_lists_oversea.country_id','=','tbl_country.rec')
+     ->where('travel_lists_oversea.travel_type', '=', '1')
+     ->orderBy('travel_lists_oversea.travel_created_at', 'desc')
+     ->groupBy('travel_lists_oversea.travel_id')
+     ->get();
+
+   $food_lists = DB::table('travel_lists_oversea')
+   ->join('package_oversea', 'package_oversea.country_id', '=', 'travel_lists_oversea.country_id')
+     ->where('travel_lists_oversea.travel_type', '=', '2')
+     ->orderBy('travel_lists_oversea.travel_created_at', 'desc')
+     ->groupBy('travel_lists_oversea.travel_id')
+     ->get();
+
+   $program_day = DB::table('program_oversea_lists')      
+     ->select('program_oversea_lists.program_day_count','program_oversea_lists.program_package_id')
+     ->where('program_oversea_lists.program_package_id', '=', $id)
+     ->groupBy('program_oversea_lists.program_day_count')  
+     ->orderBy('program_oversea_lists.id','DESC')
+     ->limit('1')      
+     ->sum('program_day_count');
+
+   $pk_news = DB::table('package_oversea')
+     ->select('package_oversea.package_name')
+     ->where('package_oversea.package_id', '=', $id)
+     ->first();
+
+   $pk_news_data = [
+     'package_name' => $pk_news->package_name
+   ];
+
+   return view('admin.new_package_add_os', $pk_news_data, compact('new_tours', 'food_lists', 'program_day'));
+ }
+
+
 }

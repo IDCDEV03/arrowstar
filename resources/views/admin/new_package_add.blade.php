@@ -86,7 +86,7 @@ $day_program = $program_day+1;
                                         <tr>
                                           <th scope="row">
                                             <input type="hidden" name="province_id" value="{{$item->province_id}}">
-                                            <input type="hidden" name="program_day_all" value="{{$item->package_day}}">
+                                       <input type="hidden" name="program_day_all" value="{{$item->package_day}}">
                                             @php
                                              echo $i++;  
                                              $package_all_day = $item->package_day; 

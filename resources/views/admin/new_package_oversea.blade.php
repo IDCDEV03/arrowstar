@@ -22,12 +22,14 @@
                             <b>{{ session('success') }}</b>
                         </div>
                     @endif
-                    <form class="form theme-form" action="#" method="POST">
+                    
+                    <form class="form theme-form" action="{{route('admin.save_program_oversea',['id'=>request()->id])}}" method="POST">
                         @csrf
 
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
+
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">ประเทศ</label>
                                         <div class="col-sm-9">
@@ -39,7 +41,6 @@
                                             </select>
                                         </div>
                                     </div>
-
 
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">เมือง</label>

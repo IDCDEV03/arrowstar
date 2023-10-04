@@ -20,7 +20,9 @@ Route::get('/admin/list_oversea', $controller_path . '\AdminDataController@list_
 
 Route::get('/admin/new_package/{id}', $controller_path . '\AdminController@new_package')->name('admin.new_package');
 
-Route::get('/admin/new_package_oversea', $controller_path . '\AdminDataController@new_package_oversea')->name('admin.new_package_oversea');
+Route::get('/admin/new_package_oversea/{id}', $controller_path . '\AdminDataController@new_package_oversea')->name('admin.new_package_oversea');
+
+Route::get('/admin/new_package_add_os/{id}', $controller_path . '\AdminDataController@new_package_add_os')->name('admin.new_package_add_os');
 
 Route::get('/admin/new_package_add/{id}', $controller_path . '\AdminController@new_package_add')->name('admin.new_package_add');
 
@@ -51,6 +53,8 @@ Route::post('/admin/insert_program_travel', $controller_path . '\AdminController
 Route::post('/admin/save_program', $controller_path . '\AdminController@save_program')->name('admin.save_program');
 
 Route::post('/admin/insert_image_extra', $controller_path . '\AdminController@insert_image_extra')->name('admin.insert_image_extra');
+
+Route::post('/admin/save_program_oversea', $controller_path . '\AdminDataController@save_program_oversea')->name('admin.save_program_oversea');
 
 /** delete data */
 

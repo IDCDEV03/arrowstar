@@ -57,6 +57,15 @@
                     </div>
                   </div>
 
+                  <div class="row">
+                    <div class="col">
+                      <div class="mb-3">
+                        <label class="form-label" for="travel_city">เมือง</label>
+                        <input class="form-control input-air-primary" name="travel_city" id="travel_city" type="text" value="<?php echo e($list->travel_city); ?>">
+                      </div>
+                    </div>
+                  </div>
+
                    <div class="row">
                     <div class="col">
                       <div class="mb-3">

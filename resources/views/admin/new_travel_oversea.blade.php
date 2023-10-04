@@ -29,7 +29,6 @@
           <form class="form theme-form" action="{{route('admin.insert_travel_oversea')}}" method="POST" enctype="multipart/form-data">
               @csrf           
             <div class="card-body">
-              <form action="#">
                 <div class="row">
                     <div class="col">
                       <div class="mb-3">

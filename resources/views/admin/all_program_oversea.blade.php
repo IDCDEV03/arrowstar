@@ -25,8 +25,12 @@
                     <div class="card-header">
                         <h5>รายการโปรแกรมทัวร์ (ต่างประเทศ)</h5>
                         <hr>
-                        <a class="btn btn-primary" href="{{route('admin.new_package_oversea')}}">เพิ่มโปรแกรมใหม่</a>
-                      
+                        @php
+                            $pos_id = substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 5)), 0, 12);
+                        @endphp
+                        <a class="btn btn-primary"
+                            href="{{ route('admin.new_package_oversea', ['id' => $pos_id]) }}">เพิ่มโปรแกรมใหม่</a>
+
                         <div class="card-body">
                             @if (session('success'))
                                 <div class="alert alert-success" role="alert">
@@ -44,14 +48,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td>**</td>
-                                                <td></td>
-                                            </tr>
-                                      
+
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td>**</td>
+                                            <td></td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
