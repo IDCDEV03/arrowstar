@@ -10,6 +10,12 @@ $controller_path = 'App\Http\Controllers';
 
 Route::get('/travel', $controller_path . '\HomeController@travel_index')->name('index_home');
 
+/** AdminLogin */
+Route::get('/admin', $controller_path . '\LoginController@login_show')->name('login.show');
+Route::post('/chk', $controller_path . '\LoginController@login')->name('login.perform');
+/** Admin Route */
+Route::group(['middleware' => 'isAdmin'], function () {
+$controller_path = 'App\Http\Controllers';
 Route::get('/admin/list_travel/{id}', $controller_path . '\AdminController@list_travel')->name('admin.list_travel');
 
 Route::get('/admin/create_customer', $controller_path . '\AdminDataController@create_customer')->name('admin.create_customer');
@@ -86,6 +92,7 @@ Route::post('/admin/update_travel', $controller_path . '\AdminController@update_
 /** Print Preview */
 Route::get('/admin/print_preview/{id}', $controller_path . '\AdminDataController@print_program')->name('admin.print_preview');
 
+});
 
 
 ///////////----Admin Route End----////////////
@@ -93,3 +100,12 @@ Route::get('/admin/print_preview/{id}', $controller_path . '\AdminDataController
 Route::get('/', function () {
     return  view('index.home');
 })->name('/');
+
+Route::get('/clear-cache', function() {
+    Artisan::call('config:cache');
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    return "Cache is cleared";
+})->name('clear.cache');
