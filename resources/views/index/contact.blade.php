@@ -18,15 +18,7 @@
         <!-- Header End -->
 
 
-        @if (session('success'))
-            <script>
-                Swal.fire(
-                    'สำเร็จ!',
-                    "{{ session('success') }}",
-                    'success',
-                );
-            </script>
-        @endif
+  
             <!-- Contact Start -->
             <div class="container-fluid py-5">
                 <div class="container py-5">
@@ -38,6 +30,11 @@
                     <!--startform-->
                     <div class="card">
                         <div class="card-body">
+                            @if (session('success'))
+                                <div class="alert alert-success" role="alert">
+                                    <b>{{ session('success') }}</b>
+                                </div>
+                            @endif
                             <form id="form-contact" action="{{ route('save_contact') }}" method="POST">
                                 @csrf
                                 <div class="form-row">

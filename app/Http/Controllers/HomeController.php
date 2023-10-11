@@ -29,6 +29,6 @@ class HomeController extends Controller
                 'member_line' => $request->member_line,
                 'created_at' => Carbon::now()
             ]);
-            return redirect()->route('/')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
+            return redirect()->route('contact')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
     }
 }
