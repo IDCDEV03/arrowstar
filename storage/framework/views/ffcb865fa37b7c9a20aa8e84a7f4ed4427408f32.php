@@ -1,43 +1,44 @@
-@extends('layouts.simple.master')
-@section('title', 'รายการโปรแกรมทัวร์')
 
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">
-@endsection
+<?php $__env->startSection('title', 'รายการโปรแกรมทัวร์'); ?>
 
-@section('style')
-@endsection
+<?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumb-title'); ?>
     <h3>เพิ่มโปรแกรมทัวร์ใหม่</h3>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
 
-                    @if (session('success'))
+                    <?php if(session('success')): ?>
                         <div class="alert alert-success" role="alert">
-                            <b>{{ session('success') }}</b>
+                            <b><?php echo e(session('success')); ?></b>
                         </div>
-                    @elseif (session('error'))
+                    <?php elseif(session('error')): ?>
                         <div class="alert alert-danger" role="alert">
-                            <b>{{ session('error') }}</b>
+                            <b><?php echo e(session('error')); ?></b>
                         </div>
-                    @endif
+                    <?php endif; ?>
                     <div class="card-header">
-                        ชื่อแพ็คเกจ : {{ $package_name }}
+                        ชื่อแพ็คเกจ : <?php echo e($package_name); ?>
+
                     </div>
-                    @php
+                    <?php
                         $i = '1';
-                    @endphp
+                    ?>
                     <div class="card-body">
-                        <form class="f1" action="{{route('admin.insert_program_travel_os')}}" method="post">
-                            @csrf
-                            <input type="hidden" name="package_id" value="{{ request()->id }}">
+                        <form class="f1" action="<?php echo e(route('admin.insert_program_travel_os')); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <input type="hidden" name="package_id" value="<?php echo e(request()->id); ?>">
                             <div class="f1-steps">
                                 <div class="f1-progress">
                                     <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3"></div>
@@ -58,16 +59,16 @@
 
                             <fieldset>
 
-                                @php
+                                <?php
                                     $day_program = $program_day + 1;
-                                @endphp
+                                ?>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
                                             <label class="form-label txt-secondary"
                                                 for="program_day">วันที่ในกำหนดการ</label>
                                             <input type="text" class="form-control input-air-primary  form-control-sm"
-                                                name="program_day" id="program_day" value="{{ $day_program }}" readonly>
+                                                name="program_day" id="program_day" value="<?php echo e($day_program); ?>" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -97,36 +98,36 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($new_tours as $item)
+                                        <?php $__currentLoopData = $new_tours; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
                                                 <th scope="row">
                                                     <input type="hidden" name="province_id"
-                                                        value="{{ $item->country_id }}">
+                                                        value="<?php echo e($item->country_id); ?>">
                                                     <input type="hidden" name="program_day_all"
-                                                        value="{{ $item->package_day }}">
-                                                    @php
+                                                        value="<?php echo e($item->package_day); ?>">
+                                                    <?php
                                                         echo $i++;
                                                         $package_all_day = $item->package_day;
-                                                    @endphp
+                                                    ?>
 
                                                 </th>
-                                                <td>{{ $item->travel_name }}</td>
-                                                <td>{{ $item->ct_nameTHA }}/{{ $item->city_name }}</td>
+                                                <td><?php echo e($item->travel_name); ?></td>
+                                                <td><?php echo e($item->ct_nameTHA); ?>/<?php echo e($item->city_name); ?></td>
                                                 <td>
                                                     <div class="form-check checkbox checkbox-primary mb-0">
                                                         <input class="form-check-input"
-                                                            id="checkbox-primary-{{ $item->travel_id }}" type="checkbox"
-                                                            name="travel_id[]" value="{{ $item->travel_id }}">
+                                                            id="checkbox-primary-<?php echo e($item->travel_id); ?>" type="checkbox"
+                                                            name="travel_id[]" value="<?php echo e($item->travel_id); ?>">
                                                         <label class="form-check-label"
-                                                            for="checkbox-primary-{{ $item->travel_id }}">เลือก</label>
+                                                            for="checkbox-primary-<?php echo e($item->travel_id); ?>">เลือก</label>
                                                     </div>
                                                 </td>
-                                                <td><a href="{{ route('admin.data_oversea', ['id' => $item->travel_id]) }}"
+                                                <td><a href="<?php echo e(route('admin.data_oversea', ['id' => $item->travel_id])); ?>"
                                                         class="btn btn-sm btn-secondary" target="_blank"><i
                                                             class="fa fa-info-circle"></i></a></td>
 
                                             </tr>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
                                 </table>
 
@@ -150,23 +151,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($food_lists as $row)
+                                        <?php $__currentLoopData = $food_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <tr>
-                                                <td>{{ $row->travel_name }}</td>
+                                                <td><?php echo e($row->travel_name); ?></td>
                                                 <td>
                                                     <div class="form-check checkbox checkbox-info mb-0">
                                                         <input class="form-check-input"
-                                                            id="checkbox-info-{{ $row->travel_id }}" type="checkbox"
-                                                            name="travel_id[]" value="{{ $row->travel_id }}">
+                                                            id="checkbox-info-<?php echo e($row->travel_id); ?>" type="checkbox"
+                                                            name="travel_id[]" value="<?php echo e($row->travel_id); ?>">
                                                         <label class="form-check-label"
-                                                            for="checkbox-info-{{ $row->travel_id }}">เลือก</label>
+                                                            for="checkbox-info-<?php echo e($row->travel_id); ?>">เลือก</label>
                                                     </div>
                                                 </td>
-                             <td><a href="{{ route('admin.data_oversea', ['id' => $row->travel_id]) }}"
+                             <td><a href="<?php echo e(route('admin.data_oversea', ['id' => $row->travel_id])); ?>"
                                       class="btn btn-sm btn-secondary" target="_blank"><i
                                          class="fa fa-info-circle"></i></a></td>
                                             </tr>
-                                        @endforeach
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
 
                                 </table>
@@ -174,13 +175,13 @@
 
                                 <div class="f1-buttons">
                                     <button class="btn btn-primary btn-previous" type="button">ย้อนกลับ</button>
-                                    @if ($package_all_day == $day_program)
+                                    <?php if($package_all_day == $day_program): ?>
                                         <button name="action" class="btn btn-success btn-submit" type="submit"
                                             value="action1">เสร็จสิ้น</button>
-                                    @elseif($package_all_day > $day_program)
+                                    <?php elseif($package_all_day > $day_program): ?>
                                         <button name="action" class="btn btn-secondary btn-submit" type="submit"
                                             value="action2">เพิ่มกำหนดการ</button>
-                                    @endif
+                                    <?php endif; ?>
                                 </div>
                             </fieldset>
                         </form>
@@ -189,11 +190,13 @@
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
-    <script src="{{ asset('assets/js/form-wizard/form-wizard-three.js') }}"></script>
-    <script src="{{ asset('assets/js/form-wizard/jquery.backstretch.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-@endsection
+<?php $__env->startSection('script'); ?>
+    <script src="<?php echo e(asset('assets/js/form-wizard/form-wizard-three.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/form-wizard/jquery.backstretch.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/new_package_add_os.blade.php ENDPATH**/ ?>

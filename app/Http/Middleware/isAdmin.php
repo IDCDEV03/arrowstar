@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class isAdmin
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,14 +16,12 @@ class isAdmin
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
-       
-            if (Auth::check() && Auth::user()->isAdmin == 1) {
-                return $next($request);
-            }
-            // Redirect to login page or show unauthorized page
-            return redirect()->route('login.show');
-       
+        if (Auth::check() && Auth::user()->is_admin == 1) {
+            return $next($request);
+        }
+
+        return redirect()->route('login.show')->with('error', 'เฉพาะผู้ดูแลระบบเท่านั้น');
     }
 }

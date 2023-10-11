@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User_data;
-
 
 class LoginController extends Controller
 {
@@ -17,35 +13,35 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
-    
-    public function login(Request $request)
+
+    public function __construct()
     {
-        $validators=Validator::make($request->all(),[
-            'username'=>'required',
-            'password'=>'required'
+        $this->middleware('guest')->except('logout');
+    }
+
+    protected function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+ 
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
 
-        if($validators->fails()){
-            return redirect()->route('login.show')->withErrors($validators)->withInput();
-        }else{
-            if(Auth::attempt(['username'=>$request->username,'password'=>$request->password])){
-                if (auth()->user()->isAdmin == 1) {
-                    return redirect()->intended(route('list_province'));
-                }elseif (auth()->user()->isAdmin == 0) {
-                    return redirect()->route('/');
-                }else
-                {
-                    return redirect()->route('logout');
-                }                   
-            }else{
-                return redirect()->route('login.show')->with('message','Login failed !Email/Password is incorrect !');
+        if (Auth::attempt($credentials)) {
+            if (auth()->user()->is_admin == 1) {
+                return redirect()->route('list_province');
+            }else {
+                return redirect()->route('/');
             }
-        }       
+        } else {
+            return redirect()->route('login.show')->with('message', 'Email หรือ รหัสผ่านไม่ถูกต้อง');
+        }
     }
 
-    public function logout(){  
-        Auth::logout(); 
-        return redirect()->route('/');       
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login.show');
     }
-    
 }

@@ -157,6 +157,23 @@ class AdminController extends Controller
     return view('admin.preview_package', compact('package_pre', 'package_place'));
   }
 
+  public function preview_package_os($id)
+  {
+
+    $package_pre = DB::table('package_oversea')
+      ->join('tbl_country', 'tbl_country.rec', '=', 'package_oversea.country_id')
+      ->where('package_oversea.package_id', '=', $id)
+      ->get();
+
+    $package_place = DB::table('program_oversea_lists')
+      ->join('travel_lists_oversea', 'program_oversea_lists.program_travel_os_id', '=', 'travel_lists_oversea.travel_id')
+      ->join('travel_type', 'travel_lists_oversea.travel_type', '=', 'travel_type.number_type')
+      ->where('program_oversea_lists.program_package_id', '=', $id)
+      ->get();
+
+    return view('admin.preview_package_os', compact('package_pre', 'package_place'));
+  }
+
 
   public function save_program(Request $request)
   {
@@ -224,6 +241,40 @@ class AdminController extends Controller
         ]);
       }
       return redirect()->route('admin.new_package_add', ['id' => $pk_id])->with('success', "สร้างกำหนดการเรียบร้อยแล้ว");
+    }
+  }
+
+  public function insert_program_travel_os(Request $request)
+  {
+
+    $action = $request->input('action');
+    $pk_id = $request->package_id;
+
+    if ($action == 'action1') {
+      $travel_list = $request->input('travel_id');
+
+      foreach ($travel_list as $item) {
+        DB::table('program_oversea_lists')->insert([
+          'program_package_id' => $pk_id,
+          'program_travel_os_id' => $item,
+          'program_day_count' => $request->program_day,
+          'program_detail' => $request->program_detail,
+          'created_at' => Carbon::now()
+        ]);
+      }
+      return redirect()->route('admin.preview_package_os', ['id' => $pk_id]);
+    } elseif ($action == 'action2') {
+      $travel_list = $request->input('travel_id');
+      foreach ($travel_list as $item) {
+        DB::table('program_oversea_lists')->insert([
+          'program_package_id' => $pk_id,
+          'program_travel_os_id' => $item,
+          'program_day_count' => $request->program_day,
+          'program_detail' => $request->program_detail,
+          'created_at' => Carbon::now()
+        ]);
+      }
+      return redirect()->route('admin.new_package_add_os', ['id' => $pk_id])->with('success', "สร้างกำหนดการเรียบร้อยแล้ว");
     }
   }
 
@@ -393,4 +444,23 @@ class AdminController extends Controller
       ]);
     return redirect()->route('admin.preview_package', ['id' => $package_id]);
   }
+
+
+  public function insert_tips_os(Request $request)
+  {
+    $package_id = $request->package_id;
+
+    DB::table('package_oversea')
+      ->where('package_id', '=', $package_id)
+      ->update([
+        'program_spacial_req' => $request->program_req,
+        'program_remark' => $request->program_remark,
+        'program_tips' => $request->program_tips,
+        'price_total' => $request->price_total,
+        'price_notin' => $request->price_notin,
+        'updated_at' => Carbon::now(),
+      ]);
+    return redirect()->route('admin.preview_package_os', ['id' => $package_id]);
+  }
+
 }

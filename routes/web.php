@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Session;
 
@@ -13,14 +13,17 @@ Route::get('/travel', $controller_path . '\HomeController@travel_index')->name('
 /** AdminLogin */
 Route::get('/admin', $controller_path . '\LoginController@login_show')->name('login.show');
 Route::post('/chk', $controller_path . '\LoginController@login')->name('login.perform');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+
+
 /** Admin Route */
-Route::group(['middleware' => 'isAdmin'], function () {
+Route::group(['middleware' => 'is_admin'], function () {
 $controller_path = 'App\Http\Controllers';
+Route::get('/admin/list_province', $controller_path . '\AdminController@list_province')->name('list_province');
+
 Route::get('/admin/list_travel/{id}', $controller_path . '\AdminController@list_travel')->name('admin.list_travel');
 
 Route::get('/admin/create_customer', $controller_path . '\AdminDataController@create_customer')->name('admin.create_customer');
-
-Route::get('/admin/list_province', $controller_path . '\AdminController@list_province')->name('list_province');
 
 Route::get('/admin/list_oversea', $controller_path . '\AdminDataController@list_oversea')->name('admin.list_oversea');
 
@@ -34,6 +37,8 @@ Route::get('/admin/new_package_add/{id}', $controller_path . '\AdminController@n
 
 Route::get('/admin/preview_package/{id}', $controller_path . '\AdminController@preview_package')->name('admin.preview_package');
 
+Route::get('/admin/preview_package_os/{id}', $controller_path . '\AdminController@preview_package_os')->name('admin.preview_package_os');
+
 Route::get('/admin/list_program/{id}', $controller_path . '\AdminController@list_program')->name('admin.list_program');
 
 Route::get('/admin/new_travel', $controller_path . '\AdminController@new_travel')->name('admin.new_travel');
@@ -43,7 +48,11 @@ Route::get('/admin/new_travel_oversea', $controller_path . '\AdminController@new
 /**insert tips */
 Route::get('/admin/new_tips/{id}', $controller_path . '\AdminDataController@new_tips')->name('admin.create_tips');
 
+Route::get('/admin/new_tips_os/{id}', $controller_path . '\AdminDataController@new_tips_os')->name('admin.create_tips_os');
+
 Route::post('/admin/insert_tips', $controller_path . '\AdminController@insert_tips')->name('admin.insert_tips');
+
+Route::post('/admin/insert_tips_os', $controller_path . '\AdminController@insert_tips_os')->name('admin.insert_tips_os');
 
 /** insert data */
 Route::post('/admin/save_tourist', $controller_path . '\AdminController@save_tourist')->name('admin.save_tourist');
@@ -55,6 +64,8 @@ Route::post('/admin/insert_customer', $controller_path . '\AdminController@inser
 Route::post('/admin/insert_travel_oversea', $controller_path . '\AdminDataController@insert_travel_oversea')->name('admin.insert_travel_oversea');
 
 Route::post('/admin/insert_program_travel', $controller_path . '\AdminController@insert_program_travel')->name('admin.insert_program_travel');
+
+Route::post('/admin/insert_program_travel_os', $controller_path . '\AdminController@insert_program_travel_os')->name('admin.insert_program_travel_os');
 
 Route::post('/admin/save_program', $controller_path . '\AdminController@save_program')->name('admin.save_program');
 
@@ -91,6 +102,8 @@ Route::post('/admin/update_travel', $controller_path . '\AdminController@update_
 
 /** Print Preview */
 Route::get('/admin/print_preview/{id}', $controller_path . '\AdminDataController@print_program')->name('admin.print_preview');
+
+Route::get('/admin/print_preview_os/{id}', $controller_path . '\AdminDataController@print_program_os')->name('admin.print_preview_os');
 
 });
 

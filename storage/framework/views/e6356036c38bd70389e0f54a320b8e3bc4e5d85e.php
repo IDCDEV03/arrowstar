@@ -1,22 +1,22 @@
-@extends('layouts.simple.master')
-@section('title', 'รายการโปรแกรมทัวร์')
 
-@section('css')
+<?php $__env->startSection('title', 'รายการโปรแกรมทัวร์'); ?>
+
+<?php $__env->startSection('css'); ?>
 <link href="https://cdn.datatables.net/v/bs4/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/sb-1.6.0/datatables.min.css" rel="stylesheet">
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('style')
-@endsection
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
-@endsection
+<?php $__env->startSection('breadcrumb-title'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-items')
+<?php $__env->startSection('breadcrumb-items'); ?>
 <li class="breadcrumb-item">Pages</li>
 <li class="breadcrumb-item active">ประเทศ</li>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container-fluid">
    <div class="row">
       <div class="col-sm-12">
@@ -24,14 +24,14 @@
             <div class="card-header">
                <h5>รายการสถานที่ (ต่างประเทศ)</h5>   
                <hr> 
-               <a class="btn btn-primary" href="{{route('admin.all_program_oversea')}}">โปรแกรมทัวร์ต่างประเทศ</a>               
-               <a class="btn btn-secondary" href="{{route('admin.all_program')}}">โปรแกรมทัวร์ในประเทศ</a>
+               <a class="btn btn-primary" href="<?php echo e(route('admin.all_program_oversea')); ?>">โปรแกรมทัวร์ต่างประเทศ</a>               
+               <a class="btn btn-secondary" href="<?php echo e(route('admin.all_program')); ?>">โปรแกรมทัวร์ในประเทศ</a>
             <div class="card-body">
-                @if (session('success'))
+                <?php if(session('success')): ?>
                 <div class="alert alert-success" role="alert">
-                    <b>{{ session('success') }}</b>
+                    <b><?php echo e(session('success')); ?></b>
                 </div>
-                 @endif
+                 <?php endif; ?>
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm" id="example-oversea">
                         <thead>
@@ -44,15 +44,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                           @foreach ($list_oversea as $row)  
+                           <?php $__currentLoopData = $list_oversea; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
                             <tr>
-                                <td> {{$row->travel_name}} </td>
-                                <td> {{$row->ct_nameTHA}} </td>
-                                <td> {{$row->city_name}} </td>
-                                <td> {{$row->type_travel}} </td>
-                                <td> <a href="{{route('admin.data_oversea',['id'=>$row->travel_id])}}" class="btn btn-sm btn-info">View</a> </td>                               
+                                <td> <?php echo e($row->travel_name); ?> </td>
+                                <td> <?php echo e($row->ct_nameTHA); ?> </td>
+                                <td> <?php echo e($row->city_name); ?> </td>
+                                <td> <?php echo e($row->type_travel); ?> </td>
+                                <td> <a href="<?php echo e(route('admin.data_oversea',['id'=>$row->travel_id])); ?>" class="btn btn-sm btn-info">View</a> </td>                               
                             </tr>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     </table>
                 </div>
@@ -64,9 +64,9 @@
    </div>
 </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script src="https://cdn.datatables.net/v/bs4/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/sb-1.6.0/datatables.min.js"></script>
 
 <script>
@@ -92,4 +92,5 @@
 
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/list_oversea.blade.php ENDPATH**/ ?>

@@ -2,8 +2,8 @@
 @section('title', 'รายการโปรแกรมทัวร์')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatable-extension.css')}}">
 @endsection
 
 @section('style')
@@ -28,8 +28,12 @@
                         @php
                             $pos_id = substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 5)), 0, 12);
                         @endphp
-                        <a class="btn btn-primary"
-                            href="{{ route('admin.new_package_oversea', ['id' => $pos_id]) }}">เพิ่มโปรแกรมใหม่</a>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a href="{{route('admin.list_oversea')}}" class="btn btn-outline-info" ><i class="fa fa-picture-o"></i> รายการสถานที่</a>
+                            <a href="{{ route('admin.new_package_oversea', ['id' => $pos_id]) }}" class="btn btn-outline-info" ><i class="fa fa-plus-square-o"></i> เพิ่มโปรแกรมใหม่</a>
+                           
+                          </div>
+
 
                         <div class="card-body">
                             @if (session('success'))
@@ -38,7 +42,7 @@
                                 </div>
                             @endif
                             <div class="dt-ext table-responsive">
-                                <table class="display" id="table-province">
+                                <table class="display table-bordered" id="table-program-oversea">
                                     <thead>
                                         <tr>
                                             <th>ชื่อโปรแกรมทัวร์</th>
@@ -49,13 +53,16 @@
                                     </thead>
                                     <tbody>
 
+                                        @foreach ($list_program as $item)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td>**</td>
-                                            <td></td>
+                                            <td>{{ $item->package_name }}</td>
+                                            <td>{{ $item->ct_nameTHA }}</td>
+                                            <td>{{ $item->name_city }}</td>
+                                            <td><a href="{{ route('admin.preview_package_os', ['id' => $item->package_id]) }}" class="btn btn-primary btn-xs">
+                                                <i class="fa fa-navicon"></i>
+                                            </a></td>
                                         </tr>
-
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -69,23 +76,44 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-    <script>
-        $(function() {
-            $("#table-province").dataTable({
+<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/jszip.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/pdfmake.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.colReorder.min.js')}}"></script>
+
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/custom.js')}}"></script>
+<script>
+    $(function(){
+        $("#table-program-oversea").dataTable(
+            {
+            dom: 'Bfrtip',
+            buttons: [
+                'pageLength','excel','print'
+            ],
                 "pageLength": 25,
                 "language": {
-                    "info": "แสดงผล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-                    "search": "ค้นหา:",
-                    "lengthMenu": "แสดงผล _MENU_ รายการ",
-                    "zeroRecords": "ไม่พบข้อมูล",
+                    "info":"แสดงผล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
+                    "search":"ค้นหา:",
+                    "lengthMenu":"แสดงผล _MENU_ รายการ",
+                    "zeroRecords":"ไม่พบข้อมูล",
                     "paginate": {
-                        "next": "ต่อไป",
-                        "previous": "ก่อนหน้า"
+                        "next":"ต่อไป",
+                        "previous":"ก่อนหน้า"
                     }
                 }
             });
-        });
-    </script>
+    });
+</script>
 @endsection
