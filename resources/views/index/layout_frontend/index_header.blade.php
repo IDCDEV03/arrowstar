@@ -25,4 +25,5 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('plugin_index/css/style.css')}}" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js"></script>
+    
 </head>

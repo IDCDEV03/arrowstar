@@ -29,8 +29,8 @@
                 <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>ทัวร์ในประเทศ</a>
                 <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>ทัวร์ต่างประเทศ</a>
                 <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>แพ็คเกจ-บริการ</a>
-                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>รถตู้/รถบัส</a>
-                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>ฝากข้อมูลติดต่อ</a>
+                <a class="text-white-50 mb-2" href="<?php echo e(route('van_list')); ?>"><i class="fa fa-angle-right mr-2"></i>รถตู้/รถบัส</a>
+                <a class="text-white-50 mb-2" href="<?php echo e(route('contact')); ?>"><i class="fa fa-angle-right mr-2"></i>ฝากข้อมูลติดต่อ</a>
 
             </div>
         </div>
@@ -53,7 +53,7 @@
             </p>
         </div>
         <div class="col-lg-6 text-center text-md-right">
-            <p class="m-0 text-white-50">Developed by <a href="#">ID Drives Co., Ltd.</a>
+            <p class="m-0 text-white-50">Developed by <a href="https://iddrives.co.th/web/" target="_blank">ID Drives Co., Ltd.</a>
             </p>
         </div>
     </div>

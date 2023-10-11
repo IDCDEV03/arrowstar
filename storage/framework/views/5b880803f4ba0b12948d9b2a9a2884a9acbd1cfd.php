@@ -25,4 +25,5 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?php echo e(asset('plugin_index/css/style.css')); ?>" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js"></script>
+    
 </head><?php /**PATH D:\GitHub\arrowstar\resources\views/index/layout_frontend/index_header.blade.php ENDPATH**/ ?>

@@ -18,7 +18,6 @@
         <!-- Header End -->
 
 
-
         <!-- Contact Start -->
         <div class="container-fluid py-5">
             <div class="container py-5">
@@ -34,7 +33,6 @@
                 <!--startform-->
                 <div class="card">
                     <div class="card-body">
-
                         <form id="form-contact" action="{{ route('save_contact') }}" method="POST">
                             @csrf
                             <div class="form-row">
@@ -44,8 +42,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputPassword4">เบอร์โทรศัพท์ <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="inputPassword4" name="member_phone"
-                                        required>
+                                    <input type="text" class="form-control" id="inputPassword4" name="member_phone" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -69,10 +66,7 @@
                                 <label for="inputAddress2">Line ID (ถ้ามี)</label>
                                 <input type="text" class="form-control" id="inputAddress2" name="member_line">
                             </div>
-                            <div class="form-row">
-                                **
-                            </div>
-
+                          
                             <button class="g-recaptcha btn btn-primary"
                                 data-sitekey="6Lc7WZEoAAAAAKY8yMbNw-nd2UOx4uqR1cYV5j1b" data-callback='onSubmit'
                                 data-action='submit'>ยืนยัน</button>

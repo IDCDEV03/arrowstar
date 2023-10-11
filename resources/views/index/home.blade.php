@@ -1,29 +1,33 @@
 @extends('index.index_app')
 <body>
 @section('content')
-  
+
+
+@if(session('success'))
+<script type="text/javascript">alert("บันทึกข้อมูลเรียบร้อยแล้ว")</script>
+@endif 
 
     <!-- Carousel Start -->
     <div class="container-fluid">
         <div id="header-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100" src="{{ asset('plugin_index/img/carousel-1.jpg')}}" alt="Image">
+                    <img class="w-100" src="{{ asset('plugin_index/img/bg_ar03.jpg')}}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">ArrowStar</h4>
                             <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">ฝากข้อมูลติดต่อ</a>
+                        <a href="{{route('contact')}}" class="btn btn-primary py-md-3 px-md-5 mt-2">ฝากข้อมูลติดต่อ</a>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="{{ asset('plugin_index/img/carousel-2.jpg')}}" alt="Image">
+                    <img class="w-100" src="{{ asset('plugin_index/img/beach1.jpg')}}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
                             <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                            <a href="{{route('contact')}}" class="btn btn-primary py-md-3 px-md-5 mt-2">ฝากข้อมูลติดต่อ</a>
                         </div>
                     </div>
                 </div>
@@ -41,59 +45,6 @@
         </div>
     </div>
     <!-- Carousel End -->
-
-
-     <!-- Booking Start -->
-     <div class="container-fluid booking">
-        <div class="container">
-            <div class="bg-light shadow" style="padding: 30px;">
-                <div class="row align-items-center" style="min-height: 60px;">
-                    <div class="col-md-10">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <select class="custom-select px-4" style="height: 47px;">
-                                        <option selected>Destination</option>
-                                        <option value="1">Destination 1</option>
-                                        <option value="2">Destination 1</option>
-                                        <option value="3">Destination 1</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Depart Date" data-target="#date1" data-toggle="datetimepicker"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <div class="date" id="date2" data-target-input="nearest">
-                                        <input type="text" class="form-control p-4 datetimepicker-input" placeholder="Return Date" data-target="#date2" data-toggle="datetimepicker"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="mb-3 mb-md-0">
-                                    <select class="custom-select px-4" style="height: 47px;">
-                                        <option selected>Duration</option>
-                                        <option value="1">Duration 1</option>
-                                        <option value="2">Duration 1</option>
-                                        <option value="3">Duration 1</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Submit</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Booking End -->
 
     <!-- About Start -->
     <div class="container-fluid py-5">
@@ -117,8 +68,7 @@
                             <div class="col-6">
                                 <img class="img-fluid" src="img/about-2.jpg" alt="">
                             </div>
-                        </div>
-                        <a href="" class="btn btn-primary mt-1">Book Now</a>
+                        </div>                       
                     </div>
                 </div>
             </div>
@@ -126,55 +76,13 @@
     </div>
     <!-- About End -->
 
-
-    <!-- Feature Start -->
-        <div class="container pb-5">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-money-check-alt text-white"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <h5 class="">Competitive Pricing</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-award text-white"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <h5 class="">Best Services</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="d-flex mb-4 mb-lg-0">
-                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
-                            <i class="fa fa-2x fa-globe text-white"></i>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <h5 class="">Worldwide Coverage</h5>
-                            <p class="m-0">Magna sit magna dolor duo dolor labore rebum amet elitr est diam sea</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <!-- Feature End -->
-
     <!-- Destination Start -->
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">บริการเช่ารถ</h6>
-                <h1>รถบัส VIP 42 ที่นั่ง</h1>
+                <h1>รถบัส VIP 42 ที่นั่ง / รถตู้ VIP</h1>
             </div>
             <div class="row">
-
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
                     <img class="img-fluid" src="{{asset('plugin_index/img/5353349.jpg')}}" alt="">                 
@@ -190,6 +98,25 @@
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
                         <img class="img-fluid" src="{{asset('plugin_index/img/55353351.jpg')}}" alt="">                    
+                    </div>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                    <img class="img-fluid" src="{{asset('plugin_index/img/van4.png')}}" alt="">                 
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="{{asset('plugin_index/img/van1.png')}}" alt="">                    
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="{{asset('plugin_index/img/van2.png')}}" alt="">                    
                     </div>
                 </div>                
             </div>
@@ -219,21 +146,33 @@
                             <h1 class="text-white m-0">ฝากข้อมูลติดต่อ</h1>
                         </div>
                         <div class="card-body rounded-bottom bg-white p-5">
-                            <form>
+                            <form action="{{route('save_contact_index')}}" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control p-4" placeholder="ชื่อ-นามสกุล" required="required" />
+                                    <input type="text" class="form-control p-4" placeholder="ชื่อ-นามสกุล" name="member_name" required />
+                                </div>
+                            
+                                <div class="form-group">
+                                    <input type="text" class="form-control p-4" placeholder="เบอร์โทรศัพท์" maxlength="10" required="required" name="member_phone" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control p-4" placeholder="อีเมล" required="required" />
+                                    <select class="form-control" id="inputSubject" name="contact_subject" required>
+                                        <option selected disabled>โปรดเลือกหัวข้อที่ต้องการติดต่อ..</option>
+                                        <option value="จัดกรุ๊ปทัวร์">จัดกรุ๊ปทัวร์</option>
+                                        <option value="สัมมนา/ศึกษาดูงาน">สัมมนา/ศึกษาดูงาน</option>
+                                        <option value="เช่ารถตู้/รถบัส">เช่ารถตู้/รถบัส</option>
+                                        <option value="ของฝาก/ของที่ระลึก">ของฝาก/ของที่ระลึก</option>
+                                        <option value="อื่นๆ">อื่นๆ</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control p-4" placeholder="เบอร์โทรศัพท์" maxlength="10" required="required" />
+                                    <input type="text" class="form-control p-4" placeholder="Line ID (ถ้ามี)" name="member_line" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control p-4" placeholder="Line ID (ถ้ามี)" required="required" />
+                                   <textarea class="form-control" name="SubjectDetail" id="" cols="30" rows="4" placeholder="รายละเอียดที่ต้องการสอบถาม"></textarea>
                                 </div>
                                 <div class="form-group">
-                                   <textarea class="form-control" name="" id="" cols="30" rows="4" placeholder="ข้อความถึงเรา"></textarea>
+                                    <div class="g-recaptcha" data-sitekey="6LcN4ZEoAAAAAFTNNFLE0s4pc91mQArTSZKT2KHh"></div>
                                 </div>
                                 <div>
                                     <button class="btn btn-primary btn-block py-3" type="submit">ส่งข้อความ</button>
