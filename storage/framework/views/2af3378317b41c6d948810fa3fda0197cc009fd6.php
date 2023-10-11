@@ -18,15 +18,7 @@
         <!-- Header End -->
 
 
-        <?php if(session('success')): ?>
-            <script>
-                Swal.fire(
-                    'สำเร็จ!',
-                    "<?php echo e(session('success')); ?>",
-                    'success',
-                );
-            </script>
-        <?php endif; ?>
+  
             <!-- Contact Start -->
             <div class="container-fluid py-5">
                 <div class="container py-5">
@@ -34,10 +26,17 @@
                         <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Contact</h6>
                         <h1>ฝากข้อมูลติดต่อ</h1>
                     </div>
-
+                    <div class="alert alert-success" role="alert">
+                        <b>045454</b>
+                    </div>
                     <!--startform-->
                     <div class="card">
                         <div class="card-body">
+                            <?php if(session('success')): ?>
+                                <div class="alert alert-success" role="alert">
+                                    <b><?php echo e(session('success')); ?></b>
+                                </div>
+                            <?php endif; ?>
                             <form id="form-contact" action="<?php echo e(route('save_contact')); ?>" method="POST">
                                 <?php echo csrf_field(); ?>
                                 <div class="form-row">
