@@ -122,3 +122,7 @@ Route::get('/clear-cache', function() {
     Artisan::call('route:clear');
     return "Cache is cleared";
 })->name('clear.cache');
+
+////////////--------Front_Route---------//////////////
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+Route::POST('/save_contact',[HomeController::class,'save_contact'])->name('save_contact');

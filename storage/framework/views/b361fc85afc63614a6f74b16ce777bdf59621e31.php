@@ -11,9 +11,9 @@
                     <img class="w-100" src="<?php echo e(asset('plugin_index/img/carousel-1.jpg')); ?>" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
+                            <h4 class="text-white text-uppercase mb-md-3">ArrowStar</h4>
                             <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
-                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                            <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">ฝากข้อมูลติดต่อ</a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                     <div class="mb-4">                       
                         <h1 class="text-white">ติดต่อสอบถาม</h1>
                     </div>
-                    <p class="text-white">แอร์โร่วสตาร์ ทราเวล จัดทัวร์ในประเทศ ต่างประเทศ ศึกษาดูงาน สัมมนา จัดกรุ๊ปเหมา
+                    <p class="text-white">แอโร่วสตาร์ ทราเวล จัดทัวร์ในประเทศ ต่างประเทศ ศึกษาดูงาน สัมมนา จัดกรุ๊ปเหมา
                     </p> 
                     <p class="text-white">
                     211/10 หมู่ที่ 4 ตำบลหนองขอนกว้าง อำเภอเมืองอุดีธานี จังหวัดอุดรธานี 41000</p>

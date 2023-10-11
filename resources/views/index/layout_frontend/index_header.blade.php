@@ -6,7 +6,7 @@
     <title>Arrowstar @yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Arrowstar Travel (Thailand)" name="keywords">
-    <meta content="ทัวร์ต่างประเทศ,ทัวร์ในประเทศ, แอโร่วสตาร์" name="description">
+    <meta content="แอโร่วสตาร์ ทราเวล, จัดทัวร์ในประเทศ, ทัวร์ต่างประเทศ, ศึกษาดูงาน, สัมมนา, จัดกรุ๊ปเหมา, เช่ารถ, ของฝาก, ของที่ระลึก" name="description">
 
     <!-- Favicon -->
     <link href="{{asset('plugin_index/img/logo1.png')}}" rel="icon">
@@ -21,7 +21,8 @@
     <!-- Libraries Stylesheet -->
     <link href="{{ asset('plugin_index/lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
     <link href="{{ asset('plugin_index/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('plugin_index/css/style.css')}}" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
