@@ -9,7 +9,7 @@
     <meta content="แอโร่วสตาร์ ทราเวล, จัดทัวร์ในประเทศ, ทัวร์ต่างประเทศ, ศึกษาดูงาน, สัมมนา, จัดกรุ๊ปเหมา, เช่ารถ, ของฝาก, ของที่ระลึก" name="description">
 
     <!-- Favicon -->
-    <link href="{{asset('plugin_index/img/logo1.png')}}" rel="icon">
+    <link href="{{asset('assets/images/logo1.png')}}" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

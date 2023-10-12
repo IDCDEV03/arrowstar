@@ -14,17 +14,9 @@
                     <a class="text-primary px-3" href="">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a class="text-primary px-3" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text-primary px-3" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text-primary px-3" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text-primary pl-3" href="">
-                        <i class="fab fa-youtube"></i>
+                   
+                    <a class="text-primary pl-3" href="{{route('login.show')}}">
+                        <i class="fas fa-sign-in-alt"></i>
                     </a>
                 </div>
             </div>
@@ -45,11 +37,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                <a href="{{route('/')}}" class="nav-item nav-link"><i class="fa fa-home" aria-hidden="true"></i></a>
-                <a href="#" class="nav-item nav-link">ทัวร์ต่างประเทศ</a>
-                <a href="#" class="nav-item nav-link active">ทัวร์ในประเทศ</a>
-                <a href="#" class="nav-item nav-link"><span class="text-primary">แพ็คเกจ-บริการ</a>
-                <a href="{{route('van_list')}}" class="nav-item nav-link"><span class="text-primary">รถบัส/รถตู้</a>
+                   <a href="#" class="nav-item nav-link">ทัวร์ต่างประเทศ</a>
+                <a href="#" class="nav-item nav-link">ทัวร์ในประเทศ</a>
+                <a href="{{route('service')}}" class="nav-item nav-link">แพ็คเกจ-บริการ</a>
+                <a href="{{route('van_list')}}" class="nav-item nav-link">รถบัส/รถตู้</a>
                 <a href="{{route('contact')}}" class="nav-item nav-link">ฝากข้อมูลติดต่อ</a>
                 </div>
             </div>
