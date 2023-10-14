@@ -1,12 +1,11 @@
 <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
     <div class="row pt-5">
         <div class="col-lg-3 col-md-6 mb-5">
-            <a href="" class="navbar-brand">
-                <h3 class="text-primary"><span class="text-white">Arrow</span>Star
-                    </h3>
+            <a href="<?php echo e(route('/')); ?>" class="navbar-brand">
+                <h3 class="text-primary" style="letter-spacing: 2px;"><span class="text-white">Arrow</span>Star
+                </h3>
             </a>
             <p>ทัวร์ในประเทศและต่างประเทศ จัดอมรม สัมมนา ศึกษาดูงานในประเทศ/ต่างประเทศ จัดกรุ๊ปเหมา ยื่นซองประมูลงาน</p>
-
         </div>
 
         <div class="col-lg-3 col-md-6 mb-5">
@@ -24,11 +23,11 @@
         </div>
 
         <div class="col-lg-3 col-md-6 mb-5">
-            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">บริการของเรา</h5>
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 2px;">บริการของเรา</h5>
             <div class="d-flex flex-column justify-content-start">
                 <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>ทัวร์ในประเทศ</a>
                 <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>ทัวร์ต่างประเทศ</a>
-                <a class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>แพ็คเกจ-บริการ</a>
+                <a class="text-white-50 mb-2" href="<?php echo e(route('service')); ?>"><i class="fa fa-angle-right mr-2"></i>แพ็คเกจ-บริการ</a>
                 <a class="text-white-50 mb-2" href="<?php echo e(route('van_list')); ?>"><i class="fa fa-angle-right mr-2"></i>รถตู้/รถบัส</a>
                 <a class="text-white-50 mb-2" href="<?php echo e(route('contact')); ?>"><i class="fa fa-angle-right mr-2"></i>ฝากข้อมูลติดต่อ</a>
 
@@ -36,7 +35,7 @@
         </div>
 
         <div class="col-lg-3 col-md-6 mb-5">
-            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">ติดต่อเรา</h5>
+            <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 2px;">ติดต่อเรา</h5>
             <p><i class="fa fa-map-marker-alt mr-2"></i>211/10 หมู่4 ต.หนองขอนกว้าง 
               อ.เมือง  จ.อุดรธานี 41000</p>
             <p><i class="fa fa-phone-alt mr-2"></i>062-1481969</p>

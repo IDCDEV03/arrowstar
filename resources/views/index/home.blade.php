@@ -80,7 +80,7 @@
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">บริการเช่ารถ</h6>
-                <h1>รถบัส VIP 42 ที่นั่ง / รถตู้ VIP</h1>
+                <a href="{{route('van_list')}}" class="h1">รถบัส VIP / รถตู้ VIP</a>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
@@ -97,7 +97,7 @@
 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="{{asset('plugin_index/img/55353351.jpg')}}" alt="">                    
+                        <img class="img-fluid" src="{{asset('plugin_index/img/42456_1.jpg')}}" alt="">                    
                     </div>
                 </div>                
             </div>

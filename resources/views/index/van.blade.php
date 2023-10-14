@@ -23,7 +23,7 @@
             <div class="container py-5">
                
                 <div class="text-center mb-3 pb-3">
-                    <h4 class="text-primary text-uppercase" style="letter-spacing: 2px;">รถบัส VIP 42 ที่นั่ง / รถตู้ VIP</h4>
+                    <h4 class="text-primary text-uppercase" style="letter-spacing: 2px;">รถบัส VIP / รถตู้ VIP</h4>
                  <a href="{{route('contact')}}" class="btn btn-primary mb-3">ติดต่อสอบถาม</a>
                 </div>
 
@@ -50,6 +50,14 @@
                       </div>
                       @endforeach
                     </div>
+
+                    <div class="row mb-3">
+                      @foreach ($gall_list4 as $item)
+                    <div class="col-sm">
+                      <img src="{{asset($item->gall_path)}}" class="img-fluid" alt="">
+                    </div>
+                    @endforeach
+                  </div>
 
               </div>
 

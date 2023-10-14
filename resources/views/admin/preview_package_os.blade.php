@@ -72,7 +72,7 @@
                                         <label class="col-sm-3 col-form-label txt-info">ราคารวม</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                <span class="txt-info">{{ $row->price_total}}</span> 
+                                                <span class="txt-info">{!! $row->price_total !!}</span> 
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +80,7 @@
                                         <label class="col-sm-3 col-form-label txt-danger">ราคาไม่รวม</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                               <span class="txt-danger">{{ $row->price_notin}}</span> 
+                                               <span class="txt-danger">{!! $row->price_notin!!}</span> 
                                             </div>
                                         </div>
                                     </div>

@@ -3,7 +3,7 @@
 
 <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">   
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('style'); ?>
@@ -58,10 +58,13 @@
                             </div>
 
                             <fieldset>
-
+                                <?php $__currentLoopData = $program_day; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                           
+                            
                                 <?php
-                                    $day_program = $program_day + 1;
+                                $program_day = $item->program_day_count;
+                                    $day_program = $program_day+1;
                                 ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
@@ -72,14 +75,13 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="mb-3">
                                             <label class="form-label txt-info" for="program_detail">รายละเอียดการท่องเที่ยว
                                             </label>
-
-                                            <textarea class="form-control input-air-primary form-control-sm" id="program_detail" name="program_detail"
+                                            <textarea class="form-control input-air-primary form-control-sm" name="program_detail" id="program_detail"
                                                 rows="3"></textarea>
                                         </div>
                                     </div>

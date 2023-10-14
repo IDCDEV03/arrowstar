@@ -68,7 +68,6 @@ class AdminDataController extends Controller
       ->get();
 
     $pk_news = DB::table('package_oversea')
-      ->select('package_oversea.package_name')
       ->where('package_oversea.package_id', '=', $program_id)
       ->get();
 
@@ -84,7 +83,11 @@ class AdminDataController extends Controller
       ->where('package_id', '=', $program_id)
       ->get();
 
-    return view('admin.print_preview_os', ['id' => $program_id], compact('print_data', 'pk_news', 'img_data', 'single_data'));
+      $program_day_dt = DB::table('program_day_detail_os')
+      ->where('pk_id','=',$program_id)
+      ->get();
+
+    return view('admin.print_preview_os', ['id' => $program_id], compact('print_data', 'pk_news', 'img_data', 'single_data','program_day_dt'));
   }
 
   public function all_program()
@@ -131,6 +134,7 @@ class AdminDataController extends Controller
     $list_oversea = DB::table('travel_lists_oversea')
       ->join('tbl_country', 'travel_lists_oversea.country_id', '=', 'tbl_country.rec')
       ->join('travel_type', 'travel_lists_oversea.travel_type', '=', 'travel_type.number_type')
+      ->orderBy('travel_lists_oversea.travel_created_at','DESC')
       ->get();
 
     return view('admin.list_oversea', compact('list_oversea'));
@@ -143,7 +147,7 @@ class AdminDataController extends Controller
 
     $request->validate(
       [
-        'travel_img.*' => 'mimes:jpg,jpeg,png|max:2048',
+        'travel_img.*' => 'mimes:jpg,jpeg,png|max:5048',
         'travel_img' =>  'max:3'
       ],
       [
@@ -244,12 +248,12 @@ class AdminDataController extends Controller
       ->get();
 
     $program_day = DB::table('program_oversea_lists')
-      ->select('program_oversea_lists.program_day_count', 'program_oversea_lists.program_package_id')
+      ->select('program_oversea_lists.program_day_count')
       ->where('program_oversea_lists.program_package_id', '=', $id)
       ->groupBy('program_oversea_lists.program_day_count')
       ->orderBy('program_oversea_lists.id', 'DESC')
       ->limit('1')
-      ->sum('program_day_count');
+      ->get();
 
     $pk_news = DB::table('package_oversea')
       ->select('package_oversea.package_name')

@@ -2,7 +2,8 @@
 @section('title', 'รายการโปรแกรมทัวร์')
 
 @section('css')
-<link href="https://cdn.datatables.net/v/bs4/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/sb-1.6.0/datatables.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatables.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/datatable-extension.css')}}">
 @endsection
 
 @section('style')
@@ -24,7 +25,7 @@
             <div class="card-header">
                <h5>รายการสถานที่ (ต่างประเทศ)</h5>   
                <hr> 
-               <a class="btn btn-primary" href="{{route('admin.all_program_oversea')}}">โปรแกรมทัวร์ต่างประเทศ</a>               
+               <a class="btn btn-info" href="{{route('admin.all_program_oversea')}}">โปรแกรมทัวร์ต่างประเทศ</a>               
                <a class="btn btn-secondary" href="{{route('admin.all_program')}}">โปรแกรมทัวร์ในประเทศ</a>
             <div class="card-body">
                 @if (session('success'))
@@ -32,25 +33,33 @@
                     <b>{{ session('success') }}</b>
                 </div>
                  @endif
+                 @php
+                         $i = '1';
+                 @endphp
                 <div class="table-responsive">
                     <table class="table table-bordered table-sm" id="example-oversea">
                         <thead>
                             <tr>
+                                <th>#</th>
                                 <th>ชื่อสถานที่</th>
                                 <th>ประเทศ</th>
                                 <th>เมือง</th> 
                                 <th>ประเภท</th>                              
-                                <th></th>
+                             
                             </tr>
                         </thead>
                         <tbody>
                            @foreach ($list_oversea as $row)  
                             <tr>
-                                <td> {{$row->travel_name}} </td>
+                                <td>@php
+                                
+                                    echo $i++;
+                                @endphp</td>
+                                <td><a href="{{route('admin.data_oversea',['id'=>$row->travel_id])}}" > {{$row->travel_name}} </a></td>
                                 <td> {{$row->ct_nameTHA}} </td>
                                 <td> {{$row->city_name}} </td>
                                 <td> {{$row->type_travel}} </td>
-                                <td> <a href="{{route('admin.data_oversea',['id'=>$row->travel_id])}}" class="btn btn-sm btn-info">View</a> </td>                               
+                                                        
                             </tr>
                             @endforeach
                         </tbody>
@@ -67,14 +76,31 @@
 @endsection
 
 @section('script')
-<script src="https://cdn.datatables.net/v/bs4/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/sb-1.6.0/datatables.min.js"></script>
+<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/jszip.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/pdfmake.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.colReorder.min.js')}}"></script>
+
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/custom.js')}}"></script>
 
 <script>
 
         $('#example-oversea').DataTable({
-            dom:'lBfrtip',
+            dom: 'Bfrtip',
             buttons: [
-                'excelHtml5','print'
+                'pageLength','excel','print'
             ],
             "pageLength": 25,
                 "language": {

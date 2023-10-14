@@ -1,33 +1,41 @@
-@extends('layouts.simple.master')
 
-@section('css')
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/select2.css') }}">
-@endsection
 
-@section('style')
-@endsection
+<?php $__env->startSection('css'); ?>
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/select2.css')); ?>">
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumb-title'); ?>
 <h3>เพิ่มสถานที่ (ต่างประเทศ)</h3>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-items')
-@endsection
+<?php $__env->startSection('breadcrumb-items'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="container-fluid">
    <div class="row">
       <div class="col-sm-12">
 
-        @error('travel_img')
+        <?php $__errorArgs = ['travel_img'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
         <div class="alert alert-danger">
-          {{ $message }}
+          <?php echo e($message); ?>
+
         </div>     
-        @enderror
+        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
 
          <div class="card">    
-          <form class="form theme-form" action="{{route('admin.insert_travel_oversea')}}" method="POST" enctype="multipart/form-data">
-              @csrf           
+          <form class="form theme-form" action="<?php echo e(route('admin.insert_travel_oversea')); ?>" method="POST" enctype="multipart/form-data">
+              <?php echo csrf_field(); ?>           
             <div class="card-body">
                 <div class="row">
                     <div class="col">
@@ -35,9 +43,9 @@
                         <label class="form-label" for="name_country">ประเทศ</label>
                         <select class="js-example-basic-single input-air-primary" name="name_country" id="name_country">
                           <option selected disabled>เลือกประเทศ..</option>
-                          @foreach ($country_list as $row)  
-                          <option value="{{$row->rec}}"> {{$row->ct_nameTHA}} </option>
-                          @endforeach
+                          <?php $__currentLoopData = $country_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
+                          <option value="<?php echo e($row->rec); ?>"> <?php echo e($row->ct_nameTHA); ?> </option>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select>                      
                       </div>
                     </div>
@@ -58,9 +66,9 @@
                         <label class="form-label" for="type_travel">ประเภท</label>
                         <select class="form-select input-air-primary" name="type_travel" id="type_travel">
                           <option selected disabled>เลือกประเภท..</option>
-                          @foreach ($type_list as $item)  
-                          <option value="{{$item->number_type}}"> {{$item->type_travel}} </option>
-                          @endforeach
+                          <?php $__currentLoopData = $type_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>  
+                          <option value="<?php echo e($item->number_type); ?>"> <?php echo e($item->type_travel); ?> </option>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </select> 
                       </div>
                     </div>
@@ -114,25 +122,25 @@
       </div>
    </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 
-<script src="{{asset('assets/js/jquery-3.5.1.min.js')}}"></script>
-<script src="{{asset('assets/js/bootstrap/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('assets/js/icons/feather-icon/feather-icon.js')}}"></script>
-<script src="{{asset('assets/js/icons/feather-icon/feather.min.js')}}"></script>
+<script src="<?php echo e(asset('assets/js/jquery-3.5.1.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/bootstrap/bootstrap.bundle.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/icons/feather-icon/feather-icon.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/icons/feather-icon/feather.min.js')); ?>"></script>
 
  <!-- Sidebar jquery-->
-<script src="{{asset('assets/js/config.js')}}"></script>
+<script src="<?php echo e(asset('assets/js/config.js')); ?>"></script>
 
     <!-- Plugins JS start-->
-<script src="{{asset('assets/js/sidebar-menu.js')}}"></script>
-<script src="{{asset('assets/js/tooltip-init.js')}}"></script>
+<script src="<?php echo e(asset('assets/js/sidebar-menu.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/tooltip-init.js')); ?>"></script>
  <!-- Theme js-->
-<script src="{{asset('assets/js/script.js')}}"></script>  
-<script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
-<script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
+<script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>  
+<script src="<?php echo e(asset('assets/js/select2/select2.full.min.js')); ?>"></script>
+<script src="<?php echo e(asset('assets/js/select2/select2-custom.js')); ?>"></script>
 
 <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
 <script>
@@ -144,4 +152,5 @@
   </script>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/new_travel_oversea.blade.php ENDPATH**/ ?>

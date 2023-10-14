@@ -41,7 +41,12 @@ class HomeController extends Controller
         ->orderBy('id','ASC')
         ->get();
 
-        return view('index.van',compact('gall_list1','gall_list2','gall_list3'));
+        $gall_list4 = DB::table('travel_gall')
+        ->whereIn('id', [10, 11, 12])
+        ->orderBy('id','ASC')
+        ->get();
+
+        return view('index.van',compact('gall_list1','gall_list2','gall_list3','gall_list4'));
     }
 
 

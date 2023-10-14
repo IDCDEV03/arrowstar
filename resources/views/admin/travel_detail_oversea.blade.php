@@ -30,9 +30,9 @@
                                 class="btn btn-sm btn-secondary">แก้ไข</a>
                             <hr>
                             <div class="mb-3 row">
-                                <label class="col-sm-3 col-form-label pt-0 txt-primary">ชื่อสถานที่</label>
+                                <label class="col-sm-3 col-form-label pt-0 txt-info">ชื่อสถานที่</label>
                                 <div class="col-sm-9">
-                                    <div class="form-control-static txt-primary">
+                                    <div class="form-control-static txt-info">
                                         {{ $item->travel_name }}
                                     </div>
                                 </div>

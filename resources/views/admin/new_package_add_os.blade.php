@@ -3,7 +3,7 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">   
 @endsection
 
 @section('style')
@@ -57,10 +57,13 @@
                             </div>
 
                             <fieldset>
-
+                                @foreach($program_day as $item)                           
+                            
                                 @php
-                                    $day_program = $program_day + 1;
+                                $program_day = $item->program_day_count;
+                                    $day_program = $program_day+1;
                                 @endphp
+                                    @endforeach
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
@@ -71,14 +74,13 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="mb-3">
                                             <label class="form-label txt-info" for="program_detail">รายละเอียดการท่องเที่ยว
                                             </label>
-
-                                            <textarea class="form-control input-air-primary form-control-sm" id="program_detail" name="program_detail"
+                                            <textarea class="form-control input-air-primary form-control-sm" name="program_detail" id="program_detail"
                                                 rows="3"></textarea>
                                         </div>
                                     </div>

@@ -25,7 +25,7 @@
         .header-space,
         .footer,
         .footer-space {
-            height: 100px;
+            height: 80px;
         }
 
         .header {
@@ -49,13 +49,11 @@
                 <td colspan="2">
                     <div class="header-space">
                         <img class="mb-5" src="{{ asset('assets/images/logo1.png') }}" width="80px"> &nbsp;
-                        <label style="font-size: 11pt">ArrowStar Travel
+                        <label style="font-size: 12pt"><strong>ArrowStar Travel</strong> 
+                   <br>
+                            211/10 หมู่4 ต.หนองขอนกว้าง อ.เมือง จ.อุดรธานี 41000 &nbsp; โทร. 062-1481969
                             <br>
-                            211/10 หมู่4 ต.หนองขอนกว้าง อ.เมือง จ.อุดรธานี 41000
-                            <br>
-                            http://www.arrowstartravel114.com
-                            <br>
-                            Email: arrowstartravel114@gmail.com &nbsp; Tel. 062-1481969
+                            www.arrowstartravel114.com / Email: arrowstartravel114@gmail.com 
                         </label>
                     </div>
                 </td>
@@ -75,7 +73,7 @@
                     <td colspan="2">
                         <div class="row">
                             @foreach ($img_data as $img)
-                                <div class="col-sm-4">
+                                <div class="col-sm-3">
                                     <img src="{{ asset($img->travel_os_img) }}" class="img-thumbnail">
                                 </div>
                             @endforeach
@@ -83,20 +81,47 @@
                     </td>
                 </tr>
 
-                @foreach ($print_data as $item)
+           
+              
+                    @foreach ($pk_news as $row)
+                     @if ($row->program_remark != "")
+                     <tr>
+                     <td colspan="4" class="table-warning"><strong>*{{$row->program_remark}}</strong>
+                     </td>
+                    </tr>      
+                     @endif
+                    @endforeach
                     <tr>
-                        <td colspan="2" class="table-primary"><strong> วันที่ {{ $item->program_day_count }}</strong>
+                        <td colspan="4" class="table-primary"><strong>การเดินทาง</strong>
+                        </td>
+                       </tr>                    
+        
+
+                @foreach ($program_day_dt as $row)
+                    <tr>
+                        <td colspan="2" class="table-primary"><strong> วันที่ {{ $row->pk_day }}</strong>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">{{ $item->program_detail }}</td>
+                        <td colspan="2">{{  $row->pk_detail }}</td>
 
-                    </tr>
-                    <tr>
-                        <td style="width:20%"><span style="font-size: 12pt">{{ $item->travel_name }}</span></td>
-                        <td><span style="font-size: 12pt">{{ $item->travel_detail }}</span></td>
-                    </tr>
+                    </tr>                    
                 @endforeach
+
+                <tr>
+                    <td colspan="2" class="table-primary"><strong> ข้อมูลท่องเที่ยว</strong>
+                    </td>
+                </tr>
+                @foreach ($print_data as $item)
+                 
+                <tr>
+                    <td style="width:20%" ><span style="font-size: 12pt">
+                         วันที่ {{ $item->program_day_count }}
+                        {{ $item->travel_name }}</span></td>
+                    <td colspan="2"><span style="font-size: 12pt">{{ $item->travel_detail }}</span></td>
+                </tr>
+            @endforeach
+
 
 
                 @foreach ($single_data as $item)
@@ -104,14 +129,14 @@
                         <td style="width:20%" class="table-success">
                             <span style="color:green;font-size: 14pt"><strong> ราคารวม </strong></span>
                         </td>
-                        <td><span style="color:green;font-size: 12pt">{{ $item->price_total }}</span></td>
+                        <td><span style="color:green;font-size: 12pt">{!!  $item->price_total !!}</span></td>
 
                     </tr>
                     <tr>
                         <td style="width:20%" class="table-danger">
                             <span style="color: brown"><strong> ราคาไม่รวม </strong></span>
                         </td>
-                        <td><span style="color:brown;font-size: 12pt">{{ $item->price_notin }}</span></td>
+                        <td><span style="color:brown;font-size: 12pt">{!! $item->price_notin !!}</span></td>
 
                     </tr>
                     @if ($item->program_spacial_req != '')
