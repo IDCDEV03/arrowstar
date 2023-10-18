@@ -24,6 +24,11 @@ class HomeController extends Controller
         return view('index.service');
     }
 
+    public function health_tour()
+    {
+        return view('index.health');
+    }
+
     public function van_list()
     {
         $gall_list1 = DB::table('travel_gall')

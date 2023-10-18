@@ -85,8 +85,8 @@
               
                     <?php $__currentLoopData = $pk_news; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                      <?php if($row->program_remark != ""): ?>
-                     <tr>
-                     <td colspan="4" class="table-warning"><strong>*<?php echo e($row->program_remark); ?></strong>
+                     <tr >
+                     <td colspan="4" class="table-warning"><strong><?php echo $row->program_remark; ?></strong>
                      </td>
                     </tr>      
                      <?php endif; ?>
@@ -103,7 +103,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2"><?php echo e($row->pk_detail); ?></td>
+                        <td colspan="2"><?php echo $row->pk_detail; ?></td>
 
                     </tr>                    
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -115,11 +115,11 @@
                 <?php $__currentLoopData = $print_data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                  
                 <tr>
-                    <td style="width:20%" ><span style="font-size: 12pt">
+                    <td style="width:30%" ><span style="font-size: 12pt">
                          วันที่ <?php echo e($item->program_day_count); ?>
 
                         <?php echo e($item->travel_name); ?></span></td>
-                    <td colspan="2"><span style="font-size: 12pt"><?php echo e($item->travel_detail); ?></span></td>
+                    <td colspan="2"><span style="font-size: 12pt"><?php echo $item->travel_detail; ?></span></td>
                 </tr>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 

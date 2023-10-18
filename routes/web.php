@@ -127,6 +127,7 @@ Route::get('/clear-cache', function() {
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/rent',[HomeController::class,'van_list'])->name('van_list');
 Route::get('/service',[HomeController::class,'service'])->name('service');
+Route::get('/health',[HomeController::class,'health_tour'])->name('health');
 
 Route::POST('/save_contact',[HomeController::class,'save_contact'])->name('save_contact');
 Route::POST('/save_index_contact',[HomeController::class,'save_contact_index'])->name('save_contact_index');

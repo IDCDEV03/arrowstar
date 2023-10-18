@@ -3,7 +3,7 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">   
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">
 @endsection
 
 @section('style')
@@ -33,9 +33,10 @@
                     </div>
                     @php
                         $i = '1';
+                        $n = '1';
                     @endphp
                     <div class="card-body">
-                        <form class="f1" action="{{route('admin.insert_program_travel_os')}}" method="post">
+                        <form class="f1" action="{{ route('admin.insert_program_travel_os') }}" method="post">
                             @csrf
                             <input type="hidden" name="package_id" value="{{ request()->id }}">
                             <div class="f1-steps">
@@ -50,20 +51,29 @@
                                 </div>
                                 <div class="f1-step">
                                     <div class="f1-step-icon">
+                                        <i class="fa fa-building-o"></i>
+                                    </div>
+                                    <p>เลือกที่พัก</p>
+                                </div>
+                                <div class="f1-step">
+                                    <div class="f1-step-icon">
                                         <i class="fa fa-coffee"></i>
                                     </div>
                                     <p>เลือกร้านอาหาร</p>
                                 </div>
+
                             </div>
 
                             <fieldset>
-                                @foreach($program_day as $item)                           
-                            
                                 @php
-                                $program_day = $item->program_day_count;
-                                    $day_program = $program_day+1;
+                                    $day_program = '1';
                                 @endphp
-                                    @endforeach
+                                @foreach ($program_day as $item)
+                                    @php
+                                        $program_day = $item->program_day_count;
+                                        $day_program = $program_day + 1;
+                                    @endphp
+                                @endforeach
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
@@ -74,18 +84,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
+
+                                <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="mb-3">
                                             <label class="form-label txt-info" for="program_detail">รายละเอียดการท่องเที่ยว
                                             </label>
                                             <textarea class="form-control input-air-primary form-control-sm" name="program_detail" id="program_detail"
-                                                rows="3"></textarea>
+                                                rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
-
+                                <script>
+                                    CKEDITOR.replace('program_detail', {
+                                        height: 150,
+                                        removeButtons: 'Image',
+                                    });
+                                </script>
                                 <hr>
                                 <h5 class="card-title">เลือกสถานที่ท่องเที่ยว</h5>
                                 <table class="table table-hover display" id="basic-1">
@@ -104,11 +121,9 @@
                                                 <th scope="row">
                                                     <input type="hidden" name="province_id"
                                                         value="{{ $item->country_id }}">
-                                                    <input type="hidden" name="program_day_all"
-                                                        value="{{ $item->package_day }}">
+                                                 
                                                     @php
-                                                        echo $i++;
-                                                        $package_all_day = $item->package_day;
+                                                        echo $i++;        
                                                     @endphp
 
                                                 </th>
@@ -131,8 +146,6 @@
                                         @endforeach
                                     </tbody>
                                 </table>
-
-
                                 <hr>
                                 <div class="f1-buttons">
                                     <button class="btn btn-primary btn-next" type="button">ต่อไป</button>
@@ -140,6 +153,50 @@
 
                             </fieldset>
 
+
+                            <fieldset>
+                                <h5 class="card-title">เลือกที่พัก</h5>
+                                <table class="table table-hover display" id="basic-1">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">ชื่อสถานที่</th>
+                                            <th>ประเทศ/เมือง</th>
+                                            <th>เลือก</th>
+                                            <th scope="col">รายละเอียด</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($hotel_lists as $row)
+                                            <tr>
+                                                <td>
+                                                    @php
+                                                        echo $n++;
+                                                    @endphp
+                                                </td>
+                                                <td>{{ $row->travel_name }}</td>
+                                                <td>{{ $row->ct_nameTHA }}/{{ $row->city_name }}</td>
+                                                <td>
+                                                    <div class="form-check checkbox checkbox-info mb-0">
+                                                        <input class="form-check-input"
+                                                            id="checkbox-info-{{ $row->travel_id }}" type="checkbox"
+                                                            name="travel_id[]" value="{{ $row->travel_id }}">
+                                                        <label class="form-check-label"
+                                                            for="checkbox-info-{{ $row->travel_id }}">เลือก</label>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="btn btn-sm btn-secondary" target="_blank"><i
+                                                            class="fa fa-info-circle"></i></a></td>
+
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                                <div class="f1-buttons">
+                                    <button class="btn btn-primary btn-previous" type="button">Previous</button>
+                                    <button class="btn btn-primary btn-next" type="button">Next</button>
+                                </div>
+                            </fieldset>
 
                             <fieldset>
                                 <h5 class="card-title">เลือกร้านอาหาร</h5>
@@ -164,16 +221,22 @@
                                                             for="checkbox-info-{{ $row->travel_id }}">เลือก</label>
                                                     </div>
                                                 </td>
-                             <td><a href="{{ route('admin.data_oversea', ['id' => $row->travel_id]) }}"
-                                      class="btn btn-sm btn-secondary" target="_blank"><i
-                                         class="fa fa-info-circle"></i></a></td>
+                                                <td><a href="{{ route('admin.data_oversea', ['id' => $row->travel_id]) }}"
+                                                        class="btn btn-sm btn-secondary" target="_blank"><i
+                                                            class="fa fa-info-circle"></i></a></td>
                                             </tr>
                                         @endforeach
                                     </tbody>
 
                                 </table>
                                 <hr>
-
+                                @foreach ($package_day as $data)
+                                <input type="hidden" name="program_day_all" value="{{ $data->package_day }}">
+                                @endforeach
+   
+   @php
+       $package_all_day = $data->package_day;
+   @endphp
                                 <div class="f1-buttons">
                                     <button class="btn btn-primary btn-previous" type="button">ย้อนกลับ</button>
                                     @if ($package_all_day == $day_program)
@@ -198,4 +261,5 @@
     <script src="{{ asset('assets/js/form-wizard/jquery.backstretch.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+
 @endsection

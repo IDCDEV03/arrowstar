@@ -37,10 +37,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
-                   <a href="#" class="nav-item nav-link">ทัวร์ต่างประเทศ</a>
-                <a href="#" class="nav-item nav-link">ทัวร์ในประเทศ</a>
+                   <a href="#" class="nav-item nav-link">โปรแกรมทัวร์</a>
                 <a href="<?php echo e(route('service')); ?>" class="nav-item nav-link">แพ็คเกจ-บริการ</a>
                 <a href="<?php echo e(route('van_list')); ?>" class="nav-item nav-link">รถบัส/รถตู้</a>
+                <a href="<?php echo e(route('health')); ?>" class="nav-item nav-link">ท่องเที่ยวเชิงสุขภาพ</a>
+                <a href="#" class="nav-item nav-link">ท่องเที่ยวชุมชน</a>
                 <a href="<?php echo e(route('contact')); ?>" class="nav-item nav-link">ฝากข้อมูลติดต่อ</a>
                 </div>
             </div>

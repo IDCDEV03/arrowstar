@@ -75,7 +75,7 @@
                                 <label class="col-sm-3 col-form-label pt-0">รายละเอียดสถานที่</label>
                                 <div class="col-sm-9">
                                     <div class="form-control-static">
-                                        <?php echo e($item->travel_detail); ?>
+                                        <?php echo $item->travel_detail; ?>
 
                                     </div>
                                 </div>

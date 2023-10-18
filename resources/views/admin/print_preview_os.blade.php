@@ -85,8 +85,8 @@
               
                     @foreach ($pk_news as $row)
                      @if ($row->program_remark != "")
-                     <tr>
-                     <td colspan="4" class="table-warning"><strong>*{{$row->program_remark}}</strong>
+                     <tr >
+                     <td colspan="4" class="table-warning"><strong>{!!$row->program_remark!!}</strong>
                      </td>
                     </tr>      
                      @endif
@@ -103,7 +103,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2">{{  $row->pk_detail }}</td>
+                        <td colspan="2">{!!  $row->pk_detail !!}</td>
 
                     </tr>                    
                 @endforeach
@@ -115,10 +115,10 @@
                 @foreach ($print_data as $item)
                  
                 <tr>
-                    <td style="width:20%" ><span style="font-size: 12pt">
+                    <td style="width:30%" ><span style="font-size: 12pt">
                          วันที่ {{ $item->program_day_count }}
                         {{ $item->travel_name }}</span></td>
-                    <td colspan="2"><span style="font-size: 12pt">{{ $item->travel_detail }}</span></td>
+                    <td colspan="2"><span style="font-size: 12pt">{!! $item->travel_detail !!}</span></td>
                 </tr>
             @endforeach
 

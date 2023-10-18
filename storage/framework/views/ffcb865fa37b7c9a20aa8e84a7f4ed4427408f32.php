@@ -3,7 +3,7 @@
 
 <?php $__env->startSection('css'); ?>
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
-    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">   
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('style'); ?>
@@ -34,6 +34,7 @@
                     </div>
                     <?php
                         $i = '1';
+                        $n = '1';
                     ?>
                     <div class="card-body">
                         <form class="f1" action="<?php echo e(route('admin.insert_program_travel_os')); ?>" method="post">
@@ -51,20 +52,29 @@
                                 </div>
                                 <div class="f1-step">
                                     <div class="f1-step-icon">
+                                        <i class="fa fa-building-o"></i>
+                                    </div>
+                                    <p>เลือกที่พัก</p>
+                                </div>
+                                <div class="f1-step">
+                                    <div class="f1-step-icon">
                                         <i class="fa fa-coffee"></i>
                                     </div>
                                     <p>เลือกร้านอาหาร</p>
                                 </div>
+
                             </div>
 
                             <fieldset>
-                                <?php $__currentLoopData = $program_day; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                           
-                            
                                 <?php
-                                $program_day = $item->program_day_count;
-                                    $day_program = $program_day+1;
+                                    $day_program = '1';
                                 ?>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php $__currentLoopData = $program_day; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
+                                        $program_day = $item->program_day_count;
+                                        $day_program = $program_day + 1;
+                                    ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="mb-3">
@@ -75,18 +85,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
+
+                                <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="mb-3">
                                             <label class="form-label txt-info" for="program_detail">รายละเอียดการท่องเที่ยว
                                             </label>
                                             <textarea class="form-control input-air-primary form-control-sm" name="program_detail" id="program_detail"
-                                                rows="3"></textarea>
+                                                rows="4"></textarea>
                                         </div>
                                     </div>
                                 </div>
-
+                                <script>
+                                    CKEDITOR.replace('program_detail', {
+                                        height: 150,
+                                        removeButtons: 'Image',
+                                    });
+                                </script>
                                 <hr>
                                 <h5 class="card-title">เลือกสถานที่ท่องเที่ยว</h5>
                                 <table class="table table-hover display" id="basic-1">
@@ -105,11 +122,9 @@
                                                 <th scope="row">
                                                     <input type="hidden" name="province_id"
                                                         value="<?php echo e($item->country_id); ?>">
-                                                    <input type="hidden" name="program_day_all"
-                                                        value="<?php echo e($item->package_day); ?>">
+                                                 
                                                     <?php
-                                                        echo $i++;
-                                                        $package_all_day = $item->package_day;
+                                                        echo $i++;        
                                                     ?>
 
                                                 </th>
@@ -132,8 +147,6 @@
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
                                 </table>
-
-
                                 <hr>
                                 <div class="f1-buttons">
                                     <button class="btn btn-primary btn-next" type="button">ต่อไป</button>
@@ -141,6 +154,50 @@
 
                             </fieldset>
 
+
+                            <fieldset>
+                                <h5 class="card-title">เลือกที่พัก</h5>
+                                <table class="table table-hover display" id="basic-1">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">ชื่อสถานที่</th>
+                                            <th>ประเทศ/เมือง</th>
+                                            <th>เลือก</th>
+                                            <th scope="col">รายละเอียด</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $__currentLoopData = $hotel_lists; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <tr>
+                                                <td>
+                                                    <?php
+                                                        echo $n++;
+                                                    ?>
+                                                </td>
+                                                <td><?php echo e($row->travel_name); ?></td>
+                                                <td><?php echo e($row->ct_nameTHA); ?>/<?php echo e($row->city_name); ?></td>
+                                                <td>
+                                                    <div class="form-check checkbox checkbox-info mb-0">
+                                                        <input class="form-check-input"
+                                                            id="checkbox-info-<?php echo e($row->travel_id); ?>" type="checkbox"
+                                                            name="travel_id[]" value="<?php echo e($row->travel_id); ?>">
+                                                        <label class="form-check-label"
+                                                            for="checkbox-info-<?php echo e($row->travel_id); ?>">เลือก</label>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="btn btn-sm btn-secondary" target="_blank"><i
+                                                            class="fa fa-info-circle"></i></a></td>
+
+                                            </tr>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </tbody>
+                                </table>
+                                <div class="f1-buttons">
+                                    <button class="btn btn-primary btn-previous" type="button">Previous</button>
+                                    <button class="btn btn-primary btn-next" type="button">Next</button>
+                                </div>
+                            </fieldset>
 
                             <fieldset>
                                 <h5 class="card-title">เลือกร้านอาหาร</h5>
@@ -165,16 +222,22 @@
                                                             for="checkbox-info-<?php echo e($row->travel_id); ?>">เลือก</label>
                                                     </div>
                                                 </td>
-                             <td><a href="<?php echo e(route('admin.data_oversea', ['id' => $row->travel_id])); ?>"
-                                      class="btn btn-sm btn-secondary" target="_blank"><i
-                                         class="fa fa-info-circle"></i></a></td>
+                                                <td><a href="<?php echo e(route('admin.data_oversea', ['id' => $row->travel_id])); ?>"
+                                                        class="btn btn-sm btn-secondary" target="_blank"><i
+                                                            class="fa fa-info-circle"></i></a></td>
                                             </tr>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
 
                                 </table>
                                 <hr>
-
+                                <?php $__currentLoopData = $package_day; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <input type="hidden" name="program_day_all" value="<?php echo e($data->package_day); ?>">
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+   
+   <?php
+       $package_all_day = $data->package_day;
+   ?>
                                 <div class="f1-buttons">
                                     <button class="btn btn-primary btn-previous" type="button">ย้อนกลับ</button>
                                     <?php if($package_all_day == $day_program): ?>
@@ -199,6 +262,7 @@
     <script src="<?php echo e(asset('assets/js/form-wizard/jquery.backstretch.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/datatable/datatables/jquery.dataTables.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/js/datatable/datatables/datatable.custom.js')); ?>"></script>
+
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/new_package_add_os.blade.php ENDPATH**/ ?>

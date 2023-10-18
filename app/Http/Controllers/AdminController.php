@@ -278,7 +278,6 @@ class AdminController extends Controller
           'program_package_id' => $pk_id,
           'program_travel_os_id' => $item,
           'program_day_count' => $request->program_day,
-          'program_detail' => $request->program_detail,
           'created_at' => Carbon::now()
         ]);
       }

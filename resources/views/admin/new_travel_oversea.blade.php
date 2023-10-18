@@ -99,7 +99,7 @@
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel_remark">Tips ข้อควรระวัง</label>
-                        <textarea name="travel_remark" class="form-control" rows="5"></textarea>
+                        <textarea name="travel_remark" id="travel_remark" class="form-control" rows="5"></textarea>
                       </div>
                     </div>
                   </div>
@@ -138,10 +138,16 @@
 <script>
   CKEDITOR.replace('travel_detail',{
   height : 150,
-  width : 700  
+  removeButtons: 'Cut,Copy,Paste,Anchor',
+  removeButtons: 'PasteFromWord',   
+  removeButtons: 'Image',  
   } );
-
   </script>
-
+<script>
+  CKEDITOR.replace('travel_remark',{
+  height : 150,
+  removeButtons: 'Image',     
+  } );
+  </script>
 
 @endsection

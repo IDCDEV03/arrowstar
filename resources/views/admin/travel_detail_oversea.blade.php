@@ -70,7 +70,7 @@
                                 <label class="col-sm-3 col-form-label pt-0">รายละเอียดสถานที่</label>
                                 <div class="col-sm-9">
                                     <div class="form-control-static">
-                                        {{ $item->travel_detail }}
+                                        {!! $item->travel_detail !!}
                                     </div>
                                 </div>
                             </div>

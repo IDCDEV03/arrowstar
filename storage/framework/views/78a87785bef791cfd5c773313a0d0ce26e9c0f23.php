@@ -107,7 +107,7 @@ unset($__errorArgs, $__bag); ?>
                     <div class="col">
                       <div class="mb-3">
                         <label class="form-label" for="travel_remark">Tips ข้อควรระวัง</label>
-                        <textarea name="travel_remark" class="form-control" rows="5"></textarea>
+                        <textarea name="travel_remark" id="travel_remark" class="form-control" rows="5"></textarea>
                       </div>
                     </div>
                   </div>
@@ -146,11 +146,17 @@ unset($__errorArgs, $__bag); ?>
 <script>
   CKEDITOR.replace('travel_detail',{
   height : 150,
-  width : 700  
+  removeButtons: 'Cut,Copy,Paste,Anchor',
+  removeButtons: 'PasteFromWord',   
+  removeButtons: 'Image',  
   } );
-
   </script>
-
+<script>
+  CKEDITOR.replace('travel_remark',{
+  height : 150,
+  removeButtons: 'Image',     
+  } );
+  </script>
 
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\GitHub\arrowstar\resources\views/admin/new_travel_oversea.blade.php ENDPATH**/ ?>

@@ -41,26 +41,32 @@
                                     <b>{{ session('success') }}</b>
                                 </div>
                             @endif
+                            @php
+                                $i ='1';
+                            @endphp
                             <div class="dt-ext table-responsive">
                                 <table class="display table-bordered" id="table-program-oversea">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>ชื่อโปรแกรมทัวร์</th>
                                             <th>ประเทศ</th>
                                             <th>เมือง</th>
-                                            <th>ตั้งค่า</th>
+                                            <th>วันที่เพิ่ม</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         @foreach ($list_program as $item)
                                         <tr>
-                                            <td>{{ $item->package_name }}</td>
+                                            <td>@php
+                                                echo $i++;
+                                            @endphp</td>
+                                            <td><a href="{{ route('admin.preview_package_os', ['id' => $item->package_id]) }}">{{ $item->package_name }}</a></td>
                                             <td>{{ $item->ct_nameTHA }}</td>
                                             <td>{{ $item->name_city }}</td>
-                                            <td><a href="{{ route('admin.preview_package_os', ['id' => $item->package_id]) }}" class="btn btn-primary btn-xs">
-                                                <i class="fa fa-navicon"></i>
-                                            </a></td>
+                                            <td>{{ Carbon\Carbon::parse($item->created_at)->format('d/m/Y ') }}</td>
+                                           
                                         </tr>
                                     @endforeach
                                     </tbody>

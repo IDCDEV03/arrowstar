@@ -240,6 +240,10 @@ class AdminDataController extends Controller
       ->groupBy('travel_lists_oversea.travel_id')
       ->get();
 
+    $package_day = DB::table('package_oversea')
+    ->where('package_id','=',$id)
+    ->get();
+
     $food_lists = DB::table('travel_lists_oversea')
       ->join('package_oversea', 'package_oversea.country_id', '=', 'travel_lists_oversea.country_id')
       ->where('travel_lists_oversea.travel_type', '=', '2')
@@ -260,10 +264,19 @@ class AdminDataController extends Controller
       ->where('package_oversea.package_id', '=', $id)
       ->first();
 
+      $hotel_lists = DB::table('travel_lists_oversea')
+      ->join('package_oversea', 'package_oversea.country_id', '=', 'travel_lists_oversea.country_id')
+      ->join('tbl_country', 'travel_lists_oversea.country_id', '=', 'tbl_country.rec')
+      ->where('travel_lists_oversea.travel_type', '=', '4')
+      ->orderBy('travel_lists_oversea.travel_created_at', 'desc')
+      ->groupBy('travel_lists_oversea.travel_id')
+      ->get();
+
     $pk_news_data = [
       'package_name' => $pk_news->package_name
     ];
 
-    return view('admin.new_package_add_os', $pk_news_data, compact('new_tours', 'food_lists', 'program_day'));
+    return view('admin.new_package_add_os', $pk_news_data, compact('new_tours', 'food_lists', 'program_day','hotel_lists','package_day'));
+  
   }
 }

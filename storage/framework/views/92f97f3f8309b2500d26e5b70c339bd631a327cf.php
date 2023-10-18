@@ -32,7 +32,7 @@
                                         <label class="col-sm-3 col-form-label">ประเทศ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                <?php echo e($row->ct_nameTHA); ?>
+                                                <?php echo $row->ct_nameTHA; ?>
 
                                             </div>
                                         </div>
@@ -41,7 +41,7 @@
                                         <label class="col-sm-3 col-form-label">ชื่อแพ็คเกจ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                <?php echo e($row->package_name); ?>
+                                                <?php echo $row->package_name; ?>
 
                                             </div>
                                         </div>
@@ -50,7 +50,7 @@
                                         <label class="col-sm-3 col-form-label">ความต้องการพิเศษ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                <?php echo e($row->program_spacial_req); ?>
+                                                <?php echo $row->program_spacial_req; ?>
 
                                             </div>
                                         </div>
@@ -59,7 +59,7 @@
                                         <label class="col-sm-3 col-form-label txt-danger">หมายเหตุ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static txt-danger">
-                                                <?php echo e($row->program_remark); ?>
+                                                <?php echo $row->program_remark; ?>
 
                                             </div>
                                         </div>
@@ -68,7 +68,7 @@
                                         <label class="col-sm-3 col-form-label">Tips ข้อควรระวัง</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                <?php echo e($row->program_tips); ?>
+                                                <?php echo $row->program_tips; ?>
 
                                             </div>
                                         </div>

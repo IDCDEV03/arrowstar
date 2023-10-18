@@ -41,26 +41,32 @@
                                     <b><?php echo e(session('success')); ?></b>
                                 </div>
                             <?php endif; ?>
+                            <?php
+                                $i ='1';
+                            ?>
                             <div class="dt-ext table-responsive">
                                 <table class="display table-bordered" id="table-program-oversea">
                                     <thead>
                                         <tr>
+                                            <th>#</th>
                                             <th>ชื่อโปรแกรมทัวร์</th>
                                             <th>ประเทศ</th>
                                             <th>เมือง</th>
-                                            <th>ตั้งค่า</th>
+                                            <th>วันที่เพิ่ม</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <?php $__currentLoopData = $list_program; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
-                                            <td><?php echo e($item->package_name); ?></td>
+                                            <td><?php
+                                                echo $i++;
+                                            ?></td>
+                                            <td><a href="<?php echo e(route('admin.preview_package_os', ['id' => $item->package_id])); ?>"><?php echo e($item->package_name); ?></a></td>
                                             <td><?php echo e($item->ct_nameTHA); ?></td>
                                             <td><?php echo e($item->name_city); ?></td>
-                                            <td><a href="<?php echo e(route('admin.preview_package_os', ['id' => $item->package_id])); ?>" class="btn btn-primary btn-xs">
-                                                <i class="fa fa-navicon"></i>
-                                            </a></td>
+                                            <td><?php echo e(Carbon\Carbon::parse($item->created_at)->format('d/m/Y ')); ?></td>
+                                           
                                         </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>

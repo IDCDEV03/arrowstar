@@ -39,8 +39,7 @@
                                     <label for="f1-last-name">ข้อควรระวัง (Tips)</label>
                                     <textarea class="form-control" id="program_tips" name="program_tips" rows="3"><?php echo e($row->program_tips); ?></textarea>
                                   </div>
-
-                                  
+                                 
 
                                   <div class="mb-2">
                                     <label for="f1-last-name"><span class="txt-info" style="font-weight: bold">ราคารวม</span></label>
@@ -69,15 +68,23 @@
 <script>
   CKEDITOR.replace('program_tips',{
   height : 150,
-  width : 700  
+  removeButtons: 'Image',
   } ),
   CKEDITOR.replace('price_total',{
   height : 150,
-  width : 700
+  removeButtons: 'Image',
   }),
   CKEDITOR.replace('price_notin',{
   height : 150,
-  width : 700
+  removeButtons: 'Image',
+  });
+  CKEDITOR.replace('program_remark',{
+  height : 150,
+  removeButtons: 'Image',
+  });
+  CKEDITOR.replace('program_req',{
+  height : 150,
+  removeButtons: 'Image',
   });
   </script>
 <?php $__env->stopSection(); ?>
