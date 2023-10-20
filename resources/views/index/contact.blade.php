@@ -46,15 +46,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputSubject">โปรดเลือกหัวข้อที่ต้องการติดต่อ <span
+                                <label for="inputSubject" style="color: #d60404">โปรดเลือกหัวข้อที่ต้องการติดต่อ <span
                                         class="text-danger">*</span></label>
                                 <select class="form-control" id="inputSubject" name="contact_subject" required>
                                     <option value="0" selected disabled>เลือก..</option>
-                                    <option value="จัดกรุ๊ปทัวร์">จัดกรุ๊ปทัวร์</option>
-                                    <option value="สัมมนา/ศึกษาดูงาน">สัมมนา/ศึกษาดูงาน</option>
-                                    <option value="เช่ารถตู้/รถบัส">เช่ารถตู้/รถบัส</option>
-                                    <option value="ของฝาก/ของที่ระลึก">ของฝาก/ของที่ระลึก</option>
-                                    <option value="อื่นๆ">อื่นๆ</option>
+                                    <option value="จัดกรุ๊ปทัวร์" style="color:blue">จัดกรุ๊ปทัวร์</option>
+                                    <option style="color:#694800" value="ท่องเที่ยวเชิงสุขภาพ">ท่องเที่ยวเชิงสุขภาพ</option>
+                                    <option style="color:#da1d7b" value="ท่องเที่ยวชุมชน">ท่องเที่ยวชุมชน</option>
+                                    <option style="color:#ff6d02" value="สัมมนา/ศึกษาดูงาน">สัมมนา/ศึกษาดูงาน</option>
+                                    <option style="color:#64ca05" value="เช่ารถตู้/รถบัส">เช่ารถตู้/รถบัส</option>
+                                    <option style="color:#3706bd" value="ของฝาก/ของที่ระลึก">ของฝาก/ของที่ระลึก</option>
+                                    <option style="color:rgb(183, 9, 218)" value="อื่นๆ">อื่นๆ</option>
                                 </select>
                             </div>
                             <div class="form-group">
