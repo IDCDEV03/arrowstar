@@ -27,7 +27,7 @@
                             </div>
                         <?php endif; ?>
                         <?php $__currentLoopData = $data_oversea; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <a href="<?php echo e(route('admin.edit_travel', ['id' => request()->id])); ?>"
+                            <a href="<?php echo e(route('admin.edit_travel_os', ['id' => request()->id])); ?>"
                                 class="btn btn-sm btn-secondary">แก้ไข</a>
                             <hr>
                             <div class="mb-3 row">
@@ -88,7 +88,7 @@
                                     <label class="col-sm-3 col-form-label pt-0">Tips ข้อควรระวัง</label>
                                     <div class="col-sm-9">
                                         <div class="form-control-static">
-                                            <?php echo e($item->travel_remark); ?>
+                                            <?php echo $item->travel_remark; ?>
 
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@
                                 <div class="col-sm">
                                     <img src="<?php echo e(asset($row->travel_os_img)); ?>" class="img-fluid img-thumbnail" width="300px"
                                         alt="">
-                                    <a href="<?php echo e(route('admin.delete_travel_img', ['id' => $row->id])); ?>"
+                                    <a href="<?php echo e(route('admin.delete_travel_img_os', ['id' => $row->id])); ?>"
                                         onclick="return confirm('ต้องการลบ ใช่หรือไม่?');"
                                         class="btn btn-xs btn-danger">ลบ</a>
                                 </div>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-light" type="button" data-bs-dismiss="modal">ปิด</button>
-                    <button class="btn btn-secondary" type="submit">บันทึก</button>
+                    <button class="btn btn-secondary" name="action" value="action2" type="submit">บันทึก</button>
                 </div>
                 </form>
             </div>

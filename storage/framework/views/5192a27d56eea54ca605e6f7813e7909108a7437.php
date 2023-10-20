@@ -22,13 +22,22 @@
                             <b><?php echo e(session('success')); ?></b>
                         </div>
                     <?php endif; ?>
-                    
-                    <form class="form theme-form" action="<?php echo e(route('admin.save_program_oversea',['id'=>request()->id])); ?>" method="POST">
+
+                    <form class="form theme-form" action="<?php echo e(route('admin.save_program_oversea', ['id' => request()->id])); ?>"
+                        method="POST" enctype="multipart/form-data">
                         <?php echo csrf_field(); ?>
 
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
+
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label">ภาพปก</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" type="file" name="package_cover" accept="image/*"
+                                                required>
+                                        </div>
+                                    </div>
 
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">ประเทศ</label>
@@ -41,6 +50,8 @@
                                             </select>
                                         </div>
                                     </div>
+
+
 
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">เมือง</label>
@@ -70,13 +81,34 @@
                                             <small class="form-text text-muted">ระบุเป็นตัวเลข</small>
                                         </div>
                                     </div>
+
+                                    <div class="col-sm-12">
+                                        <strong>ตั้งค่าการแสดงผลบนหน้าเว็บไซต์</strong>
+                                    </div>
+                                    <div class="col">
+                                        <div class="m-t-15 m-checkbox-inline custom-radio-ml">
+                                            <div class="form-check form-check-inline radio radio-primary">
+                                                <input class="form-check-input" id="radioinline1" type="radio"
+                                                    name="is_show" value="1" checked>
+                                                <label class="form-check-label mb-0" for="radioinline1">เปิด</label>
+                                            </div>
+                                            <div class="form-check form-check-inline radio radio-secondary">
+                                                <input class="form-check-input" id="radioinline2" type="radio"
+                                                    name="is_show" value="0">
+                                                <label class="form-check-label mb-0" for="radioinline2">ไม่เปิด</label>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
                                 </div>
+
+
+
+                                <hr>
+                                <button type="submit" class="btn btn-success">บันทึก</button>
+
                             </div>
-
-                            <hr>
-                            <button type="submit" class="btn btn-success">บันทึก</button>
-
-                        </div>
                     </form>
                 </div>
             </div>

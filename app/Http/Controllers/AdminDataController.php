@@ -64,7 +64,7 @@ class AdminDataController extends Controller
     $print_data = DB::table('program_oversea_lists')
       ->join('travel_lists_oversea', 'program_oversea_lists.program_travel_os_id', '=', 'travel_lists_oversea.travel_id')
       ->where('program_oversea_lists.program_package_id', '=', $program_id)
-      ->orderBy('program_oversea_lists.program_day_count','ASC')
+      ->orderBy('program_oversea_lists.program_day_count', 'ASC')
       ->get();
 
     $pk_news = DB::table('package_oversea')
@@ -83,11 +83,11 @@ class AdminDataController extends Controller
       ->where('package_id', '=', $program_id)
       ->get();
 
-      $program_day_dt = DB::table('program_day_detail_os')
-      ->where('pk_id','=',$program_id)
+    $program_day_dt = DB::table('program_day_detail_os')
+      ->where('pk_id', '=', $program_id)
       ->get();
 
-    return view('admin.print_preview_os', ['id' => $program_id], compact('print_data', 'pk_news', 'img_data', 'single_data','program_day_dt'));
+    return view('admin.print_preview_os', ['id' => $program_id], compact('print_data', 'pk_news', 'img_data', 'single_data', 'program_day_dt'));
   }
 
   public function all_program()
@@ -103,9 +103,9 @@ class AdminDataController extends Controller
   public function all_program_oversea()
   {
     $list_program = DB::table('package_oversea')
-    ->join('tbl_country', 'tbl_country.rec', '=', 'package_oversea.country_id')
-    ->orderBy('package_oversea.created_at', 'desc')
-    ->get();
+      ->join('tbl_country', 'tbl_country.rec', '=', 'package_oversea.country_id')
+      ->orderBy('package_oversea.created_at', 'desc')
+      ->get();
 
     return view('admin.all_program_oversea', compact('list_program'));
   }
@@ -134,7 +134,7 @@ class AdminDataController extends Controller
     $list_oversea = DB::table('travel_lists_oversea')
       ->join('tbl_country', 'travel_lists_oversea.country_id', '=', 'tbl_country.rec')
       ->join('travel_type', 'travel_lists_oversea.travel_type', '=', 'travel_type.number_type')
-      ->orderBy('travel_lists_oversea.travel_created_at','DESC')
+      ->orderBy('travel_lists_oversea.travel_created_at', 'DESC')
       ->get();
 
     return view('admin.list_oversea', compact('list_oversea'));
@@ -218,6 +218,15 @@ class AdminDataController extends Controller
   {
     $pos_id = $request->id;
 
+    $package_cover = $request->file('package_cover');
+    $name_gen = hexdec(uniqid());
+    $package_cover_ext = strtolower($package_cover->getClientOriginalExtension());
+    $package_cover_name = $name_gen . '.' . $package_cover_ext;
+    $upload_location = 'travel_img/';
+    $full_path = $upload_location . $package_cover_name;
+
+    $package_cover->move($upload_location, $package_cover_name);
+
     DB::table('package_oversea')->insert([
       'package_id' => $pos_id,
       'country_id' => $request->country_id,
@@ -225,6 +234,8 @@ class AdminDataController extends Controller
       'package_name' => $request->package_name,
       'package_day' => $request->package_day,
       'package_night' => $request->package_night,
+      'package_cover' => $full_path,
+      'is_show' => $request->is_show,
       'created_at' => Carbon::now()
     ]);
     return redirect()->route('admin.new_package_add_os', ['id' => $pos_id])->with('success', "สร้างโปรแกรมใหม่เรียบร้อยแล้ว");
@@ -241,8 +252,8 @@ class AdminDataController extends Controller
       ->get();
 
     $package_day = DB::table('package_oversea')
-    ->where('package_id','=',$id)
-    ->get();
+      ->where('package_id', '=', $id)
+      ->get();
 
     $food_lists = DB::table('travel_lists_oversea')
       ->join('package_oversea', 'package_oversea.country_id', '=', 'travel_lists_oversea.country_id')
@@ -264,7 +275,7 @@ class AdminDataController extends Controller
       ->where('package_oversea.package_id', '=', $id)
       ->first();
 
-      $hotel_lists = DB::table('travel_lists_oversea')
+    $hotel_lists = DB::table('travel_lists_oversea')
       ->join('package_oversea', 'package_oversea.country_id', '=', 'travel_lists_oversea.country_id')
       ->join('tbl_country', 'travel_lists_oversea.country_id', '=', 'tbl_country.rec')
       ->where('travel_lists_oversea.travel_type', '=', '4')
@@ -276,7 +287,54 @@ class AdminDataController extends Controller
       'package_name' => $pk_news->package_name
     ];
 
-    return view('admin.new_package_add_os', $pk_news_data, compact('new_tours', 'food_lists', 'program_day','hotel_lists','package_day'));
-  
+    return view('admin.new_package_add_os', $pk_news_data, compact('new_tours', 'food_lists', 'program_day', 'hotel_lists', 'package_day'));
+  }
+
+
+  public function edit_package_os($id)
+  {
+    $data_travel_os = DB::table('package_oversea')
+      ->join('tbl_country', 'package_oversea.country_id', '=', 'tbl_country.rec')
+      ->where('package_oversea.package_id', '=', $id)
+      ->get();
+
+    return view('admin.edit_package_os', ['id' => $id], compact('data_travel_os'));
+  }
+
+  public function update_package_os(Request $request)
+  {
+    if ($request->hasFile('package_cover')) {
+      $cover_img = $request->file('travel_img');
+      $upload_location = 'travel_img/';
+      $name_gen = hexdec(uniqid());
+      $cover_img_ext = strtolower($cover_img->getClientOriginalExtension());
+      $cover_img_name = $name_gen . '.' . $cover_img_ext;
+      $upload_location = 'travel_img/';
+      $full_path = $upload_location . $cover_img_name;
+
+      $cover_img->move($upload_location, $cover_img_name);
+
+      DB::table('package_oversea')
+        ->where('package_id', '=', $request->package_id)
+        ->update([
+          'name_city' => $request->city_name,
+          'package_name' => $request->package_name,
+          'package_cover' => $full_path,
+          'is_show' => $request->is_show,
+          'updated_at' => Carbon::now()
+        ]);
+        return redirect()->route('admin.preview_package_os', ['id' => $request->package_id]);
+    }else
+    {
+      DB::table('package_oversea')
+      ->where('package_id', '=', $request->package_id)
+      ->update([
+        'name_city' => $request->city_name,
+        'package_name' => $request->package_name,
+        'is_show' => $request->is_show,
+        'updated_at' => Carbon::now()
+      ]);
+      return redirect()->route('admin.preview_package_os', ['id' => $request->package_id]);
+    }
   }
 }

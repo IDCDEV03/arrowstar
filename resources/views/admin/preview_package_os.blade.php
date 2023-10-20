@@ -23,16 +23,28 @@
                             <b>{{ session('success') }}</b>
                         </div>
                     @endif
-
+           
                     @foreach ($package_pre as $row)
                         <div class="card-body">
+                            <a href="{{route('admin.edit_package_os',['id' => request()->id])}}"
+                                class="btn btn-sm btn-secondary">แก้ไข</a>
+                            <hr>
+
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">ประเทศ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {!! $row->ct_nameTHA !!}
+                                                {{ $row->ct_nameTHA }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label">เมือง</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                {{ $row->name_city}}
                                             </div>
                                         </div>
                                     </div>
@@ -84,6 +96,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                     @endforeach

@@ -34,7 +34,7 @@ class AdminController extends Controller
     return view('admin.list_travel', $data_name_province, compact('list_travel'));
   }
 
- 
+
 
   public function new_travel()
   {
@@ -120,12 +120,12 @@ class AdminController extends Controller
       ->groupBy('travel_lists.travel_id')
       ->get();
 
-    $program_day = DB::table('program_travel_lists')      
-      ->select('program_travel_lists.program_day_count','program_travel_lists.program_package_id')
+    $program_day = DB::table('program_travel_lists')
+      ->select('program_travel_lists.program_day_count', 'program_travel_lists.program_package_id')
       ->where('program_travel_lists.program_package_id', '=', $id)
       ->groupBy('program_travel_lists.program_day_count')
-      ->orderBy('program_travel_lists.id','DESC')
-      ->limit('1')      
+      ->orderBy('program_travel_lists.id', 'DESC')
+      ->limit('1')
       ->sum('program_day_count');
 
     $pk_news = DB::table('package_news')
@@ -192,23 +192,6 @@ class AdminController extends Controller
   }
 
 
-  public function save_package_oversea(Request $request)
-  {
-    $pos_id = Str::random(10);
-
-    DB::table('package_oversea')->insert([
-      'package_id' => $pos_id,
-      'country_id' => $request->country_id,  
-      'city_name' => $request->city_name,   
-      'package_name' => $request->package_name,
-      'package_day' => $request->package_day,
-      'package_night' => $request->package_night,
-      'created_at' => Carbon::now()
-    ]);
-    return redirect()->route('admin.new_package_add', ['id' => $pos_id])->with('success', "สร้างโปรแกรมใหม่เรียบร้อยแล้ว");
-  }
-
-
   public function insert_program_travel(Request $request)
   {
 
@@ -270,8 +253,7 @@ class AdminController extends Controller
         'created_at' => Carbon::now()
       ]);
       return redirect()->route('admin.preview_package_os', ['id' => $pk_id]);
-    } 
-    elseif ($action == 'action2') {
+    } elseif ($action == 'action2') {
       $travel_list = $request->input('travel_id');
       foreach ($travel_list as $item) {
         DB::table('program_oversea_lists')->insert([
@@ -319,7 +301,7 @@ class AdminController extends Controller
         ]);
       }
     }
- 
+
     DB::table('travel_lists')->insert([
       'travel_id' => $travel_id,
       'province' => $request->province1,
@@ -332,7 +314,6 @@ class AdminController extends Controller
     ]);
 
     return redirect()->route('list_province')->with('success', "บันทึกข้อมูลเรียบร้อยแล้ว");
- 
   }
 
 
@@ -348,12 +329,26 @@ class AdminController extends Controller
 
     $travel_img->move($upload_location, $travel_img_name);
 
-    DB::table('travel_imgs')->insert([
-      'travel_id' => $request->travel_id,
-      'travel_img' => $full_path,
-      'created_at' => Carbon::now()
-    ]);
-    return redirect()->route('admin.data_travel', ['id' => $tid])->with('success', "บันทึกข้อมูลเรียบร้อยแล้ว");
+    $action = $request->input('action');
+
+    if ($action == 'action1') {
+
+      DB::table('travel_imgs')->insert([
+        'travel_id' => $request->travel_id,
+        'travel_img' => $full_path,
+        'created_at' => Carbon::now()
+      ]);
+      return redirect()->route('admin.data_travel', ['id' => $tid])->with('success', "บันทึกข้อมูลเรียบร้อยแล้ว");
+    }elseif ($action == 'action2') {
+      DB::table('travel_imgs_oversea')->insert([
+        'travel_os_id' => $request->travel_id,
+        'travel_os_img' => $full_path,
+        'created_at' => Carbon::now()
+      ]);
+      return redirect()->route('admin.data_oversea', ['id' => $tid])->with('success', "บันทึกข้อมูลเรียบร้อยแล้ว");
+
+    }
+
   }
 
   public function data_travel($id)
@@ -395,6 +390,24 @@ class AdminController extends Controller
     return view('admin.edit_travel', ['id' => $id], compact('data_travel', 'province_list', 'type_list'));
   }
 
+  public function edit_travel_os($id)
+  {
+    $data_travel = DB::table('travel_lists_oversea')
+      ->join('tbl_country', 'travel_lists_oversea.country_id', '=', 'tbl_country.rec')
+      ->join('travel_type', 'travel_lists_oversea.travel_type', '=', 'travel_type.number_type')
+      ->where('travel_lists_oversea.travel_id', '=', $id)
+      ->get();
+
+    $country_list = DB::table('tbl_country')
+      ->orderBy('tbl_country.ct_nameTHA', 'ASC')
+      ->get();
+
+    $type_list = DB::table('travel_type')
+      ->get();
+
+    return view('admin.edit_travel_os', ['id' => $id], compact('data_travel', 'country_list', 'type_list'));
+  }
+
   public function update_travel(Request $request)
   {
     $travel_id = $request->travel_id;
@@ -425,6 +438,36 @@ class AdminController extends Controller
         ]);
     }
     return redirect()->route('admin.data_travel', ['id' => $travel_id])->with('success', "แก้ไขข้อมูลเรียบร้อยแล้ว");
+  }
+
+  public function update_travel_os(Request $request)
+  {
+    $travel_id = $request->travel_id;
+    $country_id = $request->province1;
+
+    if ($country_id == '0') {
+      DB::table('travel_lists_oversea')
+        ->where('travel_id', '=', $travel_id)
+        ->update([
+          'city_name' => $request->travel_city,
+          'travel_name' => $request->travel_name,
+          'travel_detail' => $request->travel_detail,
+          'travel_remark' => $request->travel_remark,
+          'travel_updated_at' => Carbon::now()
+        ]);
+    } else {
+      DB::table('travel_lists_oversea')
+        ->where('travel_id', '=', $travel_id)
+        ->update([
+          'country_id' => $country_id,
+          'city_name' => $request->travel_city,
+          'travel_name' => $request->travel_name,
+          'travel_detail' => $request->travel_detail,
+          'travel_remark' => $request->travel_remark,
+          'travel_updated_at' => Carbon::now()
+        ]);
+    }
+    return redirect()->route('admin.data_oversea', ['id' => $travel_id])->with('success', "แก้ไขข้อมูลเรียบร้อยแล้ว");
   }
 
 
@@ -475,5 +518,4 @@ class AdminController extends Controller
       ]);
     return redirect()->route('admin.preview_package_os', ['id' => $package_id]);
   }
-
 }

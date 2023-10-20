@@ -29,6 +29,21 @@ class DeleteFileController extends Controller
         return redirect()->back()->with('success', "ลบเรียบร้อยแล้ว");    
     }
 
+    public function delete_travel_img_os(Request $request)
+    {
+        $id = $request->id;
+     
+        $travel_img = DB::table('travel_imgs_oversea')->find($id);
+        $image_path = $travel_img->travel_os_img;
+        unlink($image_path);
+
+        $delete_data_img = DB::table('travel_imgs_oversea')
+        ->where('id','=',$id)
+        ->delete();
+
+        return redirect()->back()->with('success', "ลบเรียบร้อยแล้ว");    
+    }
+
     public function delete_travel_place(Request $request)
     {
         $id = $request->id;

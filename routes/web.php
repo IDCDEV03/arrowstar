@@ -81,6 +81,9 @@ Route::get('/admin/delete_travel/{id}/{province}', $controller_path . '\DeleteFi
 
 Route::get('/admin/delete_img/{id}', $controller_path . '\DeleteFileController@delete_travel_img')->name('admin.delete_travel_img');
 
+Route::get('/admin/delete_img_os/{id}', $controller_path . '\DeleteFileController@delete_travel_img_os')->name('admin.delete_travel_img_os');
+
+
 /** data */
 Route::get('/admin/data_travel/{id}', $controller_path . '\AdminController@data_travel')->name('admin.data_travel');
 
@@ -97,8 +100,15 @@ Route::get('/admin/list_customer', $controller_path . '\AdminDataController@list
 /** Edit Data */
 Route::get('/admin/edit_travel/{id}', $controller_path . '\AdminController@edit_travel')->name('admin.edit_travel');
 
+Route::get('/admin/edit_travel_os/{id}', $controller_path . '\AdminController@edit_travel_os')->name('admin.edit_travel_os');
+
+Route::get('/admin/edit_package_os/{id}', $controller_path . '\AdminDataController@edit_package_os')->name('admin.edit_package_os');
+
 Route::post('/admin/update_travel', $controller_path . '\AdminController@update_travel')->name('admin.update_travel');
 
+Route::post('/admin/update_travel_os', $controller_path . '\AdminController@update_travel_os')->name('admin.update_travel_os');
+
+Route::post('/admin/update_package_os', $controller_path . '\AdminDataController@update_package_os')->name('admin.update_package_os');
 
 /** Print Preview */
 Route::get('/admin/print_preview/{id}', $controller_path . '\AdminDataController@print_program')->name('admin.print_preview');
@@ -128,6 +138,10 @@ Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/rent',[HomeController::class,'van_list'])->name('van_list');
 Route::get('/service',[HomeController::class,'service'])->name('service');
 Route::get('/health',[HomeController::class,'health_tour'])->name('health');
+Route::get('/community',[HomeController::class,'community'])->name('community');
+Route::get('/travel',[HomeController::class,'travel'])->name('travel');
+Route::get('/travel-page/{id}',[HomeController::class,'travel_page'])->name('travel_page');
+Route::get('/preview_program/{id}', [HomeController::class,'preview_download'])->name('preview_download');
 
 Route::POST('/save_contact',[HomeController::class,'save_contact'])->name('save_contact');
 Route::POST('/save_index_contact',[HomeController::class,'save_contact_index'])->name('save_contact_index');

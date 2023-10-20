@@ -23,16 +23,29 @@
                             <b><?php echo e(session('success')); ?></b>
                         </div>
                     <?php endif; ?>
-
+           
                     <?php $__currentLoopData = $package_pre; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="card-body">
+                            <a href="<?php echo e(route('admin.edit_package_os',['id' => request()->id])); ?>"
+                                class="btn btn-sm btn-secondary">แก้ไข</a>
+                            <hr>
+
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3 row">
                                         <label class="col-sm-3 col-form-label">ประเทศ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                <?php echo $row->ct_nameTHA; ?>
+                                                <?php echo e($row->ct_nameTHA); ?>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label">เมือง</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <?php echo e($row->name_city); ?>
 
                                             </div>
                                         </div>
@@ -89,6 +102,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
