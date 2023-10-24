@@ -74,4 +74,29 @@ class DeleteFileController extends Controller
 
     return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
   }
+
+  public function delete_package_os($id)
+  {
+    DB::table('package_oversea')
+    ->where('package_id','=',$id)
+    ->delete();
+
+    DB::table('program_oversea_lists')
+    ->where('program_package_id','=',$id)
+    ->delete();
+
+    return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
+  }
+
+  public function delete_travel_os($id)
+  {
+     DB::table('travel_lists_oversea')
+      ->leftjoin('program_oversea_lists','travel_lists_oversea.travel_id','=','program_oversea_lists.program_travel_os_id')
+      ->where('travel_lists_oversea.travel_id','=',$id)
+      ->delete();
+
+      return redirect()->route('admin.list_oversea')->with('success', "ลบสถานที่เรียบร้อยแล้ว");     
+  }
+  
+
 }

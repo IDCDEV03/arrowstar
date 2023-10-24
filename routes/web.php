@@ -85,6 +85,10 @@ Route::get('/admin/delete_img/{id}', $controller_path . '\DeleteFileController@d
 
 Route::get('/admin/delete_img_os/{id}', $controller_path . '\DeleteFileController@delete_travel_img_os')->name('admin.delete_travel_img_os');
 
+Route::get('/admin/delete_package_os/{id}', $controller_path . '\DeleteFileController@delete_package_os')->name('admin.delete_package_os');
+
+Route::get('/admin/delete_travel_os/{id}', $controller_path . '\DeleteFileController@delete_travel_os')->name('admin.delete_travel_os');
+
 /** data */
 Route::get('/admin/data_travel/{id}', $controller_path . '\AdminController@data_travel')->name('admin.data_travel');
 

@@ -1,34 +1,34 @@
-@extends('layouts.simple.master')
-@section('title', 'รายการโปรแกรมทัวร์')
 
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatable-extension.css') }}">
-@endsection
+<?php $__env->startSection('title', 'รายการโปรแกรมทัวร์'); ?>
 
-@section('style')
-@endsection
+<?php $__env->startSection('css'); ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatables.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/vendors/datatable-extension.css')); ?>">
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('breadcrumb-title'); ?>
     <h3>โปรแกรมทัวร์ (ต่างประเทศ)</h3>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    @if (session('success'))
+                    <?php if(session('success')): ?>
                         <div class="alert alert-success" role="alert">
-                            <b>{{ session('success') }}</b>
+                            <b><?php echo e(session('success')); ?></b>
                         </div>
-                    @endif
+                    <?php endif; ?>
            
-                    @foreach ($package_pre as $row)
+                    <?php $__currentLoopData = $package_pre; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="card-body">
-                            <a href="{{route('admin.edit_package_os',['id' => request()->id])}}"
+                            <a href="<?php echo e(route('admin.edit_package_os',['id' => request()->id])); ?>"
                                 class="btn btn-sm btn-info">แก้ไข</a>
-                                <a href="{{route('admin.delete_package_os',['id' => request()->id])}}"
+                                <a href="<?php echo e(route('admin.delete_package_os',['id' => request()->id])); ?>"
                                     onclick="return confirm('ต้องการลบ ใช่หรือไม่?');"  class="btn btn-sm btn-danger">ลบ</a>
                             <hr>
 
@@ -38,7 +38,8 @@
                                         <label class="col-sm-3 col-form-label">ประเทศ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {{ $row->ct_nameTHA }}
+                                                <?php echo e($row->ct_nameTHA); ?>
+
                                             </div>
                                         </div>
                                     </div>
@@ -46,7 +47,8 @@
                                         <label class="col-sm-3 col-form-label">เมือง</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {{ $row->name_city}}
+                                                <?php echo e($row->name_city); ?>
+
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +56,8 @@
                                         <label class="col-sm-3 col-form-label">ชื่อแพ็คเกจ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {!! $row->package_name !!}
+                                                <?php echo $row->package_name; ?>
+
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +65,8 @@
                                         <label class="col-sm-3 col-form-label">ความต้องการพิเศษ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {!! $row->program_spacial_req!!}
+                                                <?php echo $row->program_spacial_req; ?>
+
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +74,8 @@
                                         <label class="col-sm-3 col-form-label txt-danger">หมายเหตุ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static txt-danger">
-                                                {!! $row->program_remark!!}
+                                                <?php echo $row->program_remark; ?>
+
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +83,8 @@
                                         <label class="col-sm-3 col-form-label">Tips ข้อควรระวัง</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {!! $row->program_tips !!}
+                                                <?php echo $row->program_tips; ?>
+
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +92,7 @@
                                         <label class="col-sm-3 col-form-label txt-info">ราคารวม</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                <span class="txt-info">{!! $row->price_total !!}</span> 
+                                                <span class="txt-info"><?php echo $row->price_total; ?></span> 
                                             </div>
                                         </div>
                                     </div>
@@ -94,23 +100,23 @@
                                         <label class="col-sm-3 col-form-label txt-danger">ราคาไม่รวม</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                               <span class="txt-danger">{!! $row->price_notin!!}</span> 
+                                               <span class="txt-danger"><?php echo $row->price_notin; ?></span> 
                                             </div>
                                         </div>
                                     </div>
                                     
                                 </div>
                             </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="card-footer">
-                        <a class="btn btn-secondary" href="{{route('admin.create_tips_os', ['id' => request()->id])}}">เพิ่มความต้องการพิเศษ / Tips / หมายเหตุ</a>
-                         <a href="{{route('admin.print_preview_os',['id' => request()->id])}}" class="btn btn-success" target="_blank">พิมพ์เอกสารโปรแกรม</a>
+                        <a class="btn btn-secondary" href="<?php echo e(route('admin.create_tips_os', ['id' => request()->id])); ?>">เพิ่มความต้องการพิเศษ / Tips / หมายเหตุ</a>
+                         <a href="<?php echo e(route('admin.print_preview_os',['id' => request()->id])); ?>" class="btn btn-success" target="_blank">พิมพ์เอกสารโปรแกรม</a>
                     </div>
                 </div>
             </div>
-            @php
+            <?php
                 $i = 1;
-            @endphp
+            ?>
             <div class="card">
                 <div class="card-header">
                    รายการสถานที่ในโปรแกรมทัวร์นี้
@@ -126,16 +132,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($package_place as $data)
+                                <?php $__currentLoopData = $package_place; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
                                         <th scope="row">
-                                            @php
+                                            <?php
                                                 echo $i++;
-                                            @endphp</th>
-                                        <td>{{ $data->travel_name }}</td>
-                                        <td> {{ $data->type_travel }} </td>
+                                            ?></th>
+                                        <td><?php echo e($data->travel_name); ?></td>
+                                        <td> <?php echo e($data->type_travel); ?> </td>
                                     </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                         </table>
                     </div>
@@ -145,7 +151,9 @@
         </div>
     </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
-@endsection
+<?php $__env->startSection('script'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\admin\Documents\GitHub\arrowstar\resources\views/admin/preview_package_os.blade.php ENDPATH**/ ?>

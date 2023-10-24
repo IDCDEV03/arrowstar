@@ -1,34 +1,35 @@
-@extends('layouts.simple.master')
-@section('title', 'สถานที่ท่องเที่ยว')
 
-@section('css')
-@endsection
+<?php $__env->startSection('title', 'สถานที่ท่องเที่ยว'); ?>
 
-@section('style')
-@endsection
+<?php $__env->startSection('css'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-title')
-@endsection
+<?php $__env->startSection('style'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('breadcrumb-items')
-@endsection
+<?php $__env->startSection('breadcrumb-title'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('breadcrumb-items'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
 
                     <div class="card-body">
-                        @if (session('success'))
+                        <?php if(session('success')): ?>
                             <div class="alert alert-success">
-                                {{ session('success') }}
+                                <?php echo e(session('success')); ?>
+
                             </div>
-                        @endif
-                        @foreach ($data_oversea as $item)
-                            <a href="{{ route('admin.edit_travel_os', ['id' => request()->id]) }}"
+                        <?php endif; ?>
+                        <?php $__currentLoopData = $data_oversea; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <a href="<?php echo e(route('admin.edit_travel_os', ['id' => request()->id])); ?>"
                                 class="btn btn-sm btn-info">แก้ไข</a>
-                                <a href="{{route('admin.delete_travel_os',['id' => request()->id])}}"
+                                <a href="<?php echo e(route('admin.delete_travel_os',['id' => request()->id])); ?>"
                                     onclick="return confirm('ต้องการลบ ใช่หรือไม่?');"  class="btn btn-sm btn-danger">ลบ</a>
 
                             <hr>
@@ -36,7 +37,8 @@
                                 <label class="col-sm-3 col-form-label pt-0 txt-info">ชื่อสถานที่</label>
                                 <div class="col-sm-9">
                                     <div class="form-control-static txt-info">
-                                        {{ $item->travel_name }}
+                                        <?php echo e($item->travel_name); ?>
+
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +47,8 @@
                                 <label class="col-sm-3 col-form-label pt-0">ประเภท</label>
                                 <div class="col-sm-9">
                                     <div class="form-control-static">
-                                        {{ $item->type_travel }}
+                                        <?php echo e($item->type_travel); ?>
+
                                     </div>
                                 </div>
                             </div>
@@ -54,7 +57,8 @@
                                 <label class="col-sm-3 col-form-label pt-0">ประเทศ</label>
                                 <div class="col-sm-9">
                                     <div class="form-control-static">
-                                        {{ $item->ct_nameTHA }}
+                                        <?php echo e($item->ct_nameTHA); ?>
+
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +68,8 @@
                                 <label class="col-sm-3 col-form-label pt-0">เมือง</label>
                                 <div class="col-sm-9">
                                     <div class="form-control-static">
-                                        {{ $item->city_name }}
+                                        <?php echo e($item->city_name); ?>
+
                                     </div>
                                 </div>
                             </div>
@@ -73,24 +78,26 @@
                                 <label class="col-sm-3 col-form-label pt-0">รายละเอียดสถานที่</label>
                                 <div class="col-sm-9">
                                     <div class="form-control-static">
-                                        {!! $item->travel_detail !!}
+                                        <?php echo $item->travel_detail; ?>
+
                                     </div>
                                 </div>
                             </div>
 
 
-                            @if ($item->travel_remark == null)
-                            @else
+                            <?php if($item->travel_remark == null): ?>
+                            <?php else: ?>
                                 <div class="mb-3 row">
                                     <label class="col-sm-3 col-form-label pt-0">Tips ข้อควรระวัง</label>
                                     <div class="col-sm-9">
                                         <div class="form-control-static">
-                                            {!! $item->travel_remark !!}
+                                            <?php echo $item->travel_remark; ?>
+
                                         </div>
                                     </div>
                                 </div>
-                            @endif
-                        @endforeach
+                            <?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 
@@ -100,23 +107,23 @@
 
                         <div class="row">
                             <div class="col-sm">
-                                @if ($count_img == '3')
+                                <?php if($count_img == '3'): ?>
                                     <label class="txt-danger">เพิ่มภาพครบจำนวนที่กำหนดแล้ว</label>
-                                @else
+                                <?php else: ?>
                                     <button class="btn btn-info btn-sm" type="button" data-bs-toggle="modal"
                                         data-bs-target="#upload_img">เพิ่มภาพสถานที่</button>
-                                @endif
+                                <?php endif; ?>
                             </div>
 
-                            @foreach ($travel_img as $row)
+                            <?php $__currentLoopData = $travel_img; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="col-sm">
-                                    <img src="{{ asset($row->travel_os_img) }}" class="img-fluid img-thumbnail" width="300px"
+                                    <img src="<?php echo e(asset($row->travel_os_img)); ?>" class="img-fluid img-thumbnail" width="300px"
                                         alt="">
-                                    <a href="{{ route('admin.delete_travel_img_os', ['id' => $row->id]) }}"
+                                    <a href="<?php echo e(route('admin.delete_travel_img_os', ['id' => $row->id])); ?>"
                                         onclick="return confirm('ต้องการลบ ใช่หรือไม่?');"
                                         class="btn btn-xs btn-danger">ลบ</a>
                                 </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                         </div>
 
@@ -137,9 +144,9 @@
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('admin.insert_image_extra') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="travel_id" value="{{ request()->id }}">
+                    <form action="<?php echo e(route('admin.insert_image_extra')); ?>" method="POST" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="travel_id" value="<?php echo e(request()->id); ?>">
                         <div class="mb-3">
                             <label for="formFileSm" class="form-label">เลือกรูปภาพ</label>
                             <input class="form-control" name="travel_img" type="file" accept="image/*" required>
@@ -155,7 +162,9 @@
         </div>
     </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
-@endsection
+<?php $__env->startSection('script'); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.simple.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\admin\Documents\GitHub\arrowstar\resources\views/admin/travel_detail_oversea.blade.php ENDPATH**/ ?>
