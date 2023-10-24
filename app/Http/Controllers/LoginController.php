@@ -30,7 +30,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             if (auth()->user()->is_admin == 1) {
-                return redirect()->route('list_province');
+                return redirect()->route('admin.all_program_oversea');
             }else {
                 return redirect()->route('/');
             }
