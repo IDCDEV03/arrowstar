@@ -65,4 +65,13 @@ class DeleteFileController extends Controller
     ->delete();
     return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
   }  
+
+  public function delete_contact($id)
+  {
+    DB::table('contact')
+    ->where('id','=',$id)
+    ->delete();
+
+    return redirect()->back()->with('delete', "ลบเรียบร้อยแล้ว");
+  }
 }

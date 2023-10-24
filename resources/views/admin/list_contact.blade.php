@@ -21,9 +21,9 @@
       <div class="col-sm-12">
          <div class="card">                 
             <div class="card-body">
-                @if (session('success'))
-                <div class="alert alert-success" role="alert">
-                    <b>{{ session('success') }}</b>
+                @if (session('delete'))
+                <div class="alert alert-danger" role="alert">
+                    <b>{{ session('delete') }}</b>
                 </div>
                  @endif
             
@@ -38,6 +38,7 @@
                           <th>รายละเอียด</th>
                           <th>Line ID</th>
                           <th>วันที่ติดต่อ</th>
+                          <th>ตั้งค่า</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -50,6 +51,7 @@
                           <td>{{$item->SubjectDetail}}</td>
                           <td>{{$item->member_line}}</td>                          
                           <td> {{ Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+                          <td> <a href="{{ route('admin.delete_contact', ['id' => $item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ ใช่หรือไม่?');">ลบ</a> </td>
                         </tr>
                         @endforeach
                       </tbody>

@@ -75,6 +75,8 @@ Route::post('/admin/save_program_oversea', $controller_path . '\AdminDataControl
 
 /** delete data */
 
+Route::get('/admin/delete_contact/{id}', $controller_path . '\DeleteFileController@delete_contact')->name('admin.delete_contact');
+
 Route::get('/admin/delete_program/{id}', $controller_path . '\DeleteFileController@delete_program')->name('admin.delete_program');
 
 Route::get('/admin/delete_travel/{id}/{province}', $controller_path . '\DeleteFileController@delete_travel_place')->name('admin.delete_travel_place');
