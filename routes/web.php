@@ -83,7 +83,6 @@ Route::get('/admin/delete_img/{id}', $controller_path . '\DeleteFileController@d
 
 Route::get('/admin/delete_img_os/{id}', $controller_path . '\DeleteFileController@delete_travel_img_os')->name('admin.delete_travel_img_os');
 
-
 /** data */
 Route::get('/admin/data_travel/{id}', $controller_path . '\AdminController@data_travel')->name('admin.data_travel');
 
@@ -96,6 +95,8 @@ Route::get('/admin/all_program', $controller_path . '\AdminDataController@all_pr
 Route::get('/admin/all_program_oversea', $controller_path . '\AdminDataController@all_program_oversea')->name('admin.all_program_oversea');
 
 Route::get('/admin/list_customer', $controller_path . '\AdminDataController@list_customer')->name('admin.list_customer');
+
+Route::get('/admin/list_contact', $controller_path . '\AdminDataController@list_contact')->name('admin.list_contact');
 
 /** Edit Data */
 Route::get('/admin/edit_travel/{id}', $controller_path . '\AdminController@edit_travel')->name('admin.edit_travel');

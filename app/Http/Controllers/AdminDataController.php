@@ -213,6 +213,15 @@ class AdminDataController extends Controller
     return view('admin.list_customer', compact('list_user'));
   }
 
+  public function list_contact()
+  {
+    $list_contact = DB::table('contact')
+      ->orderBy('id', 'desc')
+      ->get();
+
+    return view('admin.list_contact', compact('list_contact'));
+  }
+
 
   public function save_program_oversea(Request $request)
   {

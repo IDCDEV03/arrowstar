@@ -46,6 +46,11 @@
 							<span class="lan-3">ตั้งค่าหน้าเว็บ</span>
 						</a>	
 
+						<a class="sidebar-link sidebar-title" href="<?php echo e(route('admin.list_contact')); ?>">
+							<i data-feather="inbox"></i>
+							<span class="lan-3">ข้อมูลติดต่อ</span>
+						</a>	
+
 
 						<a class="sidebar-link sidebar-title" href="<?php echo e(route('admin.create_customer')); ?>">
 							<i data-feather="user-plus"></i>
