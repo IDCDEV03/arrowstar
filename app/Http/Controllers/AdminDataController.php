@@ -313,8 +313,7 @@ class AdminDataController extends Controller
   public function update_package_os(Request $request)
   {
     if ($request->hasFile('package_cover')) {
-      $cover_img = $request->file('travel_img');
-      $upload_location = 'travel_img/';
+      $cover_img = $request->file('travel_img');     
       $name_gen = hexdec(uniqid());
       $cover_img_ext = strtolower($cover_img->getClientOriginalExtension());
       $cover_img_name = $name_gen . '.' . $cover_img_ext;

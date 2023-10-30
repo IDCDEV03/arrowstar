@@ -33,7 +33,7 @@
                 <!--startform-->
                 <div class="card">
                     <div class="card-body">
-                        <form id="form-contact" action="<?php echo e(route('save_contact')); ?>" method="POST">
+                        <form id="form-contact" action="<?php echo e(route('save_contact')); ?>" method="POST" enctype="multipart/form-data">
                             <?php echo csrf_field(); ?>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -64,11 +64,50 @@
                                         class="text-danger">*</span></label>
                                 <textarea class="form-control" id="inputSubjectDetail" name="SubjectDetail" rows="3"></textarea>
                             </div>
+
+                            <div class="form-group">
+                                <label for="file_input">กำหนดการเดินทาง (ถ้ามี)</label>
+                                <input type="file" class="form-control" id="file_input" name="file_input" accept="application/pdf">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="file_input">ช่วงเวลา</label>
+                                <div class="form-group row">
+                                    <label for="from_date" class="col-sm-2 col-form-label">จาก</label>
+                                    <div class="col-sm-10">
+                                      <input type="date" class="form-control" id="from_date" name="from_date">
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label for="finish_date" class="col-sm-2 col-form-label">ถึง</label>
+                                    <div class="col-sm-10">
+                                      <input type="date" class="form-control" id="finish_date" name="finish_date">
+                                    </div>
+                                  </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="quotations">ต้องการใบเสนอราคาหรือไม่</label>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="quotations" id="quotations1" value="ต้องการ">
+                                    <label class="form-check-label text-success" for="quotations1">ต้องการ</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="quotations" id="quotations2" value="ไม่ต้องการ">
+                                    <label class="form-check-label" for="quotations2">ไม่ต้องการ</label>
+                                  </div>
+                            </div>
+
+
                             <div class="form-group">
                                 <label for="inputAddress2">Line ID (ถ้ามี)</label>
                                 <input type="text" class="form-control" id="inputAddress2" name="member_line">
                             </div>
+                                                       
+
                           
+
                             <button class="g-recaptcha btn btn-primary"
                                 data-sitekey="6Lc7WZEoAAAAAKY8yMbNw-nd2UOx4uqR1cYV5j1b" data-callback='onSubmit'
                                 data-action='submit'>ยืนยัน</button>
