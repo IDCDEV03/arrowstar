@@ -6,7 +6,7 @@
                   <div class="d-inline-flex align-items-center">
                       <p><i class="fa fa-envelope mr-2"></i>arrowstartravel114@gmail.com</p>
                       <p class="text-body px-3">|</p>
-                      <p><i class="fa fa-phone-alt mr-2"></i>(+66)621481969</p>
+                      <p><img src="<?php echo e(asset('index_gall/line.png')); ?>" class="mr-3"><a href="https://line.me/ti/p/~ar5599">เพิ่มเพื่อน</a></p>
                   </div>
               </div>
               <div class="col-lg-6 text-center text-lg-right">

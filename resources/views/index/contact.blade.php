@@ -104,9 +104,7 @@
                                 <label for="inputAddress2">Line ID (ถ้ามี)</label>
                                 <input type="text" class="form-control" id="inputAddress2" name="member_line">
                             </div>
-                                                       
-
-                          
+                                                                              
 
                             <button class="g-recaptcha btn btn-primary"
                                 data-sitekey="6Lc7WZEoAAAAAKY8yMbNw-nd2UOx4uqR1cYV5j1b" data-callback='onSubmit'
