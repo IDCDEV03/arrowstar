@@ -104,6 +104,8 @@ Route::get('/admin/list_customer', $controller_path . '\AdminDataController@list
 
 Route::get('/admin/list_contact', $controller_path . '\AdminDataController@list_contact')->name('admin.list_contact');
 
+Route::get('/admin/contact/{id}', $controller_path . '\AdminDataController@contact_data')->name('admin.contact_data');
+
 /** Edit Data */
 Route::get('/admin/edit_travel/{id}', $controller_path . '\AdminController@edit_travel')->name('admin.edit_travel');
 
@@ -143,6 +145,7 @@ Route::get('/clear-cache', function() {
 ////////////--------Front_Route---------//////////////
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/rent',[HomeController::class,'van_list'])->name('van_list');
+Route::get('/rent-car',[HomeController::class,'rent_car'])->name('rent_car');
 Route::get('/service',[HomeController::class,'service'])->name('service');
 Route::get('/health',[HomeController::class,'health_tour'])->name('health');
 Route::get('/community',[HomeController::class,'community'])->name('community');
@@ -152,3 +155,4 @@ Route::get('/preview_program/{id}', [HomeController::class,'preview_download'])-
 
 Route::POST('/save_contact',[HomeController::class,'save_contact'])->name('save_contact');
 Route::POST('/save_index_contact',[HomeController::class,'save_contact_index'])->name('save_contact_index');
+Route::POST('/save_rental',[HomeController::class,'save_rent_car'])->name('save_rental');

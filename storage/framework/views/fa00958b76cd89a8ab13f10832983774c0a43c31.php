@@ -21,7 +21,7 @@
 					</li>
 
 				 <li class="sidebar-list">
-						<a class="sidebar-link sidebar-title" href="<?php echo e(route('list_province')); ?>">
+						<a class="sidebar-link sidebar-title" href="<?php echo e(route('admin.all_program')); ?>">
 							<i data-feather="list"></i>
 							<span class="lan-3">โปรแกรมทัวร์ (ในประเทศ)</span>
 						</a>	
@@ -41,11 +41,6 @@
 							<span class="lan-3">เพิ่มสถานที่ (ต่างประเทศ)</span>
 						</a>	
 						
-						<a class="sidebar-link sidebar-title" href="#">
-							<i data-feather="settings"></i>
-							<span class="lan-3">ตั้งค่าหน้าเว็บ</span>
-						</a>	
-
 						<a class="sidebar-link sidebar-title" href="<?php echo e(route('admin.list_contact')); ?>">
 							<i data-feather="inbox"></i>
 							<span class="lan-3">ข้อมูลติดต่อ</span>

@@ -27,7 +27,9 @@
                     <?php $__currentLoopData = $package_pre; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div class="card-body">
                             <a href="<?php echo e(route('admin.edit_package_os',['id' => request()->id])); ?>"
-                                class="btn btn-sm btn-secondary">แก้ไข</a>
+                                class="btn btn-sm btn-info">แก้ไข</a>
+                                <a href="<?php echo e(route('admin.delete_package_os',['id' => request()->id])); ?>"
+                                    onclick="return confirm('ต้องการลบ ใช่หรือไม่?');"  class="btn btn-sm btn-danger">ลบ</a>
                             <hr>
 
                             <div class="row">

@@ -34,6 +34,46 @@ class HomeController extends Controller
         return view('index.community');
     }
 
+    public function rent_car()
+    {
+        $list_province = DB::table('province_list')
+        ->orderBy('name_th','ASC')
+        ->get();
+
+        return view('index.rent_car',compact('list_province'));
+    }
+
+    public function save_rent_car(Request $request)
+    {
+        DB::table('rental_car')->insert([
+            'car_type' => $request->car_type,
+            'start_province' => $request->start_province,
+            'start_amphur' => $request->start_amphur,
+            'place_start' => $request->place_start,
+            'end_province' => $request->end_province,
+            'end_amphur' => $request->end_amphur,
+            'place_end' => $request->place_end,
+            'go_date' => $request->go_date,
+            'back_date' => $request->back_date,
+            'category_car' => $request->category_car,
+            'roadmap' => $request->roadmap,
+            'number_people' => $request->number_people,
+            'number_car' => $request->number_car,
+            'member_name' => $request->member_name,
+            'member_phone' => $request->member_phone,
+            'member_email' => $request->member_email,
+            'member_company' => $request->member_company,
+            'req_detail' => $request->req_detail,
+            'status' => '0',
+            'created_at' => Carbon::now()
+        ]);
+
+        $msg_alert = "\n" . "ชื่อ: " . $request->member_name . "\n" . "เบอร์โทร: " . $request->member_phone . "\n" . "ติดต่อบริการเช่ารถ" . "\n" . "ประเภทรถ: " . $request->car_type. "\n" . "เช็คที่รายละเอียดที่เว็บไซต์: http://arrowstartravel114.com/admin";
+        $this->LineAlert($msg_alert);
+        
+        return redirect()->route('van_list')->with('success', 'บันทึกข้อมูลเรียบร้อยแล้ว');
+    }
+
     public function travel()
     {
         $travel_os = DB::table('package_oversea')

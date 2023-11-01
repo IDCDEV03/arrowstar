@@ -21,9 +21,9 @@
       <div class="col-sm-12">
          <div class="card">                 
             <div class="card-body">
-                <?php if(session('success')): ?>
-                <div class="alert alert-success" role="alert">
-                    <b><?php echo e(session('success')); ?></b>
+                <?php if(session('delete')): ?>
+                <div class="alert alert-danger" role="alert">
+                    <b><?php echo e(session('delete')); ?></b>
                 </div>
                  <?php endif; ?>
             
@@ -38,18 +38,22 @@
                           <th>รายละเอียด</th>
                           <th>Line ID</th>
                           <th>วันที่ติดต่อ</th>
+                          <th>ต้องการใบเสนอราคา</th>
+                          <th>ตั้งค่า</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php $__currentLoopData = $list_contact; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
                         <tr>
                           <td><?php echo e($item->id); ?></td>
-                          <td><?php echo e($item->member_name); ?></td>
+                          <td><a href="<?php echo e(route('admin.contact_data',['id' => $item->id])); ?>"><?php echo e($item->member_name); ?></a></td>
                           <td> <?php echo e($item->member_phone); ?> </td>
                           <td><?php echo e($item->contact_subject); ?></td>
                           <td><?php echo e($item->SubjectDetail); ?></td>
                           <td><?php echo e($item->member_line); ?></td>                          
                           <td> <?php echo e(Carbon\Carbon::parse($item->created_at)->format('d/m/Y')); ?></td>
+                          <td> <?php echo e($item->req_quotations); ?> </td>
+                          <td> <a href="<?php echo e(route('admin.delete_contact', ['id' => $item->id])); ?>" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ ใช่หรือไม่?');">ลบ</a> </td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       </tbody>

@@ -222,6 +222,15 @@ class AdminDataController extends Controller
     return view('admin.list_contact', compact('list_contact'));
   }
 
+  public function contact_data($id)
+  {
+    $contact_data = DB::table('contact')
+    ->where('id','=',$id)
+    ->get();
+
+  return view('admin.contact_data', compact('contact_data'));
+  }
+
 
   public function save_program_oversea(Request $request)
   {

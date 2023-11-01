@@ -38,6 +38,7 @@
                           <th>รายละเอียด</th>
                           <th>Line ID</th>
                           <th>วันที่ติดต่อ</th>
+                          <th>ต้องการใบเสนอราคา</th>
                           <th>ตั้งค่า</th>
                         </tr>
                       </thead>
@@ -45,12 +46,13 @@
                         @foreach ($list_contact as $item) 
                         <tr>
                           <td>{{$item->id}}</td>
-                          <td>{{$item->member_name}}</td>
+                          <td><a href="{{route('admin.contact_data',['id' => $item->id])}}">{{$item->member_name}}</a></td>
                           <td> {{$item->member_phone}} </td>
                           <td>{{$item->contact_subject}}</td>
                           <td>{{$item->SubjectDetail}}</td>
                           <td>{{$item->member_line}}</td>                          
                           <td> {{ Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+                          <td> {{$item->req_quotations}} </td>
                           <td> <a href="{{ route('admin.delete_contact', ['id' => $item->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('ต้องการลบ ใช่หรือไม่?');">ลบ</a> </td>
                         </tr>
                         @endforeach
