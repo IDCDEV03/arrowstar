@@ -264,7 +264,7 @@ class AdminDataController extends Controller
 
     DB::table('package_oversea')->insert([
       'package_id' => $pos_id,
-      'package_code' => $request->package_code,
+      'package_code_os' => $request->package_code,
       'country_id' => $request->country_id,
       'name_city' => $request->city_name,
       'package_name' => $request->package_name,
