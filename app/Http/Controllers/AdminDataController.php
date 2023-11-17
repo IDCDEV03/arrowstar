@@ -231,6 +231,23 @@ class AdminDataController extends Controller
   return view('admin.contact_data', compact('contact_data'));
   }
 
+  public function list_rental()
+  {
+    $rental_data = DB::table('rental_car')
+    ->get();
+
+    return view('admin.list_rental',compact('rental_data'));
+  }
+
+  public function rental_data($id)
+  {
+    $rental_car = DB::table('rental_car')
+    ->where('id','=',$id)
+    ->get();
+
+  return view('admin.rental_data', compact('rental_car'));
+  }
+
 
   public function save_program_oversea(Request $request)
   {
@@ -247,6 +264,7 @@ class AdminDataController extends Controller
 
     DB::table('package_oversea')->insert([
       'package_id' => $pos_id,
+      'package_code' => $request->package_code,
       'country_id' => $request->country_id,
       'name_city' => $request->city_name,
       'package_name' => $request->package_name,

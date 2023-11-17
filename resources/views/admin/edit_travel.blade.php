@@ -112,31 +112,18 @@
 <script src="{{asset('assets/js/tooltip-init.js')}}"></script>
  <!-- Theme js-->
 <script src="{{asset('assets/js/script.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<script>
- $('#summernote').summernote({
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-          ['style', ['style']],
-          ['font', ['bold', 'underline', 'clear']],
-          ['color', ['color']],
-          ['para', ['ul', 'ol', 'paragraph']],
-          ['table', ['table']],
-        ]
-      });
+<!-- ckeditor -->
+<script src="{{asset('assets/js/ckeditor/ckeditor.js')}}"></script>
+  <script>
+  CKEDITOR.replace('travel_detail',{
+  height : 150,
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
+  } );
   </script>
   <script>
-    $('#summernote2').summernote({
-           tabsize: 2,
-           height: 120,
-           toolbar: [
-             ['style', ['style']],
-             ['font', ['bold', 'underline', 'clear']],
-             ['color', ['color']],
-             ['para', ['ul', 'ol', 'paragraph']],
-             ['table', ['table']],
-           ]
-         });
-     </script>
+  CKEDITOR.replace('travel_remark',{    
+  height : 150,
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
+  } );
+  </script>
 @endsection

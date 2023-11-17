@@ -24,23 +24,23 @@
                                 <form action="<?php echo e(route('admin.insert_tips_os')); ?>" method="post">
                                  <?php echo csrf_field(); ?>
                                  <input type="hidden" name="package_id" value="<?php echo e(request()->id); ?>">
-                                <div class="mb-2">
+                                
+                                 <div class="mb-2">
                                     <label for="program_req">ความต้องการพิเศษ</label>
                                     <textarea class="form-control" id="program_req" name="program_req" rows="3"><?php echo e($row->program_spacial_req); ?></textarea>
                                   </div>
+
                                   <div class="mb-2">
                                     <label for="program_remark">หมายเหตุ<span style="color: red">*</span> </label>
                                     <textarea class="form-control" id="program_remark" name="program_remark" rows="3"><?php echo e($row->program_remark); ?></textarea>
                                  
                                   </div>
-
                                   
                                   <div class="mb-2">
                                     <label for="f1-last-name">ข้อควรระวัง (Tips)</label>
                                     <textarea class="form-control" id="program_tips" name="program_tips" rows="3"><?php echo e($row->program_tips); ?></textarea>
                                   </div>
                                  
-
                                   <div class="mb-2">
                                     <label for="f1-last-name"><span class="txt-info" style="font-weight: bold">ราคารวม</span></label>
                                     <textarea class="form-control" id="price_total" name="price_total" rows="3"><?php echo e($row->price_total); ?></textarea>
@@ -56,7 +56,7 @@
                                   </div>
                                 </form>
                             </div>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
         </div>
@@ -68,23 +68,23 @@
 <script>
   CKEDITOR.replace('program_tips',{
   height : 150,
-  removeButtons: 'Image',
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
   } ),
   CKEDITOR.replace('price_total',{
   height : 150,
-  removeButtons: 'Image',
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
   }),
   CKEDITOR.replace('price_notin',{
   height : 150,
-  removeButtons: 'Image',
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
   });
   CKEDITOR.replace('program_remark',{
   height : 150,
-  removeButtons: 'Image',
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
   });
   CKEDITOR.replace('program_req',{
   height : 150,
-  removeButtons: 'Image',
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
   });
   </script>
 <?php $__env->stopSection(); ?>

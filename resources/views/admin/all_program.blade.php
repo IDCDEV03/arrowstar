@@ -23,13 +23,13 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>รายการโปรแกรมทัวร์</h5>
+                        <h5>รายการโปรแกรมทัวร์ (ในประเทศ)</h5>
                         <hr>
                         @php
                         $pos_id = substr(str_shuffle(str_repeat('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ', 5)), 0, 12);
                     @endphp
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <a href="{{route('admin.list_oversea')}}" class="btn btn-outline-info" ><i class="fa fa-picture-o"></i> รายการสถานที่</a>
+                            <a href="{{route('admin.list_travel')}}" class="btn btn-outline-info" ><i class="fa fa-picture-o"></i> รายการสถานที่</a>
                             <a href="{{ route('admin.new_package', ['id' => $pos_id]) }}" class="btn btn-outline-info" ><i class="fa fa-plus-square-o"></i> เพิ่มโปรแกรมใหม่</a>
                            
                           </div>

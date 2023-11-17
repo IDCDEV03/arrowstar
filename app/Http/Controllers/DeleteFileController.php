@@ -97,6 +97,16 @@ class DeleteFileController extends Controller
 
       return redirect()->route('admin.list_oversea')->with('success', "ลบสถานที่เรียบร้อยแล้ว");     
   }
+
+  public function delete_travel($id)
+  {
+    DB::table('travel_lists')
+    ->leftjoin('program_travel_lists','travel_lists.travel_id','=','program_travel_lists.program_travel_id')
+    ->where('travel_lists.travel_id','=',$id)
+    ->delete();
+
+    return redirect()->route('admin.list_travel')->with('success', "ลบสถานที่เรียบร้อยแล้ว"); 
+  }
   
 
 }

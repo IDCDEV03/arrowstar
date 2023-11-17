@@ -14,7 +14,7 @@
 <?php echo $__env->yieldContent('script'); ?>
 <script src="<?php echo e(asset('assets/js/tooltip-init.js')); ?>"></script>
 
-
+<script src="<?php echo e(asset('assets/js/ckeditor/ckeditor.js')); ?>"></script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="<?php echo e(asset('assets/js/script.js')); ?>"></script>

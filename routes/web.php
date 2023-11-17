@@ -21,7 +21,7 @@ Route::group(['middleware' => 'is_admin'], function () {
 $controller_path = 'App\Http\Controllers';
 Route::get('/admin/list_province', $controller_path . '\AdminController@list_province')->name('list_province');
 
-Route::get('/admin/list_travel/{id}', $controller_path . '\AdminController@list_travel')->name('admin.list_travel');
+Route::get('/admin/list_travel', $controller_path . '\AdminController@list_travel')->name('admin.list_travel');
 
 Route::get('/admin/create_customer', $controller_path . '\AdminDataController@create_customer')->name('admin.create_customer');
 
@@ -87,7 +87,9 @@ Route::get('/admin/delete_img_os/{id}', $controller_path . '\DeleteFileControlle
 
 Route::get('/admin/delete_package_os/{id}', $controller_path . '\DeleteFileController@delete_package_os')->name('admin.delete_package_os');
 
-Route::get('/admin/delete_travel_os/{id}', $controller_path . '\DeleteFileController@delete_travel_os')->name('admin.delete_travel_os');
+Route::get('/admin/delete_travel_os/{id}', $controller_path . '\DeleteFileController@delete_travel_os')->name('admin.delete_travel_os'); 
+
+Route::get('/admin/delete_travel/{id}', $controller_path . '\DeleteFileController@delete_travel')->name('admin.delete_travel');
 
 /** data */
 Route::get('/admin/data_travel/{id}', $controller_path . '\AdminController@data_travel')->name('admin.data_travel');
@@ -104,7 +106,11 @@ Route::get('/admin/list_customer', $controller_path . '\AdminDataController@list
 
 Route::get('/admin/list_contact', $controller_path . '\AdminDataController@list_contact')->name('admin.list_contact');
 
+Route::get('/admin/list_rental', $controller_path . '\AdminDataController@list_rental')->name('admin.list_rental');
+
 Route::get('/admin/contact/{id}', $controller_path . '\AdminDataController@contact_data')->name('admin.contact_data');
+
+Route::get('/admin/rental/{id}', $controller_path . '\AdminDataController@rental_data')->name('admin.rental_data');
 
 /** Edit Data */
 Route::get('/admin/edit_travel/{id}', $controller_path . '\AdminController@edit_travel')->name('admin.edit_travel');

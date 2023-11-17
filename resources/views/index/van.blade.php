@@ -24,7 +24,7 @@
 
                 <div class="text-center mb-3 pb-3">
                     <h4 class="text-primary text-uppercase" style="letter-spacing: 2px;">รถบัส VIP / รถตู้ VIP</h4>
-                    <a href="{{ route('rent_car') }}" class="btn btn-primary mb-3">ติดต่อสอบถาม</a>
+                    <a href="{{ route('rent_car') }}" class="btn btn-primary mb-3">สนใจใช้บริการ</a>
                     @if (session('success'))
                         <div class="alert alert-success" role="alert">
                             <b>{{ session('success') }}</b>

@@ -133,20 +133,17 @@
 <script src="{{asset('assets/js/script.js')}}"></script>  
 <script src="{{ asset('assets/js/select2/select2.full.min.js') }}"></script>
 <script src="{{ asset('assets/js/select2/select2-custom.js') }}"></script>
-
-<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-<script>
+<script src="{{asset('assets/js/ckeditor/ckeditor.js')}}"></script>
+  <script>
   CKEDITOR.replace('travel_detail',{
   height : 150,
-  removeButtons: 'Cut,Copy,Paste,Anchor',
-  removeButtons: 'PasteFromWord',   
-  removeButtons: 'Image',  
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
   } );
   </script>
-<script>
-  CKEDITOR.replace('travel_remark',{
+  <script>
+  CKEDITOR.replace('travel_remark',{    
   height : 150,
-  removeButtons: 'Image',     
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
   } );
   </script>
 

@@ -28,7 +28,10 @@
                         <?php endif; ?>
                         <?php $__currentLoopData = $data_oversea; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <a href="<?php echo e(route('admin.edit_travel_os', ['id' => request()->id])); ?>"
-                                class="btn btn-sm btn-secondary">แก้ไข</a>
+                                class="btn btn-sm btn-info">แก้ไข</a>
+                                <a href="<?php echo e(route('admin.delete_travel_os',['id' => request()->id])); ?>"
+                                    onclick="return confirm('ต้องการลบ ใช่หรือไม่?');"  class="btn btn-sm btn-danger">ลบสถานที่</a>
+
                             <hr>
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label pt-0 txt-info">ชื่อสถานที่</label>

@@ -49,13 +49,11 @@
                 <td colspan="2">
                     <div class="header-space">
                         <img class="mb-5" src="{{ asset('assets/images/logo1.png') }}" width="80px"> &nbsp;
-                        <label style="font-size: 11pt">บริษัท แอร์โร่วสตาร์ จำกัด
+                        <label style="font-size: 12pt"><strong>ArrowStar Travel</strong> 
+                   <br>
+                            211/10 หมู่4 ต.หนองขอนกว้าง อ.เมือง จ.อุดรธานี 41000 &nbsp; โทร. 062-1481969
                             <br>
-                            211/10 หมู่4 ต.หนองขอนกว้าง อ.เมือง จ.อุดรธานี 41000
-                            <br>
-                            http://www.arrowstartravel114.com
-                            <br>
-                            Email: arrowstartravel114@gmail.com &nbsp; Tel. 081-6155916, 063-2452369
+                            www.arrowstartravel114.com / Email: arrowstartravel114@gmail.com 
                         </label>
                     </div>               
             </td>
@@ -92,7 +90,7 @@
                     </tr>
                     <tr>
                         <td style="width:30%">{{ $item->travel_name }}</td>
-                        <td><span style="font-size: 12pt">{{ $item->travel_detail }}</span></td>
+                        <td><span style="font-size: 12pt">{!! $item->travel_detail !!}</span></td>
                     </tr>
                 @endforeach
 

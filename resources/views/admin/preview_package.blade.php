@@ -40,7 +40,7 @@
                                         <label class="col-sm-3 col-form-label">ชื่อแพ็คเกจ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {{ $row->package_name }}
+                                                {!! $row->package_name !!}
                                             </div>
                                         </div>
                                     </div>
@@ -48,7 +48,7 @@
                                         <label class="col-sm-3 col-form-label">ความต้องการพิเศษ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {{ $row->program_spacial_req}}
+                                                {!! $row->program_spacial_req !!}
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                         <label class="col-sm-3 col-form-label txt-danger">หมายเหตุ</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static txt-danger">
-                                                {{ $row->program_remark}}
+                                                {!! $row->program_remark !!}
                                             </div>
                                         </div>
                                     </div>
@@ -64,7 +64,23 @@
                                         <label class="col-sm-3 col-form-label">Tips ข้อควรระวัง</label>
                                         <div class="col-sm-9">
                                             <div class="form-control-static">
-                                                {{ $row->program_tips}}
+                                                {!! $row->program_tips !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label txt-info">ราคารวม</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                                <span class="txt-info">{!! $row->price_total !!}</span> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-3 col-form-label txt-danger">ราคาไม่รวม</label>
+                                        <div class="col-sm-9">
+                                            <div class="form-control-static">
+                                               <span class="txt-danger">{!! $row->price_notin!!}</span> 
                                             </div>
                                         </div>
                                     </div>
@@ -72,17 +88,16 @@
                             </div>
                     @endforeach
                     <div class="card-footer">
-                        <a href="{{route('admin.print_preview',['id' => request()->id])}}" class="btn btn-success" target="_blank">พิมพ์เอกสารโปรแกรม</a>
+                        <a class="btn btn-secondary" href="{{route('admin.create_tips', ['id' => request()->id])}}">เพิ่มความต้องการพิเศษ / Tips / หมายเหตุ</a>
+                         <a href="{{route('admin.print_preview',['id' => request()->id])}}" class="btn btn-success" target="_blank">พิมพ์เอกสารโปรแกรม</a>
                     </div>
+                    
                 </div>
             </div>
             @php
                 $i = 1;
             @endphp
-            <div class="card">
-                <div class="card-header">
-                    <a class="btn btn-pill btn-secondary" href="{{route('admin.create_tips', ['id' => request()->id])}}">เพิ่มความต้องการพิเศษ / Tips / หมายเหตุ</a>
-                </div>
+            <div class="card">              
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table">

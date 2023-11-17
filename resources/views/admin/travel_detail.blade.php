@@ -27,7 +27,9 @@
                         @endif
                         @foreach ($data_travel as $item)
                             <a href="{{ route('admin.edit_travel', ['id' => request()->id]) }}"
-                                class="btn btn-sm btn-secondary">แก้ไข</a>
+                                class="btn btn-sm btn-primary">แก้ไข</a>
+                                <a href="{{route('admin.delete_travel',['id' => request()->id])}}"
+                                    onclick="return confirm('ต้องการลบสถานที่ ใช่หรือไม่?');"  class="btn btn-sm btn-danger">ลบสถานที่</a>
                             <hr>
                             <div class="mb-3 row">
                                 <label class="col-sm-3 col-form-label pt-0 txt-primary">ชื่อสถานที่</label>

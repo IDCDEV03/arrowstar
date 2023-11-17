@@ -46,6 +46,10 @@
 							<span class="lan-3">ข้อมูลติดต่อ</span>
 						</a>	
 
+						<a class="sidebar-link sidebar-title" href="{{route('admin.list_rental')}}">
+							<i data-feather="folder"></i>
+							<span class="lan-3">ติดต่อบริการเช่ารถ</span>
+						</a>
 
 						<a class="sidebar-link sidebar-title" href="{{route('admin.create_customer')}}">
 							<i data-feather="user-plus"></i>

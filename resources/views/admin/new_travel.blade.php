@@ -134,4 +134,19 @@
 <script src="{{asset('assets/js/tooltip-init.js')}}"></script>
  <!-- Theme js-->
 <script src="{{asset('assets/js/script.js')}}"></script>
+
+<!-- ckeditor -->
+<script src="{{asset('assets/js/ckeditor/ckeditor.js')}}"></script>
+  <script>
+  CKEDITOR.replace('travel_detail',{
+  height : 150,
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
+  } );
+  </script>
+  <script>
+  CKEDITOR.replace('travel_remark',{    
+  height : 150,
+  removeButtons: 'Image,PasteFromWord,PasteText,Anchor'
+  } );
+  </script>
 @endsection

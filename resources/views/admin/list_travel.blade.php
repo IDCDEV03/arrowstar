@@ -21,7 +21,7 @@
             <div class="col-sm-12">
                 <div class="card">
 
-                    <h5 class="card-header">จังหวัด {{ $province_name }}</h5>
+                    <h5 class="card-header">รายการสถานที่ (ในประเทศ) </h5>
 
                     <div class="card-body">
                         @if (session('success'))
@@ -33,38 +33,34 @@
                             {{ session('error') }}
                         </div>
                         @endif
-
+                        @php
+                        $i = '1';
+                @endphp
                         <div class="dt-ext table-responsive">
                             <table class="display" id="dataTables01">
                                 <thead>
                                     <tr>
-                                        <th>สถานที่</th>
-                                        <th>ประเภท</th>
-                                        <th>อัพเดทล่าสุด</th>
-                                        <th></th>
+                                        <th>#</th>
+                                        <th>ชื่อสถานที่</th>
+                                        <th>จังหวัด</th>
+                                        <th>เมือง</th> 
+                                        <th>ประเภท</th>                              
+                                     
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($list_travel as $item)
+                                    @foreach ($list_travel as $row)
                                         <tr>
                                             <td>
-                                                {{ $item->travel_name }}
+                                            @php                                
+                                                echo $i++;
+                                            @endphp
                                             </td>
-                                            <td> {{ $item->type_travel }} </td>
-                                            <td>{{ Carbon\Carbon::parse($item->travel_created_at)->format('d/m/Y H:i') }}
-                                            </td>
-
-                                            <td>
-                                                <div class="btn-group btn-group-pill" role="group"
-                                                    aria-label="Basic example">
-                                                    <a href="{{ route('admin.data_travel', ['id' => $item->travel_id]) }}"
-                                                    class="btn btn btn-outline-light txt-dark " type="button">
-                                                    <i class="fa fa-info-circle"></i></a>
-                                                    <a href="{{ route('admin.delete_travel_place',['id' => $item->travel_id,'province' => $item->province])}}" class="btn btn btn-outline-light txt-dark " type="button" onclick="return confirm('ต้องการลบ ใช่หรือไม่?');">
-                                                    <i class="fa fa-trash-o"></i></a>
-
-                                                </div>
-                                            </td>
+                                            <td><a href="{{ route('admin.data_travel', ['id' => $row->travel_id]) }}" > {{$row->travel_name}} </a></td>
+                                            <td> {{$row->name_th}} </td>
+                                            <td> {{$row->travel_city}} </td>
+                                            <td> {{$row->type_travel}} </td>
+                                                                    
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -81,11 +77,31 @@
 
 @section('script')
 
-    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+<script src="{{asset('assets/js/datatable/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/jszip.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.colVis.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/pdfmake.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.autoFill.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.select.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/buttons.print.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.responsive.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.colReorder.min.js')}}"></script>
+
+<script src="{{asset('assets/js/datatable/datatable-extension/dataTables.scroller.min.js')}}"></script>
+<script src="{{asset('assets/js/datatable/datatable-extension/custom.js')}}"></script>
     <script>
         $(function() {
             $("#dataTables01").dataTable({
+                dom: 'Bfrtip',
+            buttons: [
+                'pageLength','excel','print'
+            ],
                 "pageLength": 25,
                 "language": {
                     "info": "แสดงผล _START_ ถึง _END_ จาก _TOTAL_ รายการ",
