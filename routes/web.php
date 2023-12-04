@@ -125,6 +125,10 @@ Route::post('/admin/update_travel_os', $controller_path . '\AdminController@upda
 
 Route::post('/admin/update_package_os', $controller_path . '\AdminDataController@update_package_os')->name('admin.update_package_os');
 
+Route::get('/admin/edit_customer/{id}', $controller_path . '\AdminDataController@edit_customer')->name('admin.edit_customer');
+
+Route::post('/admin/update_customer', $controller_path . '\AdminDataController@update_customer')->name('admin.update_customer');
+
 /** Print Preview */
 Route::get('/admin/print_preview/{id}', $controller_path . '\AdminDataController@print_program')->name('admin.print_preview');
 

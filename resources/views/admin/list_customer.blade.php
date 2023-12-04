@@ -45,7 +45,7 @@
                         @foreach ($list_user as $item) 
                         <tr>
                           <td>{{$item->id}}</td>
-                          <td>{{$item->user_fullname}}</td>
+                          <td><a href="{{route('admin.edit_customer', ['id' => $item->id])}}">{{$item->user_fullname}}</a></td>
                           <td>{{$item->user_address}} <br> {{$item->user_province}}</td>
                           <td> {{$item->user_phone}} </td>
                           <td> {{ Carbon\Carbon::parse($item->user_datetravel)->format('d/m/Y') }}</td>

@@ -51,6 +51,32 @@
                             </span>
                         </div>
                     </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2">
+                            <img class="img-fluid" src="<?php echo e(asset('index_gall/sv07.jpg')); ?>" alt="">
+                            <span class="destination-overlay text-white text-decoration-none">
+                                <h5 class="text-white">ท่องเที่ยวทางรถไฟ</h5>                              
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2">
+                            <img class="img-fluid" src="<?php echo e(asset('index_gall/sv08.jpg')); ?>" alt="">
+                            <span class="destination-overlay text-white text-decoration-none">
+                                <h5 class="text-white">ล่องเรือสำราญ</h5>                          
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="destination-item position-relative overflow-hidden mb-2">
+                            <img class="img-fluid" src="<?php echo e(asset('index_gall/sv09.jpg')); ?>" alt="">
+                            <span class="destination-overlay text-white text-decoration-none">
+                                <h5 class="text-white">ทัศนศึกษา</h5>                              
+                            </span>
+                        </div>
+                    </div>
+
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="destination-item position-relative overflow-hidden mb-2">
                             <img class="img-fluid" src="<?php echo e(asset('index_gall/sv04.jpg')); ?>" alt="">

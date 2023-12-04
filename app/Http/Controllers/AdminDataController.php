@@ -225,27 +225,27 @@ class AdminDataController extends Controller
   public function contact_data($id)
   {
     $contact_data = DB::table('contact')
-    ->where('id','=',$id)
-    ->get();
+      ->where('id', '=', $id)
+      ->get();
 
-  return view('admin.contact_data', compact('contact_data'));
+    return view('admin.contact_data', compact('contact_data'));
   }
 
   public function list_rental()
   {
     $rental_data = DB::table('rental_car')
-    ->get();
+      ->get();
 
-    return view('admin.list_rental',compact('rental_data'));
+    return view('admin.list_rental', compact('rental_data'));
   }
 
   public function rental_data($id)
   {
     $rental_car = DB::table('rental_car')
-    ->where('id','=',$id)
-    ->get();
+      ->where('id', '=', $id)
+      ->get();
 
-  return view('admin.rental_data', compact('rental_car'));
+    return view('admin.rental_data', compact('rental_car'));
   }
 
 
@@ -340,7 +340,7 @@ class AdminDataController extends Controller
   public function update_package_os(Request $request)
   {
     if ($request->hasFile('package_cover')) {
-      $cover_img = $request->file('travel_img');     
+      $cover_img = $request->file('travel_img');
       $name_gen = hexdec(uniqid());
       $cover_img_ext = strtolower($cover_img->getClientOriginalExtension());
       $cover_img_name = $name_gen . '.' . $cover_img_ext;
@@ -358,18 +358,49 @@ class AdminDataController extends Controller
           'is_show' => $request->is_show,
           'updated_at' => Carbon::now()
         ]);
-        return redirect()->route('admin.preview_package_os', ['id' => $request->package_id]);
-    }else
-    {
+      return redirect()->route('admin.preview_package_os', ['id' => $request->package_id]);
+    } else {
       DB::table('package_oversea')
-      ->where('package_id', '=', $request->package_id)
-      ->update([
-        'name_city' => $request->city_name,
-        'package_name' => $request->package_name,
-        'is_show' => $request->is_show,
-        'updated_at' => Carbon::now()
-      ]);
+        ->where('package_id', '=', $request->package_id)
+        ->update([
+          'name_city' => $request->city_name,
+          'package_name' => $request->package_name,
+          'is_show' => $request->is_show,
+          'updated_at' => Carbon::now()
+        ]);
       return redirect()->route('admin.preview_package_os', ['id' => $request->package_id]);
     }
+  }
+
+  public function edit_customer($id)
+  {
+    $data_customer = DB::table('customer_data')
+      ->where('customer_data.id', '=', $id)
+      ->get();
+
+    $province_th = DB::table('province_list')
+      ->orderBy('name_th', 'asc')
+      ->get();
+
+    return view('admin.edit_customer', ['id' => $id], compact('data_customer', 'province_th'));
+  }
+
+  public function update_customer(Request $request)
+  {
+
+    DB::table('customer_data')
+      ->where('id', '=', $request->user_id)
+      ->update([
+        'user_fullname' => $request->user_fullname,
+        'user_address' => $request->user_address,
+        'user_province' => $request->user_province,
+        'user_phone' => $request->user_phone,
+        'user_datetravel' => $request->user_datetravel,
+        'user_program' => $request->user_program,
+        'user_amount' => $request->user_amount,
+        'user_remark' => $request->user_remark,
+        'updated_at' => Carbon::now()
+      ]);
+    return redirect()->route('admin.list_customer')->with('success', "แก้ไขข้อมูลเรียบร้อยแล้ว");
   }
 }

@@ -45,7 +45,7 @@
                         <?php $__currentLoopData = $list_user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
                         <tr>
                           <td><?php echo e($item->id); ?></td>
-                          <td><?php echo e($item->user_fullname); ?></td>
+                          <td><a href="<?php echo e(route('admin.edit_customer', ['id' => $item->id])); ?>"><?php echo e($item->user_fullname); ?></a></td>
                           <td><?php echo e($item->user_address); ?> <br> <?php echo e($item->user_province); ?></td>
                           <td> <?php echo e($item->user_phone); ?> </td>
                           <td> <?php echo e(Carbon\Carbon::parse($item->user_datetravel)->format('d/m/Y')); ?></td>
