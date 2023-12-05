@@ -6,7 +6,7 @@
     <title>Arrowstar <?php echo $__env->yieldContent('title'); ?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Arrowstar Travel (Thailand)" name="keywords">
-    <meta content="แอโร่วสตาร์ ทราเวล, จัดทัวร์ในประเทศ, ทัวร์ต่างประเทศ, ศึกษาดูงาน, สัมมนา, จัดกรุ๊ปเหมา, เช่ารถ, ของฝาก, ของที่ระลึก" name="description">
+    <meta content="แอโร่วสตาร์ ทราเวล, จัดทัวร์ในประเทศ, ทัวร์ต่างประเทศ, ศึกษาดูงาน, สัมมนา, จัดกรุ๊ปเหมา, เช่ารถ, ของฝาก, ของที่ระลึก, ท่องเรือสำราญ, ท่องเที่ยวรถไฟ, ทัศนศึกษา" name="description">
 
     <!-- Favicon -->
     <link href="<?php echo e(asset('assets/images/logo1.png')); ?>" rel="icon">

@@ -30,7 +30,9 @@
           <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
               <a href="{{ route('/') }}" class="navbar-brand">
                   <img src="{{ asset('plugin_index/img/logo1.png') }}" alt="" width="80px">
-                  <span class="text-dark">ARROW</span><span class="text-primary">STAR</span>
+                  <span class="text-dark">ARROW</span><span class="text-primary">STAR</span><br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="h6">เที่ยวไทย-เที่ยวนอก</span>
+                   
               </a>
               <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                   <span class="navbar-toggler-icon"></span>
