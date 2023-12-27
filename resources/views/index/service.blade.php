@@ -103,6 +103,29 @@
                     </div>
                 </div>
                 <a href="{{route('contact')}}" class="btn btn-success btn-block ">ติดต่อสอบถามเพิ่มเติม</a>
+
+                <hr>
+
+                <div class="card ">
+                    <div class="card-body">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe src="https://drive.google.com/file/d/1J-yZEJDVxScpb11WnW_amCM3UsK5tL5t/preview" allow="autoplay"></iframe>
+                        </div>
+                        <hr>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe src="https://drive.google.com/file/d/16or69QJeySuMIE-u6uaoHnmpqgdhBRJY/preview" allow="autoplay"></iframe>
+                        </div>
+
+                        <hr>
+
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe src="https://drive.google.com/file/d/1u-7flYUICkRVkmhc7MG6TdDlYpdiU3GA/preview" allow="autoplay"></iframe>
+                        </div>
+
+                    </div>
+                  </div>
+
+
             </div>
         </div>
         <!-- Destination Start -->

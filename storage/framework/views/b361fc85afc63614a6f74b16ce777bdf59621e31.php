@@ -120,6 +120,16 @@
                     </div>
                 </div>                
             </div>
+
+            
+            <div class="card ">
+                <div class="card-body">
+                    <div class="embed-responsive embed-responsive-16by9">
+                    <iframe src="https://drive.google.com/file/d/1ZGiiMbiUZiVZuQbTG0OdI24sUIIHoKxl/preview" allow="autoplay"></iframe>
+                    </div>
+                </div>
+              </div>
+
         </div>
     
     <!-- Registration Start -->
