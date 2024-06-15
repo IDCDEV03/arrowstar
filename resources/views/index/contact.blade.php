@@ -51,7 +51,6 @@
                                 <select class="form-control" id="inputSubject" name="contact_subject" required>
                                     <option value="0" selected disabled>เลือก..</option>
                                     <option value="จัดกรุ๊ปทัวร์" style="color:blue">จัดกรุ๊ปทัวร์</option>
-                                    <option style="color:#694800" value="ท่องเที่ยวเชิงสุขภาพ">ท่องเที่ยวเชิงสุขภาพ</option>
                                     <option style="color:#da1d7b" value="ท่องเที่ยวชุมชน">ท่องเที่ยวชุมชน</option>
                                     <option style="color:#ff6d02" value="สัมมนา/ศึกษาดูงาน">สัมมนา/ศึกษาดูงาน</option>
                                     <option style="color:#64ca05" value="เช่ารถตู้/รถบัส">เช่ารถตู้/รถบัส</option>

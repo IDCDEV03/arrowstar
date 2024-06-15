@@ -30,7 +30,7 @@
                             <a href="<?php echo e(route('admin.edit_travel_os', ['id' => request()->id])); ?>"
                                 class="btn btn-sm btn-info">แก้ไข</a>
                                 <a href="<?php echo e(route('admin.delete_travel_os',['id' => request()->id])); ?>"
-                                    onclick="return confirm('ต้องการลบ ใช่หรือไม่?');"  class="btn btn-sm btn-danger">ลบสถานที่</a>
+                                    onclick="return confirm('ต้องการลบสถานที่ ใช่หรือไม่?');"  class="btn btn-sm btn-danger">ลบสถานที่</a>
 
                             <hr>
                             <div class="mb-3 row">

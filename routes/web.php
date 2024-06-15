@@ -157,7 +157,6 @@ Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::get('/rent',[HomeController::class,'van_list'])->name('van_list');
 Route::get('/rent-car',[HomeController::class,'rent_car'])->name('rent_car');
 Route::get('/service',[HomeController::class,'service'])->name('service');
-Route::get('/health',[HomeController::class,'health_tour'])->name('health');
 Route::get('/community',[HomeController::class,'community'])->name('community');
 Route::get('/travel',[HomeController::class,'travel'])->name('travel');
 Route::get('/travel-page/{id}',[HomeController::class,'travel_page'])->name('travel_page');

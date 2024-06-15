@@ -6,7 +6,6 @@
                   <div class="d-inline-flex align-items-center">
                       <p><i class="fa fa-envelope mr-2"></i>arrowstartravel114@gmail.com</p>
                       <p class="text-body px-3">|</p>
-                      <p><img src="{{asset('index_gall/line.png')}}" class="mr-3"><a href="https://line.me/ti/p/~ar5599">เพิ่มเพื่อน</a></p>
                   </div>
               </div>
               <div class="col-lg-6 text-center text-lg-right">
@@ -42,7 +41,7 @@
                       <a href="{{ route('travel') }}" class="nav-item nav-link">โปรแกรมทัวร์</a>
                       <a href="{{ route('service') }}" class="nav-item nav-link">แพ็คเกจ-บริการ</a>
                       <a href="{{ route('van_list') }}" class="nav-item nav-link">รถบัส/รถตู้</a>
-                      <a href="{{ route('health') }}" class="nav-item nav-link">ท่องเที่ยวเชิงสุขภาพ</a>
+                  
                       <a href="{{ route('community') }}" class="nav-item nav-link">ท่องเที่ยวชุมชน</a>
                       <a href="{{ route('contact') }}" class="nav-item nav-link">ฝากข้อมูลติดต่อ</a>
                   </div>

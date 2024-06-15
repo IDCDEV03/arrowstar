@@ -146,8 +146,7 @@
                     211/10 หมู่ที่ 4 ตำบลหนองขอนกว้าง อำเภอเมืองอุดีธานี จังหวัดอุดรธานี 41000</p>
                     <ul class="list-inline text-white m-0">
                         <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>ใบอนุญาตประกอบการธุรกิจนำเที่ยวเลขที่ 51/00815</li>
-                        <li class="py-2"><i class="fa fa-envelope text-primary mr-3"></i>arrowstartravel114@gmail.com</li>
-                        <li class="py-2"><img src="{{asset('index_gall/line.png')}}" class="mr-3"><a href="https://line.me/ti/p/~ar5599">LineID: ar5599</a></li>
+                        <li class="py-2"><i class="fa fa-envelope text-primary mr-3"></i>arrowstartravel114@gmail.com</li>                       
                     </ul>
                 </div>
                 <div class="col-lg-5">
@@ -169,7 +168,6 @@
                                     <select class="form-control" id="inputSubject" name="contact_subject" required>
                                         <option selected disabled>โปรดเลือกหัวข้อที่ต้องการติดต่อ..</option>
                                         <option value="จัดกรุ๊ปทัวร์" style="color:blue">จัดกรุ๊ปทัวร์</option>
-                                    <option style="color:#694800" value="ท่องเที่ยวเชิงสุขภาพ">ท่องเที่ยวเชิงสุขภาพ</option>
                                     <option style="color:#da1d7b" value="ท่องเที่ยวชุมชน">ท่องเที่ยวชุมชน</option>
                                     <option style="color:#ff6d02" value="สัมมนา/ศึกษาดูงาน">สัมมนา/ศึกษาดูงาน</option>
                                     <option style="color:#64ca05" value="เช่ารถตู้/รถบัส">เช่ารถตู้/รถบัส</option>

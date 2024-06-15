@@ -37,8 +37,7 @@
         <div class="col-lg-3 col-md-6 mb-5">
             <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 2px;">ติดต่อเรา</h5>
             <p><i class="fa fa-map-marker-alt mr-2"></i>211/10 หมู่4 ต.หนองขอนกว้าง 
-              อ.เมือง  จ.อุดรธานี 41000</p>
-            <p><img src="{{asset('index_gall/line.png')}}" class="mr-2" ><a href="https://line.me/ti/p/~ar5599">LineID: ar5599</a></p>
+              อ.เมือง  จ.อุดรธานี 41000</p>          
             <p><i class="fa fa-envelope mr-2"></i>arrowstartravel114@gmail.com</p>
            
         </div>
